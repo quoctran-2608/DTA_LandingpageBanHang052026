@@ -6913,7 +6913,7 @@ body{
 }
 
 .service-photo{
-  aspect-ratio:2.15 / 1 !important;
+  aspect-ratio:1.45/ 1 !important;
   border:3px solid #c58b2e !important;
   border-radius:clamp(20px, 1.55vw, 28px) !important;
   box-shadow:
@@ -8532,6 +8532,7 @@ body{
       text-align:center;
       white-space:normal;
       text-decoration:none;
+      border:1px solid rgba(242,212,126,.78);
       border-radius:0 0 14px 14px;
       background:
         radial-gradient(ellipse at 50% 0%, rgba(246,204,103,.16), transparent 58%),
@@ -8550,13 +8551,20 @@ body{
       content:"";
       position:absolute;
       inset:0;
+      z-index:1;
       pointer-events:none;
-      background:
-        linear-gradient(90deg, transparent 0 7%, #d2a34d 9%, #f2d47e 50%, #d2a34d 91%, transparent 93% 100%) top / 100% 1px no-repeat,
-        linear-gradient(90deg, transparent 0 5%, #d2a34d 7%, #f2d47e 50%, #d2a34d 93%, transparent 95% 100%) bottom / 100% 1px no-repeat,
-        linear-gradient(180deg, transparent 0 18%, #d2a34d 28%, #f2d47e 50%, #d2a34d 72%, transparent 82% 100%) left / 1px 100% no-repeat,
-        linear-gradient(180deg, transparent 0 18%, #d2a34d 28%, #f2d47e 50%, #d2a34d 72%, transparent 82% 100%) right / 1px 100% no-repeat;
-      opacity:.95;
+      border-radius:inherit;
+      padding:1px;
+      background:linear-gradient(135deg, #d2a34d 0%, #f8df91 35%, #f2d47e 50%, #d2a34d 100%);
+      -webkit-mask:
+        linear-gradient(#000 0 0) content-box,
+        linear-gradient(#000 0 0);
+      -webkit-mask-composite:xor;
+      mask:
+        linear-gradient(#000 0 0) content-box,
+        linear-gradient(#000 0 0);
+      mask-composite:exclude;
+      opacity:.98;
     }
     .project-label::after{
       content:"";
@@ -8939,6 +8947,135 @@ body{
       .project-heading-lotus{
         width:min(76vw, 235px) !important;
         height:clamp(44px, 13vw, 62px) !important;
+      }
+    }
+
+    /* ==========================================================
+       SERVICE IMAGE LIGHTBOX — click ảnh dịch vụ để xem lớn
+    ========================================================== */
+    .service-section .service-photo{
+      cursor:zoom-in;
+    }
+
+    .service-section .service-photo[role="button"]:focus-visible{
+      outline:3px solid rgba(246,211,122,.92);
+      outline-offset:5px;
+    }
+
+    body.service-lightbox-open{
+      overflow:hidden;
+    }
+
+    .service-lightbox{
+      position:fixed;
+      inset:0;
+      z-index:9999;
+      display:grid;
+      place-items:center;
+      padding:clamp(20px, 4vw, 56px);
+      background:
+        radial-gradient(ellipse at 50% 42%, rgba(241,200,102,.18) 0 18%, transparent 54%),
+        rgba(12,6,2,.84);
+      -webkit-backdrop-filter:blur(10px);
+      backdrop-filter:blur(10px);
+      opacity:0;
+      visibility:hidden;
+      pointer-events:none;
+      transition:opacity .32s ease, visibility .32s ease;
+    }
+
+    .service-lightbox.is-open{
+      opacity:1;
+      visibility:visible;
+      pointer-events:auto;
+    }
+
+    .service-lightbox-frame{
+      position:relative;
+      z-index:2;
+      max-width:min(1120px, 94vw);
+      max-height:88vh;
+      margin:0;
+      transform:translateY(12px) scale(.985);
+      transition:transform .36s cubic-bezier(.2,.8,.2,1);
+    }
+
+    .service-lightbox.is-open .service-lightbox-frame{
+      transform:none;
+    }
+
+    .service-lightbox-image{
+      display:block;
+      max-width:100%;
+      max-height:82vh;
+      width:auto;
+      height:auto;
+      object-fit:contain;
+      border:2px solid rgba(242,212,126,.78);
+      border-radius:clamp(16px, 1.8vw, 28px);
+      background:#170b03;
+      box-shadow:
+        0 28px 70px rgba(0,0,0,.5),
+        0 0 36px rgba(241,200,102,.20),
+        inset 0 0 0 1px rgba(255,255,255,.10);
+    }
+
+    .service-lightbox-caption{
+      max-width:min(760px, 90vw);
+      margin:14px auto 0;
+      color:#f7e5b2;
+      font-family:var(--sans);
+      font-size:clamp(13px, 1vw, 16px);
+      line-height:1.5;
+      text-align:center;
+      text-shadow:0 2px 10px rgba(0,0,0,.55);
+    }
+
+    .service-lightbox-close{
+      position:fixed;
+      top:clamp(16px, 2.5vw, 34px);
+      right:clamp(16px, 2.5vw, 34px);
+      z-index:3;
+      width:48px;
+      height:48px;
+      border:1px solid rgba(242,212,126,.62);
+      border-radius:50%;
+      display:grid;
+      place-items:center;
+      background:
+        radial-gradient(circle at 50% 30%, rgba(255,255,255,.18), transparent 58%),
+        rgba(39,19,6,.86);
+      color:#f8df91;
+      font-size:34px;
+      line-height:1;
+      cursor:pointer;
+      box-shadow:0 12px 30px rgba(0,0,0,.32), 0 0 18px rgba(241,200,102,.14);
+      transition:transform .25s ease, background .25s ease, color .25s ease, box-shadow .25s ease;
+    }
+
+    .service-lightbox-close:hover,
+    .service-lightbox-close:focus-visible{
+      transform:scale(1.06);
+      background:rgba(70,35,10,.92);
+      color:#fff1bd;
+      box-shadow:0 16px 34px rgba(0,0,0,.38), 0 0 24px rgba(241,200,102,.28);
+      outline:none;
+    }
+
+    @media (max-width:680px){
+      .service-lightbox{
+        padding:18px;
+      }
+
+      .service-lightbox-image{
+        max-height:76vh;
+        border-radius:18px;
+      }
+
+      .service-lightbox-close{
+        width:42px;
+        height:42px;
+        font-size:30px;
       }
     }
 
@@ -9372,6 +9509,14 @@ body{
 
   </main>
 
+  <div class="service-lightbox" id="service-lightbox" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Xem ảnh dịch vụ" hidden>
+    <button class="service-lightbox-close" type="button" aria-label="Đóng ảnh">×</button>
+    <figure class="service-lightbox-frame">
+      <img class="service-lightbox-image" alt="" />
+      <figcaption class="service-lightbox-caption" hidden></figcaption>
+    </figure>
+  </div>
+
 <script>
   (function(){
     var toggle = document.querySelector('.mobile-nav-toggle');
@@ -9478,6 +9623,100 @@ body{
     });
 
     activateTrustCard(cards[activeIndex], activeIndex);
+  })();
+
+  (function(){
+    var serviceSection = document.querySelector('.service-section');
+    var lightbox = document.getElementById('service-lightbox');
+    if(!serviceSection || !lightbox) return;
+
+    var lightboxImage = lightbox.querySelector('.service-lightbox-image');
+    var caption = lightbox.querySelector('.service-lightbox-caption');
+    var closeButton = lightbox.querySelector('.service-lightbox-close');
+    var servicePhotos = Array.prototype.slice.call(serviceSection.querySelectorAll('.service-photo'));
+    var lastFocused = null;
+    var closeTimer = null;
+
+    function getPhotoImage(photo){
+      return photo ? photo.querySelector('img') : null;
+    }
+
+    function openServiceLightbox(photo){
+      var image = getPhotoImage(photo);
+      if(!image || !lightboxImage) return;
+
+      if(closeTimer) window.clearTimeout(closeTimer);
+      lastFocused = document.activeElement;
+      lightboxImage.src = image.currentSrc || image.src;
+      lightboxImage.alt = image.alt || 'Ảnh dịch vụ thiết trí không gian thờ';
+      if(caption){
+        caption.textContent = image.alt || '';
+        caption.hidden = !image.alt;
+      }
+
+      lightbox.hidden = false;
+      lightbox.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('service-lightbox-open');
+
+      window.requestAnimationFrame(function(){
+        lightbox.classList.add('is-open');
+        if(closeButton) closeButton.focus();
+      });
+    }
+
+    function closeServiceLightbox(){
+      if(lightbox.getAttribute('aria-hidden') === 'true') return;
+
+      lightbox.classList.remove('is-open');
+      lightbox.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('service-lightbox-open');
+
+      closeTimer = window.setTimeout(function(){
+        if(lightbox.getAttribute('aria-hidden') === 'true'){
+          lightbox.hidden = true;
+          if(lightboxImage) lightboxImage.removeAttribute('src');
+          if(caption) caption.hidden = true;
+        }
+      }, 320);
+
+      if(lastFocused && typeof lastFocused.focus === 'function'){
+        lastFocused.focus();
+      }
+    }
+
+    servicePhotos.forEach(function(photo){
+      var image = getPhotoImage(photo);
+      if(!image) return;
+
+      photo.setAttribute('role', 'button');
+      photo.setAttribute('tabindex', '0');
+      photo.setAttribute('aria-label', 'Xem ảnh lớn: ' + (image.alt || 'dịch vụ thiết trí không gian thờ'));
+
+      photo.addEventListener('click', function(){
+        openServiceLightbox(photo);
+      });
+
+      photo.addEventListener('keydown', function(event){
+        if(event.key === 'Enter' || event.key === ' '){
+          event.preventDefault();
+          openServiceLightbox(photo);
+        }
+      });
+    });
+
+    if(closeButton){
+      closeButton.addEventListener('click', closeServiceLightbox);
+    }
+
+    lightbox.addEventListener('click', function(event){
+      if(event.target === lightbox) closeServiceLightbox();
+    });
+
+    document.addEventListener('keydown', function(event){
+      if(event.key === 'Escape' && lightbox.getAttribute('aria-hidden') === 'false'){
+        closeServiceLightbox();
+      }
+    });
   })();
 </script>
 
