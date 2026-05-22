@@ -7430,6 +7430,426 @@ body{
   }
 }
 
+
+
+    /* =========================
+       PROCESS SECTION
+       Từ tâm nguyện đến không gian hoàn thiện
+    ========================== */
+    .process-section{
+      position:relative;
+      width:100vw;
+      min-height:clamp(560px, 33.6vw, 680px);
+      padding:clamp(42px, 3.4vw, 64px) 0 clamp(80px, 5.7vw, 112px);
+      color:#fff4ce;
+      isolation:isolate;
+      overflow:hidden;
+      background:
+        radial-gradient(ellipse at 50% 16%, rgba(214,153,40,.13) 0%, rgba(214,153,40,.06) 27%, rgba(0,0,0,0) 56%),
+        linear-gradient(180deg, rgba(8,4,1,.38) 0%, rgba(11,5,1,.1) 40%, rgba(6,3,1,.5) 100%),
+        #100801 url("assets/images/bg/bg-process-dark-wood.webp") center center / cover no-repeat;
+    }
+    .process-section::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      z-index:-2;
+      pointer-events:none;
+      background:
+        radial-gradient(ellipse at 50% 50%, rgba(236,186,78,.08) 0%, transparent 48%),
+        linear-gradient(90deg, rgba(0,0,0,.54) 0%, rgba(0,0,0,.06) 22%, rgba(0,0,0,.06) 76%, rgba(0,0,0,.56) 100%),
+        linear-gradient(180deg, rgba(0,0,0,.18), transparent 28%, rgba(0,0,0,.22));
+    }
+    .process-section::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      z-index:-1;
+      pointer-events:none;
+      background:
+        linear-gradient(180deg, rgba(255,216,100,.06) 0 1px, transparent 1px),
+        radial-gradient(circle at 50% 96%, rgba(240,198,107,.12), transparent 18%);
+      background-size:100% 44px, auto;
+      mix-blend-mode:screen;
+      opacity:.42;
+    }
+    .process-container{
+      position:relative;
+      z-index:5;
+      width:var(--container);
+      margin-inline:auto;
+    }
+    .process-heading{
+      position:relative;
+      text-align:center;
+      margin:0 auto clamp(28px, 2.8vw, 50px);
+      color:#f8dc8a;
+    }
+    .process-title-line{
+      display:grid;
+      grid-template-columns:minmax(74px, 1fr) auto minmax(74px, 1fr);
+      align-items:center;
+      gap:clamp(14px, 1.8vw, 28px);
+      max-width:min(100%, 1160px);
+      margin:0 auto;
+    }
+    .process-title-line::before,
+    .process-title-line::after{
+      content:"";
+      height:12px;
+      opacity:.95;
+      background:
+        radial-gradient(circle, #eec452 0 2px, transparent 2.6px) center/44px 12px repeat-x,
+        linear-gradient(90deg, transparent, rgba(238,196,82,.86) 18%, rgba(238,196,82,.86) 82%, transparent);
+      mask-image:linear-gradient(90deg, transparent, #000 14%, #000 86%, transparent);
+      -webkit-mask-image:linear-gradient(90deg, transparent, #000 14%, #000 86%, transparent);
+    }
+    .process-title-line::after{transform:scaleX(-1)}
+    .process-title-line h2{
+      position:relative;
+      margin:0;
+      color:#f7da83;
+      font-family:var(--serif);
+      font-size:clamp(34px, 3.05vw, 58px);
+      line-height:1.08;
+      font-weight:400;
+      letter-spacing:clamp(.6px, .12vw, 2.2px);
+      text-shadow:
+        0 2px 0 rgba(255,255,255,.18),
+        0 10px 30px rgba(0,0,0,.68),
+        0 0 22px rgba(240,198,107,.22);
+      text-wrap:balance;
+      white-space:nowrap;
+    }
+    .process-title-line h2::before,
+    .process-title-line h2::after{
+      content:"";
+      position:absolute;
+      top:50%;
+      width:13px;
+      height:13px;
+      transform:translateY(-50%) rotate(45deg);
+      border:2px solid #e9c64d;
+      box-shadow:0 0 12px rgba(240,198,107,.42);
+    }
+    .process-title-line h2::before{left:clamp(-34px, -2.1vw, -22px)}
+    .process-title-line h2::after{right:clamp(-34px, -2.1vw, -22px)}
+    .process-heading p{
+      margin:clamp(10px, .85vw, 14px) 0 0;
+      color:rgba(255,255,255,.82);
+      font-family:var(--sans);
+      font-size:clamp(18px, 1.45vw, 30px);
+      line-height:1.3;
+      letter-spacing:.025em;
+      text-shadow:0 4px 18px rgba(0,0,0,.72);
+    }
+    .process-timeline{
+      position:relative;
+      z-index:6;
+      display:grid;
+      grid-template-columns:repeat(5, minmax(0, 1fr));
+      column-gap:clamp(12px, 1.4vw, 30px);
+      align-items:start;
+      padding:0 clamp(76px, 5.2vw, 112px);
+    }
+    .process-item{
+      position:relative;
+      min-width:0;
+      text-align:center;
+      padding:0 clamp(8px, 1vw, 20px);
+    }
+    .process-item + .process-item::before{
+      content:"";
+      position:absolute;
+      left:calc(-1 * clamp(6px, .7vw, 15px));
+      top:clamp(172px, 11.1vw, 198px);
+      width:1px;
+      height:clamp(136px, 9.8vw, 184px);
+      background:linear-gradient(180deg, transparent, rgba(239,196,82,.82) 14%, rgba(239,196,82,.76) 84%, transparent);
+      box-shadow:0 0 14px rgba(240,198,107,.28);
+    }
+    .process-icon-wrap{
+      position:relative;
+      width:clamp(108px, 8.25vw, 150px);
+      aspect-ratio:1;
+      margin:0 auto clamp(14px, 1.1vw, 20px);
+      display:grid;
+      place-items:center;
+      border-radius:50%;
+      border:2px dashed rgba(226,199,40,.88);
+      background:radial-gradient(circle, rgba(238,196,82,.14) 0%, rgba(176,110,24,.04) 58%, transparent 72%);
+      box-shadow:0 0 22px rgba(240,198,107,.08), inset 0 0 30px rgba(240,198,107,.06);
+      transition:transform .45s ease, border-color .45s ease, box-shadow .45s ease;
+    }
+    .process-icon-wrap::before{
+      content:"";
+      position:absolute;
+      inset:10px;
+      border-radius:50%;
+      border:1px solid rgba(240,198,107,.16);
+      opacity:0;
+      transition:opacity .4s ease;
+    }
+    .process-icon-wrap img{
+      width:58%;
+      height:58%;
+      object-fit:contain;
+      filter:drop-shadow(0 4px 10px rgba(0,0,0,.42)) drop-shadow(0 0 9px rgba(246,211,122,.25));
+      transition:transform .45s ease, filter .45s ease;
+    }
+    .process-item:hover .process-icon-wrap{
+      transform:translateY(-8px);
+      border-color:#f0d849;
+      box-shadow:0 0 26px rgba(240,198,107,.24), inset 0 0 34px rgba(240,198,107,.12);
+    }
+    .process-item:hover .process-icon-wrap::before{opacity:1}
+    .process-item:hover .process-icon-wrap img{
+      transform:scale(1.08);
+      filter:drop-shadow(0 6px 14px rgba(0,0,0,.48)) drop-shadow(0 0 18px rgba(246,211,122,.52));
+    }
+    .process-number{
+      display:block;
+      margin:0 0 clamp(4px, .35vw, 8px);
+      color:#f6de87;
+      font-family:var(--serif);
+      font-size:clamp(32px, 2.15vw, 44px);
+      line-height:1;
+      letter-spacing:.12em;
+      text-shadow:0 5px 16px rgba(0,0,0,.68), 0 0 16px rgba(240,198,107,.18);
+    }
+    .process-item h3{
+      margin:0 auto clamp(10px, .85vw, 15px);
+      color:#ffe6a0;
+      font-family:var(--serif);
+      font-size:clamp(20px, 1.55vw, 30px);
+      line-height:1.16;
+      font-weight:700;
+      letter-spacing:.015em;
+      text-shadow:0 5px 18px rgba(0,0,0,.68);
+    }
+    .process-item p{
+      max-width:250px;
+      margin:0 auto;
+      color:rgba(255,255,255,.86);
+      font-family:var(--sans);
+      font-size:clamp(15px, 1.05vw, 22px);
+      line-height:1.45;
+      letter-spacing:.012em;
+      text-shadow:0 4px 15px rgba(0,0,0,.72);
+    }
+    .process-arrow{
+      position:absolute;
+      z-index:7;
+      top:clamp(72px, 5vw, 94px);
+      width:clamp(78px, 6vw, 130px);
+      height:auto;
+      object-fit:contain;
+      pointer-events:none;
+      filter:drop-shadow(0 0 8px rgba(240,198,107,.28));
+      opacity:.92;
+    }
+    .process-arrow-1{left:calc(20% - clamp(44px, 3.5vw, 70px))}
+    .process-arrow-2{left:calc(40% - clamp(44px, 3.5vw, 70px))}
+    .process-arrow-3{left:calc(60% - clamp(44px, 3.5vw, 70px))}
+    .process-arrow-4{left:calc(80% - clamp(44px, 3.5vw, 70px))}
+    .process-decor{
+      position:absolute;
+      z-index:2;
+      pointer-events:none;
+      object-fit:contain;
+      opacity:.88;
+      filter:drop-shadow(0 0 8px rgba(226,199,40,.2));
+      mix-blend-mode:screen;
+    }
+    .process-lotus-left{
+      left:clamp(-34px, -1.7vw, -8px);
+      bottom:clamp(82px, 6vw, 116px);
+      width:clamp(160px, 12vw, 240px);
+    }
+    .process-lotus-right{
+      right:clamp(-34px, -1.7vw, -8px);
+      bottom:clamp(88px, 6.3vw, 126px);
+      width:clamp(170px, 12.8vw, 258px);
+    }
+    .process-bottom-curve{
+      position:absolute;
+      z-index:3;
+      left:0;
+      right:0;
+      bottom:-2px;
+      height:clamp(58px, 5.1vw, 92px);
+      pointer-events:none;
+      overflow:hidden;
+    }
+    .process-bottom-curve img{
+      position:absolute;
+      left:50%;
+      bottom:-12%;
+      width:104vw;
+      max-width:none;
+      height:100%;
+      object-fit:fill;
+      transform:translateX(-50%);
+      filter:drop-shadow(0 -5px 9px rgba(0,0,0,.34)) drop-shadow(0 0 10px rgba(240,198,107,.22));
+    }
+
+    @media (max-width:1280px){
+      .process-timeline{padding-inline:clamp(50px, 4.2vw, 82px);column-gap:12px}
+      .process-item p{font-size:clamp(15px, 1.14vw, 18px)}
+      .process-lotus-left,.process-lotus-right{opacity:.64;width:150px}
+    }
+    @media (max-width:1040px){
+      .process-section{padding-top:56px;padding-bottom:92px}
+      .process-title-line h2{white-space:normal;font-size:clamp(34px, 4.6vw, 52px)}
+      .process-title-line{grid-template-columns:minmax(54px, .32fr) auto minmax(54px, .32fr)}
+      .process-heading p{font-size:clamp(18px, 2.2vw, 24px)}
+      .process-timeline{
+        max-width:850px;
+        margin-inline:auto;
+        grid-template-columns:repeat(6, minmax(0, 1fr));
+        row-gap:34px;
+        padding-inline:32px;
+      }
+      .process-item{grid-column:span 2}
+      .process-item:nth-of-type(4){grid-column:2 / span 2}
+      .process-item:nth-of-type(5){grid-column:4 / span 2}
+      .process-item + .process-item::before,
+      .process-arrow{display:none}
+      .process-icon-wrap{width:118px}
+      .process-item p{max-width:245px;font-size:16px;line-height:1.5}
+      .process-lotus-left{left:-60px;bottom:44px;width:168px;opacity:.34}
+      .process-lotus-right{right:-58px;bottom:48px;width:178px;opacity:.34}
+    }
+    @media (max-width:680px){
+      .process-section{
+        min-height:0;
+        padding:48px 0 76px;
+        background-position:center center;
+      }
+      .process-section::before{
+        background:
+          radial-gradient(ellipse at 50% 12%, rgba(240,198,107,.12), transparent 38%),
+          linear-gradient(180deg, rgba(0,0,0,.24), rgba(0,0,0,.05) 45%, rgba(0,0,0,.34)),
+          linear-gradient(90deg, rgba(0,0,0,.45), transparent 30%, transparent 70%, rgba(0,0,0,.45));
+      }
+      .process-heading{margin-bottom:28px}
+      .process-title-line{
+        display:block;
+        padding-inline:8px;
+      }
+      .process-title-line::before,
+      .process-title-line::after{display:none}
+      .process-title-line h2{
+        white-space:normal;
+        font-size:clamp(32px, 8.8vw, 42px);
+        line-height:1.12;
+        letter-spacing:.5px;
+      }
+      .process-title-line h2::before,
+      .process-title-line h2::after{display:none}
+      .process-heading p{
+        max-width:320px;
+        margin:12px auto 0;
+        font-size:16px;
+        line-height:1.45;
+      }
+      .process-heading::after{
+        content:"";
+        display:block;
+        width:168px;
+        height:1px;
+        margin:18px auto 0;
+        background:linear-gradient(90deg, transparent, rgba(240,198,107,.86), transparent);
+        box-shadow:0 0 12px rgba(240,198,107,.22);
+      }
+      .process-timeline{
+        display:grid;
+        grid-template-columns:1fr;
+        gap:14px;
+        max-width:520px;
+        padding:0;
+      }
+      .process-item,
+      .process-item:nth-of-type(4),
+      .process-item:nth-of-type(5){
+        grid-column:auto;
+      }
+      .process-item{
+        display:grid;
+        grid-template-columns:82px 1fr;
+        column-gap:16px;
+        text-align:left;
+        align-items:center;
+        padding:16px 16px;
+        border:1px solid rgba(240,198,107,.18);
+        border-radius:18px;
+        background:
+          linear-gradient(135deg, rgba(255,230,160,.09), rgba(255,230,160,.025)),
+          rgba(10,5,1,.34);
+        box-shadow:inset 0 0 0 1px rgba(255,255,255,.035), 0 14px 30px rgba(0,0,0,.18);
+        overflow:hidden;
+      }
+      .process-item::after{
+        content:"";
+        position:absolute;
+        left:56px;
+        top:98%;
+        width:1px;
+        height:16px;
+        background:linear-gradient(180deg, rgba(240,198,107,.55), transparent);
+      }
+      .process-item:last-child::after{display:none}
+      .process-icon-wrap{
+        grid-row:1 / span 3;
+        width:72px;
+        margin:0;
+        border-width:1.5px;
+      }
+      .process-icon-wrap img{width:56%;height:56%}
+      .process-number{
+        margin:0 0 4px;
+        font-size:26px;
+        letter-spacing:.1em;
+      }
+      .process-item h3{
+        margin:0 0 6px;
+        font-size:22px;
+        line-height:1.15;
+      }
+      .process-item p{
+        max-width:none;
+        margin:0;
+        font-size:15px;
+        line-height:1.55;
+      }
+      .process-lotus-left{
+        left:-74px;
+        bottom:0;
+        width:190px;
+        opacity:.16;
+      }
+      .process-lotus-right{
+        right:-86px;
+        top:80px;
+        bottom:auto;
+        width:210px;
+        opacity:.13;
+      }
+      .process-bottom-curve{height:54px;opacity:.88}
+      .process-bottom-curve img{width:180vw;bottom:-18%}
+    }
+    @media (max-width:420px){
+      .process-section{padding-top:42px;padding-bottom:68px}
+      .process-container{width:min(100% - 28px, 1440px)}
+      .process-title-line h2{font-size:clamp(29px, 8.6vw, 36px)}
+      .process-item{grid-template-columns:68px 1fr;column-gap:13px;padding:14px 14px;border-radius:16px}
+      .process-icon-wrap{width:62px}
+      .process-number{font-size:23px}
+      .process-item h3{font-size:20px}
+      .process-item p{font-size:14px;line-height:1.5}
+    }
+
+
 </style>
 </head>
 <body>
@@ -7444,7 +7864,7 @@ body{
           <nav class="main-nav" aria-label="Điều hướng chính">
             <a href="#gioi-thieu">Giới thiệu</a>
             <a href="#dich-vu">Dịch vụ</a>
-            <a href="#san-pham">Sản phẩm</a>
+            <a href="#quy-trinh">Quy trình</a>
             <a href="#du-an">Dự án</a>
             <a href="#tin-tuc">Tin tức</a>
             <a href="#lien-he">Liên hệ</a>
@@ -7472,7 +7892,7 @@ body{
           <div class="mobile-menu-panel">
             <a href="#gioi-thieu">Giới thiệu</a>
             <a href="#dich-vu">Dịch vụ</a>
-            <a href="#san-pham">Sản phẩm</a>
+            <a href="#quy-trinh">Quy trình</a>
             <a href="#du-an">Dự án</a>
             <a href="#tin-tuc">Tin tức</a>
             <a href="#lien-he">Liên hệ</a>
@@ -7681,6 +8101,79 @@ body{
         </div>
       </div>
     </section>
+
+  
+
+    <section class="process-section" id="quy-trinh" aria-labelledby="process-title">
+      <img class="process-decor process-lotus-left" src="assets/images/decor/process-lotus-left.png" alt="" loading="lazy" />
+      <img class="process-decor process-lotus-right" src="assets/images/decor/process-lotus-right.png" alt="" loading="lazy" />
+
+      <div class="process-container">
+        <header class="process-heading">
+          <div class="process-title-line" aria-hidden="false">
+            <h2 id="process-title">Từ tâm nguyện đến không gian hoàn thiện</h2>
+          </div>
+          <p>Cung cấp giải pháp thiết trí tổng thể - Chuyên nghiệp</p>
+        </header>
+
+        <div class="process-timeline" aria-label="Quy trình thiết trí không gian thờ">
+          <img class="process-arrow process-arrow-1" src="assets/images/decor/process-arrow.png" alt="" loading="lazy" />
+          <img class="process-arrow process-arrow-2" src="assets/images/decor/process-arrow.png" alt="" loading="lazy" />
+          <img class="process-arrow process-arrow-3" src="assets/images/decor/process-arrow.png" alt="" loading="lazy" />
+          <img class="process-arrow process-arrow-4" src="assets/images/decor/process-arrow.png" alt="" loading="lazy" />
+
+          <article class="process-item">
+            <div class="process-icon-wrap">
+              <img src="assets/icons/process/icon-consult-survey.png" alt="" loading="lazy" />
+            </div>
+            <span class="process-number">01</span>
+            <h3>Tư vấn &amp; khảo sát</h3>
+            <p>Lắng nghe tâm nguyện, khảo sát hiện trạng, định hướng giải pháp phù hợp.</p>
+          </article>
+
+          <article class="process-item">
+            <div class="process-icon-wrap">
+              <img src="assets/icons/process/icon-design-idea.png" alt="" loading="lazy" />
+            </div>
+            <span class="process-number">02</span>
+            <h3>Thiết kế ý tưởng</h3>
+            <p>Lên ý tưởng, mặt bằng 2D, phối cảnh 3D, vật liệu, ánh sáng và công năng.</p>
+          </article>
+
+          <article class="process-item">
+            <div class="process-icon-wrap">
+              <img src="assets/icons/process/icon-production-craft.png" alt="" loading="lazy" />
+            </div>
+            <span class="process-number">03</span>
+            <h3>Sản xuất &amp; chế tác</h3>
+            <p>Phát hành tôn tượng, vật phẩm, pháp khí và nội thất không gian thờ.</p>
+          </article>
+
+          <article class="process-item">
+            <div class="process-icon-wrap">
+              <img src="assets/icons/process/icon-installation.png" alt="" loading="lazy" />
+            </div>
+            <span class="process-number">04</span>
+            <h3>Thi công lắp đặt</h3>
+            <p>Thi công hoàn thiện, an vị trang nghiêm, bàn giao trọn vẹn.</p>
+          </article>
+
+          <article class="process-item">
+            <div class="process-icon-wrap">
+              <img src="assets/icons/process/icon-completion-check.png" alt="" loading="lazy" />
+            </div>
+            <span class="process-number">05</span>
+            <h3>Thiết trí hoàn thiện</h3>
+            <p>Chăm sóc bảo hành. 100% khách hàng được bảo hành, hậu mãi, chăm sóc trọn đời.</p>
+          </article>
+        </div>
+      </div>
+
+      <div class="process-bottom-curve" aria-hidden="true">
+        <img src="assets/images/decor/process-bottom-curve.png" alt="" loading="lazy" />
+      </div>
+    </section>
+
 
   </main>
 
