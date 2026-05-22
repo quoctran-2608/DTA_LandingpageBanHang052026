@@ -6,7 +6,7 @@
   <title>Diệu Tướng Am | Kiến tạo không gian an trú tại gia</title>
   <meta name="description" content="Phần đầu landing page Diệu Tướng Am - Kiến tạo không gian an trú tại gia." />
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800;900&family=Cormorant+Garamond:wght@400;500;600;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800;900&family=Cormorant+Garamond:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700;800&display=swap');
     :root{
       --gold:#d9a741;
       --gold-2:#f0c66b;
@@ -5801,6 +5801,1151 @@ body{
   }
 }
 
+
+
+    /* ==========================================================
+       SERVICE SECTION — Dịch vụ thiết trí không gian thờ
+       Nối tiếp sau intro-section, dùng asset tách trong dta_service_assets_v2.zip
+    ========================================================== */
+    .service-section{
+      position:relative;
+      z-index:3;
+      width:100vw;
+      min-height:clamp(760px, 58vw, 980px);
+      padding:clamp(74px, 6.2vw, 110px) 0 clamp(76px, 6.4vw, 116px);
+      color:var(--ink);
+      background:
+        linear-gradient(180deg, rgba(246,234,211,.98), rgba(248,239,219,.94) 42%, rgba(242,222,184,.96) 100%),
+        url("assets/images/bg/bg-service-parchment.png") center center / cover no-repeat;
+      overflow:hidden;
+      isolation:isolate;
+    }
+    .service-section::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      z-index:-3;
+      pointer-events:none;
+      background:
+        radial-gradient(ellipse at 50% 14%, rgba(255,252,241,.62) 0 18%, rgba(255,252,241,0) 52%),
+        radial-gradient(ellipse at 18% 64%, rgba(202,134,54,.12) 0 16%, transparent 48%),
+        radial-gradient(ellipse at 88% 57%, rgba(161,94,28,.10) 0 17%, transparent 52%);
+    }
+    .service-section::after{
+      content:"";
+      position:absolute;
+      left:0;
+      right:0;
+      top:-1px;
+      height:clamp(86px, 8vw, 130px);
+      z-index:-1;
+      pointer-events:none;
+      background:linear-gradient(180deg, #f6ead3 0%, rgba(246,234,211,.86) 46%, rgba(246,234,211,0) 100%);
+    }
+    .service-decor{
+      position:absolute;
+      z-index:-1;
+      pointer-events:none;
+      user-select:none;
+    }
+    .service-decor img{
+      width:100%;
+      height:100%;
+      object-fit:contain;
+      opacity:.9;
+      filter:saturate(.88) sepia(.08);
+    }
+    .service-cloud-left{
+      top:clamp(12px, 1.4vw, 22px);
+      left:0;
+      width:min(31vw, 470px);
+      height:auto;
+      opacity:.72;
+    }
+    .service-cloud-right{
+      top:clamp(10px, 1.2vw, 18px);
+      right:0;
+      width:min(31vw, 500px);
+      height:auto;
+      opacity:.66;
+    }
+    .service-lotus-left{
+      left:0;
+      bottom:-8px;
+      width:min(26vw, 420px);
+      opacity:.72;
+      transform:translateX(-4%);
+    }
+    .service-lotus-right{
+      right:0;
+      bottom:-22px;
+      width:min(28vw, 430px);
+      opacity:.62;
+      transform:translateX(4%);
+    }
+    .service-container{
+      position:relative;
+      z-index:4;
+      width:var(--container);
+      margin-inline:auto;
+    }
+    .service-heading{
+      position:relative;
+      text-align:center;
+      margin:0 auto clamp(32px, 3.2vw, 52px);
+      max-width:1100px;
+    }
+    .service-heading .service-heading-lotus{
+      width:clamp(28px, 2.5vw, 42px);
+      height:clamp(22px, 2vw, 32px);
+      object-fit:contain;
+      margin:0 auto 12px;
+      filter:drop-shadow(0 3px 8px rgba(151,91,21,.18));
+      opacity:.9;
+    }
+    .service-title{
+      margin:0;
+      color:#4a2c14;
+      font-family:var(--serif);
+      font-size:clamp(46px, 5.1vw, 92px);
+      font-weight:400;
+      line-height:.98;
+      letter-spacing:clamp(1.1px, .18vw, 3px);
+      text-shadow:0 1px 0 rgba(255,255,255,.52), 0 16px 38px rgba(91,54,20,.08);
+      text-wrap:balance;
+    }
+    .service-subtitle{
+      position:relative;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:clamp(12px, 1.6vw, 26px);
+      margin:clamp(16px, 1.25vw, 22px) 0 0;
+      color:#7a4b21;
+      font-family:var(--serif);
+      font-size:clamp(18px, 1.45vw, 28px);
+      font-weight:500;
+      letter-spacing:.06em;
+    }
+    .service-subtitle::before,
+    .service-subtitle::after{
+      content:"";
+      display:block;
+      width:clamp(72px, 9vw, 180px);
+      height:1px;
+      background:linear-gradient(90deg, transparent, rgba(165,100,32,.7));
+    }
+    .service-subtitle::after{
+      background:linear-gradient(90deg, rgba(165,100,32,.7), transparent);
+    }
+    .service-stage{
+      position:relative;
+      display:grid;
+      grid-template-columns:minmax(190px, 250px) minmax(580px, 1fr) minmax(190px, 250px);
+      align-items:center;
+      gap:clamp(22px, 2.7vw, 46px);
+      max-width:1500px;
+      margin-inline:auto;
+    }
+    .service-side{
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      min-height:clamp(440px, 34vw, 560px);
+    }
+    .service-copy{
+      position:relative;
+      text-align:center;
+      padding:clamp(10px, 1vw, 16px) 0;
+    }
+    .service-copy .service-icon{
+      width:clamp(42px, 3.2vw, 58px);
+      height:clamp(32px, 2.7vw, 46px);
+      object-fit:contain;
+      margin:0 auto 6px;
+      opacity:.88;
+      filter:drop-shadow(0 4px 10px rgba(160,98,28,.18));
+      transition:transform .45s ease, filter .45s ease;
+    }
+    .service-number{
+      display:grid;
+      place-items:center;
+      width:clamp(48px, 3.9vw, 64px);
+      height:clamp(48px, 3.9vw, 64px);
+      margin:0 auto clamp(12px, 1vw, 18px);
+      color:#8c541e;
+      font-family:var(--serif);
+      font-size:clamp(18px, 1.28vw, 22px);
+      font-weight:700;
+      line-height:1;
+      border-radius:50%;
+      position:relative;
+      text-shadow:0 1px 0 rgba(255,255,255,.48);
+    }
+    .service-number::before,
+    .service-number::after{
+      content:"";
+      position:absolute;
+      left:50%;
+      transform:translateX(-50%);
+      width:1px;
+      height:clamp(10px, .9vw, 14px);
+      background:linear-gradient(180deg, transparent, rgba(167,101,31,.5), transparent);
+    }
+    .service-number::before{top:-9px}
+    .service-number::after{bottom:-9px}
+    .service-copy h3{
+      margin:0 auto;
+      max-width:230px;
+      color:#3b2618;
+      font-family:var(--serif);
+      font-size:clamp(26px, 1.95vw, 38px);
+      line-height:1.18;
+      font-weight:500;
+      letter-spacing:.015em;
+      text-wrap:balance;
+    }
+    .service-copy .service-rule{
+      position:relative;
+      width:min(150px, 72%);
+      height:18px;
+      margin:clamp(12px, 1vw, 16px) auto clamp(11px, .9vw, 15px);
+    }
+    .service-copy .service-rule::before{
+      content:"";
+      position:absolute;
+      left:0;
+      right:0;
+      top:50%;
+      height:1px;
+      background:linear-gradient(90deg, transparent, rgba(143,83,24,.56), transparent);
+    }
+    .service-copy .service-rule::after{
+      content:"◇";
+      position:absolute;
+      left:50%;
+      top:50%;
+      transform:translate(-50%,-54%);
+      color:#a86925;
+      font-size:17px;
+      line-height:1;
+      background:rgba(246,234,211,.82);
+      padding:0 7px;
+    }
+    .service-copy p{
+      margin:0 auto;
+      max-width:230px;
+      color:#3f332b;
+      font-family:var(--sans);
+      font-size:clamp(13px, .92vw, 16px);
+      line-height:1.64;
+      letter-spacing:.012em;
+    }
+    .service-copy:hover .service-icon{
+      transform:translateY(-4px) scale(1.08);
+      filter:drop-shadow(0 0 12px rgba(185,115,31,.28));
+    }
+    .service-gallery{
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0, 1fr));
+      gap:clamp(18px, 1.9vw, 32px);
+    }
+    .service-photo{
+      position:relative;
+      overflow:hidden;
+      aspect-ratio:2 / 1;
+      border-radius:clamp(18px, 1.7vw, 30px);
+      border:1px solid rgba(182,112,35,.56);
+      background:#2a1607;
+      box-shadow:
+        0 18px 46px rgba(91,51,15,.16),
+        0 2px 0 rgba(255,255,255,.35) inset,
+        0 0 0 6px rgba(255,249,236,.32);
+      isolation:isolate;
+      transition:transform .6s cubic-bezier(.2,.8,.2,1), box-shadow .6s ease, border-color .6s ease;
+    }
+    .service-photo::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      z-index:2;
+      pointer-events:none;
+      background:
+        linear-gradient(180deg, rgba(255,243,206,.16), transparent 38%, rgba(16,8,2,.16) 100%),
+        radial-gradient(circle at 48% 34%, rgba(255,218,116,.2), transparent 36%);
+      opacity:.8;
+      mix-blend-mode:screen;
+      transition:opacity .55s ease;
+    }
+    .service-photo::after{
+      content:"";
+      position:absolute;
+      inset:10px;
+      z-index:3;
+      border:1px solid rgba(255,229,158,.18);
+      border-radius:calc(clamp(18px, 1.7vw, 30px) - 8px);
+      pointer-events:none;
+    }
+    .service-photo img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      filter:saturate(1.05) contrast(1.04) brightness(.95);
+      transform:scale(1.012);
+      transition:transform .85s cubic-bezier(.2,.8,.2,1), filter .85s ease;
+    }
+    .service-photo:hover{
+      transform:translateY(-8px);
+      border-color:rgba(212,154,61,.84);
+      box-shadow:
+        0 26px 62px rgba(91,51,15,.23),
+        0 0 34px rgba(203,139,39,.16),
+        0 2px 0 rgba(255,255,255,.38) inset,
+        0 0 0 6px rgba(255,249,236,.38);
+    }
+    .service-photo:hover img{
+      transform:scale(1.06);
+      filter:saturate(1.12) contrast(1.07) brightness(1.02);
+    }
+    .service-photo:hover::before{opacity:1}
+    .service-mobile-list{display:none}
+    .service-bottom-ornament{
+      position:relative;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:clamp(12px, 1.5vw, 22px);
+      width:min(720px, 62vw);
+      margin:clamp(34px, 3.1vw, 56px) auto 0;
+      color:#ad7027;
+      opacity:.86;
+    }
+    .service-bottom-ornament::before,
+    .service-bottom-ornament::after{
+      content:"";
+      height:1px;
+      flex:1 1 auto;
+      background:linear-gradient(90deg, transparent, rgba(172,105,30,.65));
+    }
+    .service-bottom-ornament::after{background:linear-gradient(90deg, rgba(172,105,30,.65), transparent)}
+    .service-bottom-ornament img{
+      width:clamp(46px, 4vw, 66px);
+      height:clamp(34px, 3vw, 50px);
+      object-fit:contain;
+      filter:drop-shadow(0 4px 8px rgba(132,77,20,.18));
+    }
+
+    @media (max-width:1180px){
+      .service-stage{
+        grid-template-columns:1fr;
+        gap:28px;
+      }
+      .service-side{display:none}
+      .service-mobile-list{
+        display:grid;
+        grid-template-columns:repeat(2, minmax(0,1fr));
+        gap:20px;
+      }
+      .service-mobile-card{
+        display:grid;
+        grid-template-columns:1fr;
+        gap:0;
+        border-radius:24px;
+        overflow:hidden;
+        background:linear-gradient(180deg, rgba(255,250,238,.72), rgba(241,221,182,.52));
+        border:1px solid rgba(166,104,33,.3);
+        box-shadow:0 18px 48px rgba(90,52,18,.09), inset 0 0 0 1px rgba(255,255,255,.32);
+      }
+      .service-mobile-card .service-photo{
+        border-radius:22px 22px 0 0;
+        border:0;
+        box-shadow:none;
+      }
+      .service-mobile-card .service-copy{
+        padding:22px 22px 24px;
+      }
+      .service-mobile-card .service-copy h3,
+      .service-mobile-card .service-copy p{max-width:none}
+      .service-mobile-card .service-copy p{max-width:360px}
+      .service-gallery{display:none}
+    }
+
+    @media (max-width:940px){
+      .service-section{
+        padding:72px 0 84px;
+      }
+      .service-title{
+        font-size:clamp(42px, 8vw, 72px);
+        line-height:1.03;
+      }
+      .service-subtitle{
+        font-size:clamp(17px, 2.4vw, 22px);
+        letter-spacing:.035em;
+      }
+      .service-cloud-left,
+      .service-cloud-right{width:42vw;opacity:.45}
+      .service-lotus-left{width:34vw;opacity:.42}
+      .service-lotus-right{width:36vw;opacity:.38}
+    }
+
+    @media (max-width:680px){
+      .service-section{
+        padding:62px 0 68px;
+        background:
+          linear-gradient(180deg, #f6ead3 0%, #f6ead3 10%, #f5e5c7 58%, #efd7ac 100%),
+          url("assets/images/bg/bg-service-parchment.png") center top / cover no-repeat;
+      }
+      .service-heading{
+        margin-bottom:28px;
+      }
+      .service-heading .service-heading-lotus{
+        width:34px;
+        height:26px;
+        margin-bottom:10px;
+      }
+      .service-title{
+        font-size:clamp(35px, 10vw, 46px);
+        line-height:1.08;
+        letter-spacing:.45px;
+      }
+      .service-subtitle{
+        display:block;
+        max-width:320px;
+        margin:13px auto 0;
+        font-family:var(--sans);
+        font-size:14.5px;
+        line-height:1.55;
+        letter-spacing:.02em;
+      }
+      .service-subtitle::before,
+      .service-subtitle::after{display:none}
+      .service-mobile-list{
+        grid-template-columns:1fr;
+        gap:18px;
+      }
+      .service-mobile-card{
+        border-radius:24px;
+        background:
+          linear-gradient(180deg, rgba(255,250,238,.82), rgba(242,224,190,.7));
+      }
+      .service-mobile-card .service-photo{
+        aspect-ratio:1.42 / 1;
+      }
+      .service-mobile-card .service-copy{
+        display:grid;
+        grid-template-columns:62px 1fr;
+        text-align:left;
+        gap:0 14px;
+        padding:18px 18px 20px;
+      }
+      .service-mobile-card .service-icon{
+        grid-row:1 / span 3;
+        width:54px;
+        height:44px;
+        margin:0;
+        align-self:start;
+      }
+      .service-mobile-card .service-number{
+        width:auto;
+        height:auto;
+        margin:0 0 5px;
+        display:block;
+        font-size:18px;
+      }
+      .service-mobile-card .service-number::before,
+      .service-mobile-card .service-number::after{display:none}
+      .service-mobile-card .service-copy h3{
+        margin:0;
+        font-size:clamp(24px, 7vw, 30px);
+        line-height:1.1;
+      }
+      .service-mobile-card .service-rule{
+        display:none;
+      }
+      .service-mobile-card .service-copy p{
+        grid-column:2;
+        margin:9px 0 0;
+        font-size:14.5px;
+        line-height:1.62;
+      }
+      .service-cloud-left{width:64vw;opacity:.35;top:12px;left:-22vw}
+      .service-cloud-right{width:64vw;opacity:.28;top:4px;right:-22vw}
+      .service-lotus-left{width:58vw;opacity:.26;bottom:-26px;left:-26vw}
+      .service-lotus-right{width:58vw;opacity:.22;bottom:-24px;right:-28vw}
+      .service-bottom-ornament{width:86vw;margin-top:26px}
+    }
+
+    @media (max-width:420px){
+      .service-section{padding-top:56px}
+      .service-mobile-card .service-photo{aspect-ratio:1.28 / 1}
+      .service-mobile-card .service-copy{
+        grid-template-columns:56px 1fr;
+        column-gap:12px;
+        padding:17px 16px 19px;
+      }
+      .service-mobile-card .service-icon{width:48px;height:40px}
+    }
+
+
+    /* ==========================================================
+       FINAL REFINEMENT V2 — Service section premium layout fix
+       Fix: giảm khoảng trống sau intro, làm section dịch vụ đậm chất hơn,
+       ảnh lớn hơn, màu ấm hơn, và chuyển layout 2 cột card khi màn hình không đủ rộng.
+    ========================================================== */
+    @media (min-width:681px){
+      .intro-section{
+        min-height:auto !important;
+        padding-bottom:clamp(34px, 3.2vw, 58px) !important;
+      }
+      .intro-inner{
+        min-height:clamp(500px, 41vw, 620px) !important;
+      }
+    }
+
+    .service-section{
+      margin-top:-1px !important;
+      min-height:auto !important;
+      padding:clamp(42px, 4.3vw, 72px) 0 clamp(76px, 6.2vw, 108px) !important;
+      background:
+        radial-gradient(ellipse at 50% 5%, rgba(255,251,239,.82) 0 18%, rgba(255,251,239,0) 52%),
+        radial-gradient(ellipse at 12% 82%, rgba(205,137,49,.16) 0 17%, transparent 46%),
+        radial-gradient(ellipse at 90% 74%, rgba(185,111,31,.14) 0 19%, transparent 50%),
+        linear-gradient(180deg, #f6ead3 0%, #f7edd9 30%, #f2dfbd 100%),
+        url("assets/images/bg/bg-service-parchment.png") center top / cover no-repeat !important;
+    }
+
+    .service-section::after{
+      height:clamp(34px, 4vw, 62px) !important;
+      background:linear-gradient(180deg, rgba(246,234,211,.96) 0%, rgba(246,234,211,0) 100%) !important;
+    }
+
+    .service-heading{
+      margin-bottom:clamp(26px, 2.8vw, 44px) !important;
+    }
+
+    .service-title{
+      color:#432713 !important;
+      font-size:clamp(48px, 4.9vw, 86px) !important;
+      line-height:1.02 !important;
+      letter-spacing:clamp(.8px, .14vw, 2.4px) !important;
+      text-shadow:
+        0 1px 0 rgba(255,255,255,.62),
+        0 12px 30px rgba(92,48,16,.10) !important;
+    }
+
+    .service-subtitle{
+      color:#855424 !important;
+      font-size:clamp(18px, 1.35vw, 25px) !important;
+    }
+
+    .service-stage{
+      grid-template-columns:minmax(220px, 270px) minmax(720px, 1fr) minmax(220px, 270px) !important;
+      gap:clamp(28px, 2.6vw, 44px) !important;
+      max-width:1540px !important;
+    }
+
+    .service-side{
+      min-height:clamp(500px, 35vw, 590px) !important;
+    }
+
+    .service-copy{
+      padding:clamp(14px, 1.1vw, 20px) 0 !important;
+    }
+
+    .service-copy h3{
+      color:#342115 !important;
+      font-size:clamp(28px, 1.85vw, 38px) !important;
+      line-height:1.14 !important;
+    }
+
+    .service-copy p{
+      color:#3c3027 !important;
+      font-size:clamp(13.5px, .9vw, 15.5px) !important;
+      line-height:1.72 !important;
+    }
+
+    .service-gallery{
+      gap:clamp(22px, 1.75vw, 30px) !important;
+    }
+
+    .service-photo{
+      border-radius:clamp(20px, 1.7vw, 28px) !important;
+      border-color:rgba(169,101,29,.64) !important;
+      box-shadow:
+        0 22px 56px rgba(90,48,14,.20),
+        0 0 0 1px rgba(255,235,184,.34),
+        0 2px 0 rgba(255,255,255,.38) inset,
+        0 0 0 7px rgba(255,248,232,.38) !important;
+    }
+
+    .service-photo img{
+      filter:saturate(1.08) contrast(1.06) brightness(.96) !important;
+    }
+
+    .service-lotus-left{
+      width:min(24vw, 360px) !important;
+      opacity:.50 !important;
+      bottom:-28px !important;
+    }
+    .service-lotus-right{
+      width:min(25vw, 380px) !important;
+      opacity:.42 !important;
+      bottom:-36px !important;
+    }
+    .service-cloud-left,
+    .service-cloud-right{
+      width:min(28vw, 420px) !important;
+      opacity:.42 !important;
+    }
+
+    @media (max-width:1360px){
+      .service-section{
+        padding-top:clamp(38px, 4vw, 60px) !important;
+      }
+      .service-stage{
+        display:block !important;
+        max-width:1120px !important;
+      }
+      .service-side,
+      .service-gallery{
+        display:none !important;
+      }
+      .service-mobile-list{
+        display:grid !important;
+        grid-template-columns:repeat(2, minmax(0,1fr)) !important;
+        gap:clamp(22px, 2.4vw, 32px) !important;
+        max-width:1120px !important;
+        margin-inline:auto !important;
+      }
+      .service-mobile-card{
+        position:relative !important;
+        overflow:hidden !important;
+        border-radius:28px !important;
+        background:
+          linear-gradient(180deg, rgba(255,250,238,.86), rgba(243,223,185,.72)) !important;
+        border:1px solid rgba(162,96,29,.34) !important;
+        box-shadow:
+          0 22px 54px rgba(96,55,18,.13),
+          inset 0 0 0 1px rgba(255,255,255,.38) !important;
+      }
+      .service-mobile-card::before{
+        content:"";
+        position:absolute;
+        inset:10px;
+        border:1px solid rgba(172,105,35,.13);
+        border-radius:20px;
+        pointer-events:none;
+        z-index:3;
+      }
+      .service-mobile-card .service-photo{
+        aspect-ratio:2.05 / 1 !important;
+        border-radius:28px 28px 0 0 !important;
+        border:0 !important;
+        box-shadow:none !important;
+      }
+      .service-mobile-card .service-photo::after{display:none !important;}
+      .service-mobile-card .service-copy{
+        min-height:190px !important;
+        padding:24px 28px 28px !important;
+        text-align:left !important;
+      }
+      .service-mobile-card .service-icon{
+        width:46px !important;
+        height:34px !important;
+        margin:0 0 4px !important;
+      }
+      .service-mobile-card .service-number{
+        display:inline-block !important;
+        width:auto !important;
+        height:auto !important;
+        margin:0 0 8px !important;
+        color:#9b6328 !important;
+        font-size:18px !important;
+        letter-spacing:.05em !important;
+      }
+      .service-mobile-card .service-number::before,
+      .service-mobile-card .service-number::after{display:none !important;}
+      .service-mobile-card .service-copy h3{
+        max-width:none !important;
+        margin:0 !important;
+        font-size:clamp(28px, 3.4vw, 38px) !important;
+      }
+      .service-mobile-card .service-rule{
+        width:170px !important;
+        margin:14px 0 12px !important;
+      }
+      .service-mobile-card .service-copy p{
+        max-width:460px !important;
+        margin:0 !important;
+        font-size:15px !important;
+      }
+    }
+
+    @media (max-width:940px){
+      .intro-section{
+        padding-bottom:34px !important;
+      }
+      .service-section{
+        padding-top:42px !important;
+      }
+      .service-mobile-list{
+        gap:20px !important;
+      }
+    }
+
+    @media (max-width:680px){
+      .intro-section{
+        padding-bottom:42px !important;
+      }
+      .service-section{
+        padding:42px 0 68px !important;
+      }
+      .service-heading{
+        margin-bottom:24px !important;
+      }
+      .service-title{
+        font-size:clamp(34px, 9.2vw, 44px) !important;
+        line-height:1.12 !important;
+      }
+      .service-mobile-list{
+        grid-template-columns:1fr !important;
+        gap:18px !important;
+      }
+      .service-mobile-card{
+        border-radius:24px !important;
+      }
+      .service-mobile-card .service-photo{
+        aspect-ratio:1.56 / 1 !important;
+        border-radius:24px 24px 0 0 !important;
+      }
+      .service-mobile-card .service-copy{
+        display:grid !important;
+        grid-template-columns:58px 1fr !important;
+        column-gap:14px !important;
+        min-height:0 !important;
+        padding:18px 18px 20px !important;
+      }
+      .service-mobile-card .service-icon{
+        grid-row:1 / span 3 !important;
+        width:50px !important;
+        height:40px !important;
+        margin:0 !important;
+      }
+      .service-mobile-card .service-number{
+        margin:0 0 4px !important;
+        font-size:16px !important;
+      }
+      .service-mobile-card .service-copy h3{
+        font-size:clamp(24px, 7vw, 30px) !important;
+      }
+      .service-mobile-card .service-rule{display:none !important;}
+      .service-mobile-card .service-copy p{
+        grid-column:2 !important;
+        margin-top:8px !important;
+        max-width:none !important;
+        font-size:14.5px !important;
+        line-height:1.62 !important;
+      }
+      .service-lotus-left{width:52vw !important;opacity:.20 !important;left:-22vw !important;bottom:-20px !important;}
+      .service-lotus-right{width:54vw !important;opacity:.18 !important;right:-24vw !important;bottom:-18px !important;}
+      .service-cloud-left{width:58vw !important;opacity:.22 !important;left:-24vw !important;}
+      .service-cloud-right{width:58vw !important;opacity:.20 !important;right:-24vw !important;}
+    }
+
+  
+
+    /* ==========================================================
+       SERVICE BOTTOM LINE — dùng file line-lotus.svg thay cho 2 line CSS + icon giữa
+    ========================================================== */
+    .service-bottom-ornament{
+      width:min(760px, 58vw) !important;
+      margin:clamp(30px, 3vw, 52px) auto 0 !important;
+      display:block !important;
+      opacity:.9 !important;
+      line-height:0 !important;
+    }
+    .service-bottom-ornament::before,
+    .service-bottom-ornament::after{
+      display:none !important;
+      content:none !important;
+    }
+    .service-bottom-ornament .service-bottom-line{
+      display:block !important;
+      width:100% !important;
+      height:auto !important;
+      max-height:72px !important;
+      object-fit:contain !important;
+      margin-inline:auto !important;
+      filter:drop-shadow(0 6px 10px rgba(132,77,20,.14)) !important;
+    }
+
+    @media (max-width:940px){
+      .service-bottom-ornament{
+        width:min(680px, 72vw) !important;
+        margin-top:34px !important;
+      }
+      .service-bottom-ornament .service-bottom-line{
+        max-height:62px !important;
+      }
+    }
+
+    @media (max-width:680px){
+      .service-bottom-ornament{
+        width:86vw !important;
+        margin-top:28px !important;
+      }
+      .service-bottom-ornament .service-bottom-line{
+        max-height:52px !important;
+      }
+    }
+
+
+/* ==========================================================
+   SERVICE FINAL V6 — Title nghệ thuật + ảnh lớn + viền vàng kim 3px
+   - Font tiêu đề dùng Playfair Display: hỗ trợ tiếng Việt, nét sang và nghệ thuật hơn.
+   - Giữ nguyên fix ornament hình thoi bằng CSS shape, không dùng ký tự ◇.
+   - 4 ảnh service dùng đuôi .webp trong HTML.
+========================================================== */
+.service-title{
+  font-family:"Playfair Display", var(--serif) !important;
+  font-weight:600 !important;
+  color:#3e230f !important;
+  font-size:clamp(54px, 5.35vw, 96px) !important;
+  line-height:1.01 !important;
+  letter-spacing:clamp(.2px, .09vw, 1.7px) !important;
+  text-shadow:
+    0 1px 0 rgba(255,255,255,.72),
+    0 10px 26px rgba(93,48,14,.12),
+    0 0 18px rgba(217,167,65,.08) !important;
+}
+
+.service-heading{
+  margin-bottom:clamp(24px, 2.45vw, 40px) !important;
+}
+
+.service-subtitle{
+  margin-top:clamp(12px, 1vw, 18px) !important;
+}
+
+@media (min-width:1361px){
+  .service-container{
+    width:min(100% - clamp(36px, 4.2vw, 72px), 1640px) !important;
+  }
+
+  .service-stage{
+    grid-template-columns:minmax(205px, 255px) minmax(860px, 1fr) minmax(205px, 255px) !important;
+    gap:clamp(30px, 2.45vw, 48px) !important;
+    max-width:1640px !important;
+  }
+
+  .service-gallery{
+    gap:clamp(24px, 1.65vw, 34px) !important;
+  }
+
+  .service-side{
+    min-height:clamp(540px, 37vw, 650px) !important;
+  }
+}
+
+.service-photo{
+  border:3px solid transparent !important;
+  border-radius:clamp(20px, 1.65vw, 30px) !important;
+  background:
+    linear-gradient(#241105, #241105) padding-box,
+    linear-gradient(135deg,
+      #fff0b5 0%,
+      #e8b94e 18%,
+      #9e5d17 42%,
+      #f4cc6e 64%,
+      #b8731f 82%,
+      #fff2bd 100%) border-box !important;
+  box-shadow:
+    0 24px 58px rgba(83,45,14,.22),
+    0 0 0 1px rgba(255,248,226,.44),
+    inset 0 1px 0 rgba(255,246,210,.34),
+    0 0 22px rgba(217,167,65,.12) !important;
+}
+
+.service-photo::after{
+  inset:8px !important;
+  border:1px solid rgba(255,232,160,.25) !important;
+  border-radius:calc(clamp(20px, 1.65vw, 30px) - 9px) !important;
+  box-shadow:inset 0 0 18px rgba(255,223,138,.07) !important;
+}
+
+.service-photo img{
+  filter:saturate(1.12) contrast(1.075) brightness(.99) !important;
+  transform:scale(1.018) !important;
+}
+
+.service-photo:hover{
+  background:
+    linear-gradient(#241105, #241105) padding-box,
+    linear-gradient(135deg,
+      #fff6d5 0%,
+      #f0c66b 18%,
+      #ad681d 42%,
+      #ffdf8f 64%,
+      #c98627 82%,
+      #fff8dc 100%) border-box !important;
+  box-shadow:
+    0 30px 70px rgba(83,45,14,.28),
+    0 0 0 1px rgba(255,248,226,.55),
+    inset 0 1px 0 rgba(255,246,210,.38),
+    0 0 30px rgba(217,167,65,.18) !important;
+}
+
+.service-photo:hover img{
+  transform:scale(1.065) !important;
+  filter:saturate(1.16) contrast(1.085) brightness(1.035) !important;
+}
+
+@media (max-width:1360px){
+  .service-mobile-list{
+    max-width:1220px !important;
+  }
+  .service-mobile-card .service-photo{
+    aspect-ratio:2.18 / 1 !important;
+    border:3px solid transparent !important;
+    border-radius:28px 28px 0 0 !important;
+    background:
+      linear-gradient(#241105, #241105) padding-box,
+      linear-gradient(135deg, #fff0b5, #e8b94e 20%, #9e5d17 48%, #f4cc6e 72%, #b8731f) border-box !important;
+  }
+}
+
+@media (max-width:940px){
+  .service-title{
+    font-size:clamp(44px, 8.2vw, 76px) !important;
+  }
+  .service-mobile-list{
+    max-width:920px !important;
+  }
+}
+
+@media (max-width:680px){
+  .service-title{
+    font-family:"Playfair Display", var(--serif) !important;
+    font-size:clamp(36px, 9.6vw, 48px) !important;
+    line-height:1.08 !important;
+    letter-spacing:.01em !important;
+  }
+  .service-mobile-card .service-photo{
+    aspect-ratio:1.62 / 1 !important;
+    border:3px solid transparent !important;
+    border-radius:24px 24px 0 0 !important;
+  }
+}
+
+/* Final safety: ornament hình thoi phải là CSS shape, không dùng ký tự text */
+.service-copy .service-rule::after{
+  content:"" !important;
+  position:absolute !important;
+  left:50% !important;
+  top:50% !important;
+  width:7px !important;
+  height:7px !important;
+  transform:translate(-50%, -50%) rotate(45deg) !important;
+  box-sizing:border-box !important;
+  border:1px solid rgba(173,112,39,.82) !important;
+  background:#f6ead3 !important;
+  border-radius:1px !important;
+  padding:0 !important;
+  color:transparent !important;
+  font-size:0 !important;
+  line-height:0 !important;
+  box-shadow:
+    0 0 0 5px rgba(246,234,211,.84),
+    0 2px 6px rgba(130,76,22,.12) !important;
+}
+
+@media (max-width:1180px){
+  .service-mobile-card .service-rule{
+    display:none !important;
+  }
+}
+
+
+
+/* ==========================================================
+   SERVICE FINAL FIX V7 — diamond clean-up, bigger gallery, tighter bottom
+   Ghi đè cuối cùng cho vùng "Dịch vụ thiết trí không gian thờ".
+   - Ẩn toàn bộ diamond/service-rule cũ để không còn đè chữ/lệch chỗ.
+   - Tạo nhịp phân tách bằng khoảng thở + line nhẹ, không dùng ký tự ◇.
+   - 4 ảnh lớn hơn, viền vàng kim 3px, dùng path .webp.
+   - Rút khoảng trống bên dưới và tăng icon hoa sen trên title.
+========================================================== */
+.service-container{
+  width:min(100% - clamp(28px, 4.2vw, 72px), 1660px) !important;
+}
+
+.service-section{
+  padding-top:clamp(38px, 3.7vw, 64px) !important;
+  padding-bottom:clamp(38px, 3.8vw, 66px) !important;
+}
+
+.service-heading{
+  margin-bottom:clamp(24px, 2.2vw, 36px) !important;
+}
+
+.service-heading .service-heading-lotus{
+  width:clamp(48px, 4.5vw, 72px) !important;
+  height:clamp(36px, 3.4vw, 54px) !important;
+  margin-bottom:clamp(8px, .8vw, 14px) !important;
+  opacity:.98 !important;
+  filter:
+    sepia(.12) saturate(1.18)
+    drop-shadow(0 5px 10px rgba(139,77,20,.20))
+    drop-shadow(0 0 12px rgba(217,167,65,.16)) !important;
+}
+
+.service-stage{
+  grid-template-columns:minmax(210px, 255px) minmax(940px, 1fr) minmax(210px, 255px) !important;
+  gap:clamp(24px, 2.1vw, 38px) !important;
+  max-width:1660px !important;
+}
+
+.service-side{
+  min-height:clamp(510px, 33vw, 610px) !important;
+}
+
+.service-gallery{
+  gap:clamp(24px, 1.65vw, 34px) !important;
+}
+
+.service-photo{
+  aspect-ratio:2.15 / 1 !important;
+  border:3px solid #c58b2e !important;
+  border-radius:clamp(20px, 1.55vw, 28px) !important;
+  box-shadow:
+    0 24px 58px rgba(76, 38, 10, .21),
+    0 0 0 1px rgba(255, 239, 190, .62),
+    0 0 0 6px rgba(255, 248, 232, .34),
+    inset 0 1px 0 rgba(255,255,255,.46) !important;
+}
+
+.service-photo::after{
+  inset:8px !important;
+  border-color:rgba(255, 229, 158, .24) !important;
+}
+
+.service-photo img{
+  filter:saturate(1.10) contrast(1.065) brightness(1.01) !important;
+}
+
+/* Bỏ diamond cũ hoàn toàn: không còn ký tự/shape đè chữ */
+.service-copy .service-rule,
+.service-copy .service-rule::before,
+.service-copy .service-rule::after,
+.service-mobile-card .service-rule,
+.service-mobile-card .service-rule::before,
+.service-mobile-card .service-rule::after{
+  display:none !important;
+  content:none !important;
+  width:0 !important;
+  height:0 !important;
+  margin:0 !important;
+  padding:0 !important;
+  border:0 !important;
+  box-shadow:none !important;
+  background:none !important;
+}
+
+/* Tạo phân tách mới bằng line mảnh dưới tiêu đề, không dùng hình thoi */
+.service-copy h3{
+  position:relative !important;
+  margin-bottom:clamp(20px, 1.1vw, 26px) !important;
+}
+
+.service-copy h3::after{
+  content:"" !important;
+  position:absolute !important;
+  left:50% !important;
+  bottom:clamp(-14px, -.75vw, -10px) !important;
+  width:min(118px, 68%) !important;
+  height:1px !important;
+  transform:translateX(-50%) !important;
+  background:linear-gradient(90deg, transparent, rgba(157,93,28,.56), rgba(205,147,55,.72), rgba(157,93,28,.56), transparent) !important;
+  pointer-events:none !important;
+}
+
+.service-copy p{
+  position:relative !important;
+  z-index:2 !important;
+}
+
+/* Rút khoảng trống dưới và làm line-lotus gần nội dung hơn */
+.service-bottom-ornament{
+  width:min(720px, 54vw) !important;
+  margin-top:clamp(18px, 1.7vw, 30px) !important;
+  margin-bottom:0 !important;
+  opacity:.94 !important;
+}
+
+.service-bottom-ornament .service-bottom-line{
+  max-height:clamp(42px, 3.8vw, 58px) !important;
+}
+
+@media (max-width:1360px){
+  .service-container{
+    width:min(100% - clamp(28px, 5vw, 72px), 1220px) !important;
+  }
+  .service-mobile-list{
+    max-width:1180px !important;
+    gap:clamp(22px, 2vw, 30px) !important;
+  }
+  .service-mobile-card .service-photo{
+    aspect-ratio:2.08 / 1 !important;
+    border:3px solid #c58b2e !important;
+    border-radius:28px 28px 0 0 !important;
+  }
+  .service-mobile-card .service-copy h3{
+    margin-bottom:0 !important;
+  }
+  .service-mobile-card .service-copy h3::after{
+    display:none !important;
+    content:none !important;
+  }
+  .service-section{
+    padding-bottom:clamp(44px, 4vw, 72px) !important;
+  }
+}
+
+@media (max-width:1180px){
+  .service-stage{
+    max-width:1180px !important;
+  }
+  .service-mobile-card .service-photo{
+    aspect-ratio:2 / 1 !important;
+    min-height:clamp(250px, 26vw, 320px) !important;
+  }
+}
+
+@media (max-width:680px){
+  .service-section{
+    padding-top:38px !important;
+    padding-bottom:46px !important;
+  }
+  .service-heading .service-heading-lotus{
+    width:48px !important;
+    height:38px !important;
+    margin-bottom:8px !important;
+  }
+  .service-mobile-card .service-photo{
+    aspect-ratio:1.42 / 1 !important;
+    min-height:0 !important;
+    border:3px solid #c58b2e !important;
+    border-radius:24px 24px 0 0 !important;
+  }
+  .service-mobile-card .service-copy h3{
+    margin-bottom:0 !important;
+  }
+  .service-bottom-ornament{
+    width:82vw !important;
+    margin-top:22px !important;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -5946,6 +7091,113 @@ body{
         </div>
       </div>
     </section>
+
+
+    <section class="service-section" id="dich-vu" aria-labelledby="service-title">
+      <span class="service-decor service-cloud-left" aria-hidden="true"><img src="assets/images/decor/decor-service-cloud-left.png" alt="" /></span>
+      <span class="service-decor service-cloud-right" aria-hidden="true"><img src="assets/images/decor/decor-service-cloud-right.png" alt="" /></span>
+      <span class="service-decor service-lotus-left" aria-hidden="true"><img src="assets/images/decor/decor-service-lotus-left.png" alt="" /></span>
+      <span class="service-decor service-lotus-right" aria-hidden="true"><img src="assets/images/decor/decor-service-lotus-right.png" alt="" /></span>
+
+      <div class="service-container">
+        <header class="service-heading">
+          <img class="service-heading-lotus" src="assets/icons/service/icon-service-lotus.png" alt="" />
+          <h2 class="service-title" id="service-title">Dịch vụ thiết trí không gian thờ</h2>
+          <p class="service-subtitle">Kiến tạo không gian an trú giữa đời thường</p>
+        </header>
+
+        <div class="service-stage">
+          <div class="service-side service-side-left" aria-hidden="false">
+            <article class="service-copy">
+              <img class="service-icon" src="assets/icons/service/icon-service-lotus.png" alt="" />
+              <span class="service-number">01</span>
+              <h3>Không gian thờ Phật</h3>
+              <span class="service-rule" aria-hidden="true"></span>
+              <p>Tôn trí đức tướng vi diệu của chư Phật, kết nối con người với sự an lạc và tĩnh tại.</p>
+            </article>
+            <article class="service-copy">
+              <img class="service-icon" src="assets/icons/service/icon-service-lotus.png" alt="" />
+              <span class="service-number">03</span>
+              <h3>Không gian Thiền – Trà</h3>
+              <span class="service-rule" aria-hidden="true"></span>
+              <p>Góc bình yên thanh tịnh, giúp thư giãn tâm hồn và tìm về tỉnh thức.</p>
+            </article>
+          </div>
+
+          <div class="service-gallery" aria-label="Hình ảnh các không gian thờ tiêu biểu">
+            <figure class="service-photo"><img src="assets/images/services/service-tho-phat.webp" alt="Không gian thờ Phật trang nghiêm với tượng Phật và ánh sáng vàng ấm" /></figure>
+            <figure class="service-photo"><img src="assets/images/services/service-tho-gia-tien.webp" alt="Không gian thờ Gia tiên với bàn thờ gỗ chạm khắc và ánh sáng ấm" /></figure>
+            <figure class="service-photo"><img src="assets/images/services/service-thien-tra.webp" alt="Không gian Thiền Trà an tĩnh với bàn trà thấp và sân vườn xanh" /></figure>
+            <figure class="service-photo"><img src="assets/images/services/service-tu-vien-nha-tho-ho.webp" alt="Không gian tự viện nhà thờ họ trang nghiêm với tượng Phật và nội thất gỗ" /></figure>
+          </div>
+
+          <div class="service-side service-side-right" aria-hidden="false">
+            <article class="service-copy">
+              <img class="service-icon" src="assets/icons/service/icon-service-lotus.png" alt="" />
+              <span class="service-number">02</span>
+              <h3>Không gian thờ Gia tiên</h3>
+              <span class="service-rule" aria-hidden="true"></span>
+              <p>Kết nối các thế hệ, nuôi dưỡng đạo hiếu, gìn giữ cội nguồn gia tộc.</p>
+            </article>
+            <article class="service-copy">
+              <img class="service-icon" src="assets/icons/service/icon-service-lotus.png" alt="" />
+              <span class="service-number">04</span>
+              <h3>Thiết trí Tự viện – Nhà thờ họ</h3>
+              <span class="service-rule" aria-hidden="true"></span>
+              <p>Kiến tạo không gian trang nghiêm, thanh tịnh cho chùa, tự viện và nhà thờ họ.</p>
+            </article>
+          </div>
+        </div>
+
+        <div class="service-mobile-list" aria-label="Danh sách dịch vụ thiết trí không gian thờ">
+          <article class="service-mobile-card">
+            <figure class="service-photo"><img src="assets/images/services/service-tho-phat.webp" alt="Không gian thờ Phật trang nghiêm với tượng Phật và ánh sáng vàng ấm" /></figure>
+            <div class="service-copy">
+              <img class="service-icon" src="assets/icons/service/icon-service-lotus.png" alt="" />
+              <span class="service-number">01</span>
+              <h3>Không gian thờ Phật</h3>
+              <span class="service-rule" aria-hidden="true"></span>
+              <p>Tôn trí đức tướng vi diệu của chư Phật, kết nối con người với sự an lạc và tĩnh tại.</p>
+            </div>
+          </article>
+          <article class="service-mobile-card">
+            <figure class="service-photo"><img src="assets/images/services/service-tho-gia-tien.webp" alt="Không gian thờ Gia tiên với bàn thờ gỗ chạm khắc và ánh sáng ấm" /></figure>
+            <div class="service-copy">
+              <img class="service-icon" src="assets/icons/service/icon-service-lotus.png" alt="" />
+              <span class="service-number">02</span>
+              <h3>Không gian thờ Gia tiên</h3>
+              <span class="service-rule" aria-hidden="true"></span>
+              <p>Kết nối các thế hệ, nuôi dưỡng đạo hiếu, gìn giữ cội nguồn gia tộc.</p>
+            </div>
+          </article>
+          <article class="service-mobile-card">
+            <figure class="service-photo"><img src="assets/images/services/service-thien-tra.webp" alt="Không gian Thiền Trà an tĩnh với bàn trà thấp và sân vườn xanh" /></figure>
+            <div class="service-copy">
+              <img class="service-icon" src="assets/icons/service/icon-service-lotus.png" alt="" />
+              <span class="service-number">03</span>
+              <h3>Không gian Thiền – Trà</h3>
+              <span class="service-rule" aria-hidden="true"></span>
+              <p>Góc bình yên thanh tịnh, giúp thư giãn tâm hồn và tìm về tỉnh thức.</p>
+            </div>
+          </article>
+          <article class="service-mobile-card">
+            <figure class="service-photo"><img src="assets/images/services/service-tu-vien-nha-tho-ho.webp" alt="Không gian tự viện nhà thờ họ trang nghiêm với tượng Phật và nội thất gỗ" /></figure>
+            <div class="service-copy">
+              <img class="service-icon" src="assets/icons/service/icon-service-lotus.png" alt="" />
+              <span class="service-number">04</span>
+              <h3>Thiết trí Tự viện – Nhà thờ họ</h3>
+              <span class="service-rule" aria-hidden="true"></span>
+              <p>Kiến tạo không gian trang nghiêm, thanh tịnh cho chùa, tự viện và nhà thờ họ.</p>
+            </div>
+          </article>
+        </div>
+
+        <div class="service-bottom-ornament" aria-hidden="true">
+          <img class="service-bottom-line" src="assets/images/decor/line-lotus.svg" alt="" />
+        </div>
+      </div>
+    </section>
+
   </main>
 
 <script>
