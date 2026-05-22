@@ -8100,6 +8100,10 @@ body{
     }
     .trust-card:hover::before{opacity:1;border-color:rgba(176,113,42,.18)}
     .trust-card:hover::after{opacity:1}
+    .trust-card:focus-visible{
+      outline:2px solid rgba(176,113,42,.72);
+      outline-offset:3px;
+    }
     .trust-icon{
       position:relative;
       z-index:2;
@@ -8139,6 +8143,9 @@ body{
       letter-spacing:.008em;
       text-wrap:pretty;
     }
+    .trust-mobile-detail{
+      display:none;
+    }
     .trust-card:nth-child(2) .trust-icon,
     .trust-card:nth-child(3) .trust-icon,
     .trust-card:nth-child(4) .trust-icon,
@@ -8167,20 +8174,20 @@ body{
     @media (max-width:680px){
       .trust-section{
         min-height:0;
-        padding:42px 0 62px;
+        padding:38px 0 46px;
         background:
           radial-gradient(ellipse at 50% 0%, rgba(255,255,255,.48) 0 18%, rgba(255,255,255,0) 52%),
           linear-gradient(180deg, rgba(247,236,215,.98) 0%, rgba(245,229,198,.96) 58%, rgba(241,222,186,.99) 100%),
           #f6ead3 url("assets/images/bg/bg-trust-parchment.webp") center top / cover no-repeat;
       }
       .trust-container{width:min(100% - 32px, 1440px)}
-      .trust-heading{margin-bottom:24px;padding:0}
+      .trust-heading{margin-bottom:18px;padding:0}
       .trust-title-ornament{display:none}
       .trust-heading h2{
         display:block;
         padding:0;
         background:none;
-        font-size:clamp(30px, 8.4vw, 40px);
+        font-size:clamp(28px, 8vw, 38px);
         line-height:1.16;
         letter-spacing:.45px;
       }
@@ -8189,51 +8196,154 @@ body{
         display:block;
         width:168px;
         height:1px;
-        margin:18px auto 0;
+        margin:14px auto 0;
         background:linear-gradient(90deg, transparent, rgba(166,104,33,.78), transparent);
       }
-      .trust-heading-flower{width:28px;margin-top:12px}
-      .trust-grid{grid-template-columns:1fr;max-width:520px;gap:14px}
-      .trust-card{
-        display:grid;
-        grid-template-columns:80px 1fr;
-        align-items:center;
-        column-gap:16px;
-        min-height:0;
-        padding:18px 18px;
-        text-align:left;
-        border-radius:16px;
+      .trust-heading-flower{width:24px;margin-top:10px}
+      .trust-grid{
+        grid-template-columns:repeat(2, minmax(0, 1fr));
+        max-width:430px;
+        gap:10px;
+        margin-inline:auto;
       }
-      .trust-card::before{inset:7px;border-radius:12px}
-      .trust-card::after{left:18px;right:18px}
+      .trust-card{
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+        justify-content:center;
+        min-height:0;
+        height:96px;
+        padding:10px 9px;
+        text-align:center;
+        border-radius:15px;
+        cursor:pointer;
+        -webkit-tap-highlight-color:transparent;
+      }
+      .trust-card::before{inset:6px;border-radius:11px}
+      .trust-card::after{left:18px;right:18px;opacity:.22}
       .trust-icon,
       .trust-card:nth-child(n) .trust-icon{
-        grid-row:1 / span 2;
-        width:70px;
-        height:70px;
-        margin:0;
+        width:40px;
+        height:40px;
+        margin:0 0 5px;
       }
       .trust-card h3{
-        max-width:none;
-        margin:0 0 6px;
-        font-size:21px;
-        line-height:1.2;
-      }
-      .trust-card p{
-        max-width:none;
+        max-width:132px;
         margin:0;
+        font-size:14.5px;
+        line-height:1.1;
+        letter-spacing:.005em;
+      }
+      .trust-card p{display:none}
+      .trust-card:hover{
+        transform:none;
+      }
+      .trust-card:hover .trust-icon{
+        transform:none;
+      }
+      .trust-card.is-active{
+        transform:translateY(-2px);
+        border-color:rgba(176,113,42,.72);
+        background:
+          radial-gradient(ellipse at 50% 0%, rgba(255,255,255,.72) 0 22%, rgba(255,255,255,0) 60%),
+          linear-gradient(180deg, rgba(255,250,238,.72), rgba(243,223,185,.48));
+        box-shadow:
+          inset 0 0 0 1px rgba(255,255,255,.48),
+          0 14px 28px rgba(101,59,18,.12),
+          0 0 18px rgba(215,168,63,.12);
+      }
+      .trust-card.is-active::before{
+        opacity:1;
+        border-color:rgba(176,113,42,.22);
+      }
+      .trust-card.is-active::after{opacity:1}
+      .trust-card.is-active .trust-icon{
+        transform:scale(1.08);
+        filter:drop-shadow(0 7px 12px rgba(111,61,12,.16)) drop-shadow(0 0 12px rgba(215,168,63,.18));
+      }
+      .trust-card.is-active:hover{
+        transform:translateY(-2px);
+      }
+      .trust-card.is-active:hover .trust-icon{
+        transform:scale(1.08);
+      }
+      .trust-mobile-detail{
+        position:relative;
+        display:block;
+        max-width:430px;
+        min-height:132px;
+        margin:14px auto 0;
+        padding:18px 18px 17px;
+        text-align:center;
+        overflow:hidden;
+        border:1px solid rgba(176,113,42,.38);
+        border-radius:18px;
+        background:
+          radial-gradient(ellipse at 50% 0%, rgba(255,255,255,.68) 0 24%, rgba(255,255,255,0) 62%),
+          linear-gradient(180deg, rgba(255,250,238,.78), rgba(243,224,188,.58));
+        box-shadow:
+          inset 0 0 0 1px rgba(255,255,255,.38),
+          0 18px 38px rgba(91,51,15,.10);
+      }
+      .trust-mobile-detail::before{
+        content:"";
+        position:absolute;
+        inset:8px;
+        border:1px solid rgba(176,113,42,.12);
+        border-radius:13px;
+        pointer-events:none;
+      }
+      .trust-mobile-kicker{
+        position:relative;
+        z-index:2;
+        display:inline-block;
+        margin:0 0 6px;
+        color:#966023;
+        font-family:var(--sans);
+        font-size:12px;
+        line-height:1;
+        letter-spacing:.12em;
+        text-transform:uppercase;
+      }
+      .trust-mobile-detail h3{
+        position:relative;
+        z-index:2;
+        margin:0 0 7px;
+        color:#241b15;
+        font-family:var(--serif);
+        font-size:23px;
+        line-height:1.16;
+        font-weight:700;
+      }
+      .trust-mobile-detail p{
+        position:relative;
+        z-index:2;
+        max-width:360px;
+        margin:0 auto;
+        color:#2d251f;
+        font-family:var(--sans);
         font-size:15px;
         line-height:1.55;
+      }
+      .trust-mobile-detail.is-changing{
+        animation:trust-detail-fade .32s ease;
+      }
+      @keyframes trust-detail-fade{
+        0%{opacity:.58;transform:translateY(5px)}
+        100%{opacity:1;transform:none}
       }
     }
     @media (max-width:420px){
       .trust-container{width:min(100% - 28px, 1440px)}
       .trust-heading h2{font-size:clamp(28px, 8.2vw, 35px)}
-      .trust-card{grid-template-columns:66px 1fr;column-gap:13px;padding:16px 15px}
+      .trust-grid{gap:9px}
+      .trust-card{height:86px;padding:9px 7px}
       .trust-icon,
-      .trust-card:nth-child(n) .trust-icon{width:58px;height:58px}
-      .trust-card h3{font-size:19px}
-      .trust-card p{font-size:14px;line-height:1.5}
+      .trust-card:nth-child(n) .trust-icon{width:35px;height:35px;margin-bottom:4px}
+      .trust-card h3{font-size:13.2px;line-height:1.1}
+      .trust-mobile-detail{min-height:128px;padding:17px 15px 16px}
+      .trust-mobile-detail h3{font-size:21px}
+      .trust-mobile-detail p{font-size:14px;line-height:1.52}
     }
 
 </style>
@@ -8570,41 +8680,47 @@ body{
         </header>
 
         <div class="trust-grid" aria-label="Lý do gia chủ tin chọn Diệu Tướng Am">
-          <article class="trust-card">
+          <article class="trust-card is-active" data-trust-index="01" data-trust-title="Thấu hiểu tâm nguyện." data-trust-copy="Lắng nghe và thấu hiểu tâm nguyện của từng gia chủ, khơi mở ý niệm an yên bản nguyên nhất.">
             <img class="trust-icon" src="assets/icons/trust/icon-thau-hieu-tam-nguyen.svg" alt="" loading="lazy" />
             <h3>Thấu hiểu<br/>tâm nguyện.</h3>
             <p>Lắng nghe và thấu hiểu tâm nguyện của từng gia chủ, khơi mở ý niệm an yên bản nguyên nhất.</p>
           </article>
 
-          <article class="trust-card">
+          <article class="trust-card" data-trust-index="02" data-trust-title="Hệ sinh thái sản phẩm đa dạng." data-trust-copy="Hơn 27.700 tác phẩm nghệ thuật phục vụ mọi nhu cầu của khách hàng.">
             <img class="trust-icon" src="assets/icons/trust/icon-he-sinh-thai-san-pham.svg" alt="" loading="lazy" />
             <h3>Hệ sinh thái<br/>sản phẩm đa dạng.</h3>
             <p>Hơn 27.700 tác phẩm nghệ thuật phục vụ mọi nhu cầu của khách hàng.</p>
           </article>
 
-          <article class="trust-card">
+          <article class="trust-card" data-trust-index="03" data-trust-title="15 năm kinh nghiệm." data-trust-copy="Hành trình bền bỉ đồng hành cùng hàng chục nghìn khách hàng kiến tạo nên những không gian an lạc.">
             <img class="trust-icon" src="assets/icons/trust/icon-15-nam-kinh-nghiem.svg" alt="" loading="lazy" />
             <h3>15 năm<br/>kinh nghiệm.</h3>
             <p>Hành trình bền bỉ đồng hành cùng hàng chục nghìn khách hàng kiến tạo nên những không gian an lạc.</p>
           </article>
 
-          <article class="trust-card">
+          <article class="trust-card" data-trust-index="04" data-trust-title="Có sự đồng hành từ chuyên gia." data-trust-copy="Có sự bảo chứng từ các chuyên gia hàng đầu và sự chỉ dạy của các vị Tôn túc.">
             <img class="trust-icon" src="assets/icons/trust/icon-dong-hanh-chuyen-gia.svg" alt="" loading="lazy" />
             <h3>Có sự đồng hành<br/>từ chuyên gia.</h3>
             <p>Có sự bảo chứng từ các chuyên gia hàng đầu và sự chỉ dạy của các vị Tôn túc.</p>
           </article>
 
-          <article class="trust-card">
+          <article class="trust-card" data-trust-index="05" data-trust-title="Cá nhân hóa theo từng gia chủ." data-trust-copy="Mỗi không gian được thiết kế riêng theo tâm nguyện và nếp sống gia chủ.">
             <img class="trust-icon" src="assets/icons/trust/icon-ca-nhan-hoa.svg" alt="" loading="lazy" />
             <h3>Cá nhân hóa<br/>theo từng gia chủ.</h3>
             <p>Mỗi không gian được thiết kế riêng theo tâm nguyện và nếp sống gia chủ.</p>
           </article>
 
-          <article class="trust-card">
+          <article class="trust-card" data-trust-index="06" data-trust-title="Không gian trải nghiệm." data-trust-copy="Showroom quy mô lớn tại Hà Nội &amp; TPHCM, nơi cảm nhận bằng tất cả giác quan.">
             <img class="trust-icon" src="assets/icons/trust/icon-khong-gian-trai-nghiem.svg" alt="" loading="lazy" />
             <h3>Không gian<br/>trải nghiệm.</h3>
             <p>Showroom quy mô lớn tại Hà Nội &amp; TPHCM, nơi cảm nhận bằng tất cả giác quan.</p>
           </article>
+        </div>
+
+        <div class="trust-mobile-detail" id="trust-mobile-detail" aria-live="polite">
+          <span class="trust-mobile-kicker">Lý do 01</span>
+          <h3>Thấu hiểu tâm nguyện.</h3>
+          <p>Lắng nghe và thấu hiểu tâm nguyện của từng gia chủ, khơi mở ý niệm an yên bản nguyên nhất.</p>
         </div>
       </div>
     </section>
@@ -8650,6 +8766,74 @@ body{
     window.addEventListener('resize', function(){
       if(window.innerWidth > 940) closeMenu();
     });
+  })();
+
+  (function(){
+    var section = document.querySelector('.trust-section');
+    if(!section) return;
+
+    var cards = Array.prototype.slice.call(section.querySelectorAll('.trust-card'));
+    var detail = section.querySelector('.trust-mobile-detail');
+    if(!cards.length || !detail) return;
+
+    var kicker = detail.querySelector('.trust-mobile-kicker');
+    var title = detail.querySelector('h3');
+    var copy = detail.querySelector('p');
+    var activeIndex = 0;
+    cards.forEach(function(card, index){
+      if(card.classList.contains('is-active')) activeIndex = index;
+    });
+
+    function getCardData(card, index){
+      var cardTitle = card.getAttribute('data-trust-title') || (card.querySelector('h3') || {}).textContent || '';
+      var cardCopy = card.getAttribute('data-trust-copy') || (card.querySelector('p') || {}).textContent || '';
+      var fallbackIndex = index + 1 < 10 ? '0' + (index + 1) : String(index + 1);
+      var cardIndex = card.getAttribute('data-trust-index') || fallbackIndex;
+      return {
+        index:cardIndex.trim(),
+        title:cardTitle.trim(),
+        copy:cardCopy.trim()
+      };
+    }
+
+    function activateTrustCard(card, index){
+      var data = getCardData(card, index);
+      activeIndex = index;
+
+      cards.forEach(function(item){
+        var isActive = item === card;
+        item.classList.toggle('is-active', isActive);
+        item.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+      });
+
+      if(kicker) kicker.textContent = 'Lý do ' + data.index;
+      if(title) title.textContent = data.title;
+      if(copy) copy.textContent = data.copy;
+
+      detail.classList.remove('is-changing');
+      void detail.offsetWidth;
+      detail.classList.add('is-changing');
+    }
+
+    cards.forEach(function(card, index){
+      card.setAttribute('role', 'button');
+      card.setAttribute('tabindex', '0');
+      card.setAttribute('aria-controls', 'trust-mobile-detail');
+      card.setAttribute('aria-pressed', index === activeIndex ? 'true' : 'false');
+
+      card.addEventListener('click', function(){
+        activateTrustCard(card, index);
+      });
+
+      card.addEventListener('keydown', function(event){
+        if(event.key === 'Enter' || event.key === ' '){
+          event.preventDefault();
+          activateTrustCard(card, index);
+        }
+      });
+    });
+
+    activateTrustCard(cards[activeIndex], activeIndex);
   })();
 </script>
 
