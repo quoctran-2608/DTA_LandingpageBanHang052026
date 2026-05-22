@@ -6,7 +6,48 @@
   <title>Diệu Tướng Am | Kiến tạo không gian an trú tại gia</title>
   <meta name="description" content="Phần đầu landing page Diệu Tướng Am - Kiến tạo không gian an trú tại gia." />
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800;900&family=Cormorant+Garamond:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700;800&display=swap');
+    @font-face{
+      font-family:"DVN DAREK";
+      src:url("fonts/DVN - DAREK.ttf") format("truetype");
+      font-weight:400;
+      font-style:normal;
+      font-display:swap;
+    }
+    @font-face{
+      font-family:"MTD Attention Script";
+      src:url("fonts/MTD-Attention-Script.otf") format("opentype");
+      font-weight:400;
+      font-style:normal;
+      font-display:swap;
+    }
+    @font-face{
+      font-family:"Philosopher";
+      src:url("fonts/Philosopher-Regular.ttf") format("truetype");
+      font-weight:400;
+      font-style:normal;
+      font-display:swap;
+    }
+    @font-face{
+      font-family:"Philosopher";
+      src:url("fonts/Philosopher-Bold.ttf") format("truetype");
+      font-weight:700;
+      font-style:normal;
+      font-display:swap;
+    }
+    @font-face{
+      font-family:"Philosopher";
+      src:url("fonts/Philosopher-Italic.ttf") format("truetype");
+      font-weight:400;
+      font-style:italic;
+      font-display:swap;
+    }
+    @font-face{
+      font-family:"Philosopher";
+      src:url("fonts/Philosopher-BoldItalic.ttf") format("truetype");
+      font-weight:700;
+      font-style:italic;
+      font-display:swap;
+    }
     :root{
       --gold:#d9a741;
       --gold-2:#f0c66b;
@@ -19,10 +60,11 @@
       --muted:#6d4b2d;
       --line:rgba(166,104,33,.38);
       --container:min(100% - clamp(32px, 6vw, 96px), 1440px);
-      --display: "Cormorant Garamond", "Noto Serif", "Times New Roman", Georgia, serif;
-      --serif: "Cormorant Garamond", "Noto Serif", "Times New Roman", Georgia, serif;
-      --sans: "Be Vietnam Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
-      --body: "Be Vietnam Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      --display:"DVN DAREK", "Philosopher", "Times New Roman", Georgia, serif;
+      --script:"MTD Attention Script", "DVN DAREK", "Philosopher", cursive;
+      --serif:"Philosopher", "Times New Roman", Georgia, serif;
+      --sans:"Philosopher", -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      --body:"Philosopher", -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
     }
 
     *{box-sizing:border-box}
@@ -30,7 +72,7 @@
     body{
       margin:0;
       color:#fff;
-      font-family:var(--serif);
+      font-family:var(--body);
       overflow-x:hidden;
       background:#110a04;
       -webkit-font-smoothing:antialiased;
@@ -4854,7 +4896,7 @@
 .mobile-menu,
 .mobile-nav-toggle,
 .mobile-menu-cta{
-  font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif !important;
+  font-family:var(--sans) !important;
   text-rendering:geometricPrecision;
 }
 
@@ -5033,7 +5075,7 @@
   .hero-subtitle{
     max-width:none !important;
     white-space:nowrap !important;
-    font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif !important;
+    font-family:var(--sans) !important;
     font-size:clamp(10.5px, 2.9vw, 13px) !important;
     line-height:1.42 !important;
     letter-spacing:0 !important;
@@ -5090,7 +5132,7 @@
 .header-cta,
 .hero-button,
 .mobile-menu-cta{
-  font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif !important;
+  font-family:var(--sans) !important;
   text-transform:uppercase !important;
   letter-spacing:.035em !important;
   font-weight:850 !important;
@@ -5122,7 +5164,7 @@
   .hero-subtitle{
     white-space:nowrap !important;
     max-width:100% !important;
-    font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif !important;
+    font-family:var(--sans) !important;
     font-size:clamp(11.8px, 3.18vw, 14px) !important;
     line-height:1.44 !important;
     letter-spacing:-.012em !important;
@@ -5166,7 +5208,7 @@
     white-space:nowrap !important;
     overflow:visible !important;
 
-    font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif !important;
+    font-family:var(--sans) !important;
     font-size:clamp(14px, 3.75vw, 16px) !important;
     line-height:1.42 !important;
     font-weight:520 !important;
@@ -6602,12 +6644,12 @@ body{
 
 /* ==========================================================
    SERVICE FINAL V6 — Title nghệ thuật + ảnh lớn + viền vàng kim 3px
-   - Font tiêu đề dùng Playfair Display: hỗ trợ tiếng Việt, nét sang và nghệ thuật hơn.
+   - Font tiêu đề dùng bộ font local: DVN DAREK nghệ thuật, Philosopher dễ đọc.
    - Giữ nguyên fix ornament hình thoi bằng CSS shape, không dùng ký tự ◇.
    - 4 ảnh service dùng đuôi .webp trong HTML.
 ========================================================== */
 .service-title{
-  font-family:"Playfair Display", var(--serif) !important;
+  font-family:var(--display) !important;
   font-weight:600 !important;
   color:#3e230f !important;
   font-size:clamp(54px, 5.35vw, 96px) !important;
@@ -6725,7 +6767,7 @@ body{
 
 @media (max-width:680px){
   .service-title{
-    font-family:"Playfair Display", var(--serif) !important;
+    font-family:var(--display) !important;
     font-size:clamp(36px, 9.6vw, 48px) !important;
     line-height:1.08 !important;
     letter-spacing:.01em !important;
@@ -6943,6 +6985,448 @@ body{
   .service-bottom-ornament{
     width:82vw !important;
     margin-top:22px !important;
+  }
+}
+
+/* ==========================================================
+   SERVICE ORNAMENT FINAL — line-lotus lớn hơn + mobile có nền hoa sen
+========================================================== */
+.service-bottom-ornament{
+  width:min(1040px, 74vw) !important;
+  margin-top:clamp(24px, 2.2vw, 40px) !important;
+  opacity:.96 !important;
+}
+
+.service-bottom-ornament .service-bottom-line{
+  max-height:clamp(72px, 5.8vw, 104px) !important;
+  filter:
+    drop-shadow(0 8px 14px rgba(132,77,20,.16))
+    drop-shadow(0 0 18px rgba(217,167,65,.10)) !important;
+}
+
+@media (max-width:940px){
+  .service-bottom-ornament{
+    width:min(840px, 88vw) !important;
+    margin-top:32px !important;
+  }
+
+  .service-bottom-ornament .service-bottom-line{
+    max-height:78px !important;
+  }
+}
+
+@media (max-width:680px){
+  .service-section{
+    background:
+      radial-gradient(ellipse at 50% 10%, rgba(255,252,241,.68) 0 16%, rgba(255,252,241,0) 52%),
+      linear-gradient(180deg, #f6ead3 0%, #f6ead3 10%, #f5e5c7 58%, #efd7ac 100%),
+      url("assets/images/bg/bg-service-parchment.png") center top / cover no-repeat !important;
+  }
+
+  .service-decor{
+    z-index:1 !important;
+    display:block !important;
+    mix-blend-mode:multiply;
+  }
+
+  .service-decor img{
+    filter:saturate(.9) sepia(.12) contrast(.96) !important;
+  }
+
+  .service-cloud-left{
+    width:78vw !important;
+    top:58px !important;
+    left:-34vw !important;
+    bottom:auto !important;
+    opacity:.20 !important;
+    transform:rotate(-4deg) !important;
+  }
+
+  .service-cloud-right{
+    width:82vw !important;
+    top:clamp(430px, 112vw, 560px) !important;
+    right:-38vw !important;
+    bottom:auto !important;
+    opacity:.17 !important;
+    transform:rotate(4deg) !important;
+  }
+
+  .service-lotus-left{
+    width:70vw !important;
+    top:clamp(118px, 34vw, 170px) !important;
+    left:-31vw !important;
+    bottom:auto !important;
+    opacity:.22 !important;
+    transform:rotate(-7deg) !important;
+  }
+
+  .service-lotus-right{
+    width:72vw !important;
+    top:clamp(760px, 195vw, 940px) !important;
+    right:-32vw !important;
+    bottom:auto !important;
+    opacity:.19 !important;
+    transform:rotate(6deg) !important;
+  }
+
+  .service-container{
+    isolation:isolate;
+  }
+
+  .service-container::before,
+  .service-container::after{
+    content:"";
+    position:absolute;
+    z-index:0;
+    pointer-events:none;
+    background-repeat:no-repeat;
+    background-position:center;
+    background-size:contain;
+    opacity:.11;
+    filter:saturate(.85) sepia(.12);
+    mix-blend-mode:multiply;
+  }
+
+  .service-container::before{
+    left:-24vw;
+    top:72px;
+    width:58vw;
+    height:58vw;
+    background-image:url("assets/images/decor/decor-service-lotus-left.png");
+    transform:rotate(-10deg);
+  }
+
+  .service-container::after{
+    right:-30vw;
+    top:48%;
+    width:64vw;
+    height:84vw;
+    background-image:url("assets/images/decor/decor-service-lotus-right.png");
+    transform:translateY(-50%) rotate(7deg);
+  }
+
+  .service-heading,
+  .service-mobile-list,
+  .service-bottom-ornament{
+    position:relative;
+    z-index:2;
+  }
+
+  .service-bottom-ornament{
+    width:96vw !important;
+    margin-top:30px !important;
+  }
+
+  .service-bottom-ornament .service-bottom-line{
+    max-height:72px !important;
+  }
+}
+
+@media (max-width:420px){
+  .service-bottom-ornament{
+    width:98vw !important;
+  }
+
+  .service-bottom-ornament .service-bottom-line{
+    max-height:66px !important;
+  }
+}
+
+/* ==========================================================
+   DTA LOCAL FONT ART DIRECTION — sang, thiền, đọc tốt tiếng Việt
+   Dùng DVN DAREK cho đại tự. Các dòng phụ chuyển về Philosopher
+   để rõ chữ Việt, vẫn giữ nhịp trang nghiêm bằng weight/spacing.
+========================================================== */
+body{
+  font-family:var(--body) !important;
+}
+
+.hero-title,
+.intro-title,
+.service-title{
+  font-family:var(--display) !important;
+  font-weight:400 !important;
+  font-synthesis:none;
+  font-synthesis-weight:none;
+}
+
+.hero-title{
+  letter-spacing:clamp(.4px, .12vw, 2px) !important;
+}
+
+.intro-title{
+  max-width:820px !important;
+  letter-spacing:.012em !important;
+}
+
+.service-heading{
+  max-width:1280px !important;
+}
+
+.service-title{
+  font-size:clamp(50px, 4.9vw, 88px) !important;
+  line-height:1.04 !important;
+  letter-spacing:clamp(.2px, .08vw, 1.4px) !important;
+}
+
+.eyebrow,
+.brand-slogan,
+.hero-note,
+.service-subtitle{
+  font-family:var(--serif) !important;
+  font-style:normal !important;
+  font-synthesis:none;
+  text-transform:none !important;
+}
+
+.eyebrow{
+  font-size:clamp(15px, 1.05vw, 18px) !important;
+  line-height:1 !important;
+  font-weight:700 !important;
+  letter-spacing:.13em !important;
+}
+
+.brand-slogan{
+  font-size:clamp(13.5px, .95vw, 16px) !important;
+  line-height:1.22 !important;
+  font-weight:600 !important;
+  letter-spacing:.035em !important;
+}
+
+.hero-note{
+  font-size:clamp(14.5px, .98vw, 17px) !important;
+  line-height:1.55 !important;
+  font-weight:500 !important;
+  letter-spacing:.02em !important;
+}
+
+.service-subtitle{
+  font-size:clamp(17px, 1.22vw, 22px) !important;
+  line-height:1.35 !important;
+  font-weight:500 !important;
+  letter-spacing:.055em !important;
+}
+
+.main-nav a,
+.header-cta,
+.hero-button,
+.mobile-menu-panel a,
+.mobile-menu-cta,
+.hero-subtitle,
+.hero-value,
+.intro-text,
+.philosophy-card p,
+.service-copy p{
+  font-family:var(--sans) !important;
+}
+
+.philosophy-card h3,
+.service-copy h3,
+.service-number{
+  font-family:var(--serif) !important;
+}
+
+@media (max-width:680px){
+  .brand-slogan{
+    max-width:clamp(132px, 40vw, 165px) !important;
+    font-size:clamp(12px, 3.05vw, 13.5px) !important;
+    line-height:1.18 !important;
+  }
+
+  .eyebrow{
+    font-size:clamp(15px, 3.8vw, 17px) !important;
+  }
+
+  .hero-note{
+    font-size:clamp(14.5px, 3.8vw, 16.5px) !important;
+  }
+
+  .service-title{
+    font-size:clamp(40px, 10.2vw, 54px) !important;
+    line-height:1.08 !important;
+  }
+
+  .service-subtitle{
+    font-size:clamp(17px, 4.65vw, 20px) !important;
+    letter-spacing:.035em !important;
+  }
+}
+
+/* ==========================================================
+   SERVICE MOBILE LOTUS VISIBILITY FIX — hoa sen rõ hơn trên mobile
+   Đặt cuối CSS để không bị các hotfix service phía trên ghi đè.
+========================================================== */
+@media (max-width:680px){
+  .service-section{
+    isolation:isolate;
+  }
+
+  .service-heading,
+  .service-mobile-list{
+    position:relative !important;
+    isolation:isolate;
+    overflow:visible !important;
+  }
+
+  .service-heading > *,
+  .service-mobile-card{
+    position:relative;
+    z-index:3;
+  }
+
+  .service-heading::before,
+  .service-heading::after,
+  .service-mobile-list::before,
+  .service-mobile-list::after{
+    content:"" !important;
+    position:absolute !important;
+    z-index:1 !important;
+    pointer-events:none !important;
+    display:block !important;
+    background-repeat:no-repeat !important;
+    background-position:center !important;
+    background-size:contain !important;
+    mix-blend-mode:multiply;
+    filter:saturate(.95) sepia(.12) contrast(1.03)
+      drop-shadow(0 8px 18px rgba(140,82,24,.10));
+  }
+
+  .service-heading::before{
+    width:68vw;
+    height:68vw;
+    left:-34vw;
+    top:-18vw;
+    opacity:.30;
+    background-image:url("assets/images/decor/decor-service-lotus-left.png");
+    transform:rotate(-11deg);
+  }
+
+  .service-heading::after{
+    width:58vw;
+    height:76vw;
+    right:-31vw;
+    top:-2vw;
+    opacity:.24;
+    background-image:url("assets/images/decor/decor-service-lotus-right.png");
+    transform:rotate(8deg);
+  }
+
+  .service-mobile-list::before{
+    width:76vw;
+    height:76vw;
+    left:-39vw;
+    top:18%;
+    opacity:.24;
+    background-image:url("assets/images/decor/decor-service-lotus-left.png");
+    transform:rotate(-8deg);
+  }
+
+  .service-mobile-list::after{
+    width:78vw;
+    height:104vw;
+    right:-40vw;
+    bottom:4%;
+    opacity:.22;
+    background-image:url("assets/images/decor/decor-service-lotus-right.png");
+    transform:rotate(7deg);
+  }
+
+  .service-lotus-left,
+  .service-lotus-right{
+    z-index:2 !important;
+    mix-blend-mode:multiply;
+  }
+
+  .service-lotus-left{
+    width:82vw !important;
+    left:-36vw !important;
+    top:92px !important;
+    opacity:.30 !important;
+  }
+
+  .service-lotus-right{
+    width:84vw !important;
+    right:-40vw !important;
+    top:clamp(620px, 160vw, 780px) !important;
+    opacity:.26 !important;
+  }
+}
+
+@media (max-width:420px){
+  .service-heading::before{
+    left:-38vw;
+    opacity:.32;
+  }
+
+  .service-heading::after{
+    right:-36vw;
+    opacity:.25;
+  }
+}
+
+/* ==========================================================
+   SERVICE MOBILE LOTUS CONTINUITY — kéo xuống vẫn có hoạ tiết nền
+========================================================== */
+@media (max-width:680px){
+  .service-section::before{
+    content:"" !important;
+    position:absolute !important;
+    inset:0 !important;
+    z-index:0 !important;
+    pointer-events:none !important;
+    display:block !important;
+    background-image:
+      url("assets/images/decor/decor-service-lotus-right.png"),
+      url("assets/images/decor/decor-service-lotus-left.png"),
+      url("assets/images/decor/decor-service-lotus-right.png"),
+      url("assets/images/decor/decor-service-lotus-left.png") !important;
+    background-repeat:no-repeat !important;
+    background-size:
+      84vw auto,
+      76vw auto,
+      82vw auto,
+      70vw auto !important;
+    background-position:
+      right -43vw top 28%,
+      left -40vw top 49%,
+      right -41vw top 70%,
+      left -35vw top 91% !important;
+    opacity:.20 !important;
+    mix-blend-mode:multiply;
+    filter:saturate(.92) sepia(.12) contrast(1.02);
+  }
+
+  .service-mobile-card{
+    position:relative !important;
+    isolation:isolate;
+  }
+
+  .service-mobile-card::after{
+    content:"" !important;
+    position:absolute !important;
+    right:-22vw;
+    bottom:-24vw;
+    width:68vw;
+    height:68vw;
+    z-index:1;
+    pointer-events:none;
+    background:url("assets/images/decor/decor-service-lotus-right.png") center / contain no-repeat;
+    opacity:.105;
+    mix-blend-mode:multiply;
+    filter:saturate(.9) sepia(.12);
+  }
+
+  .service-mobile-card:nth-child(even)::after{
+    left:-24vw;
+    right:auto;
+    background-image:url("assets/images/decor/decor-service-lotus-left.png");
+    transform:rotate(-7deg);
+  }
+
+  .service-mobile-card .service-photo,
+  .service-mobile-card .service-copy{
+    position:relative;
+    z-index:2;
   }
 }
 
