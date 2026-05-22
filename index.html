@@ -8346,6 +8346,602 @@ body{
       .trust-mobile-detail p{font-size:14px;line-height:1.52}
     }
 
+
+    /* ==========================================================
+       PROJECT SECTION — Dự án tiêu biểu
+       Section nối dài sau phần "Vì sao gia chủ tin chọn"
+    ========================================================== */
+    .project-section{
+      position:relative;
+      z-index:3;
+      width:100vw;
+      padding:clamp(76px, 6.4vw, 118px) 0 clamp(82px, 7.4vw, 128px);
+      color:var(--ink);
+      background:
+        radial-gradient(ellipse at 50% 0%, rgba(255,255,255,.36) 0 18%, transparent 48%),
+        linear-gradient(180deg, rgba(246,234,211,.98) 0%, rgba(245,228,196,.96) 56%, rgba(241,219,178,.98) 100%),
+        #f6ead3 url("assets/images/bg/bg-project-parchment.webp") center center / cover no-repeat;
+      isolation:isolate;
+      overflow:hidden;
+    }
+    .project-section::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      z-index:-2;
+      pointer-events:none;
+      background:
+        radial-gradient(ellipse at 10% 22%, rgba(255,255,255,.32) 0 12%, transparent 38%),
+        radial-gradient(ellipse at 92% 48%, rgba(117,66,24,.12) 0 18%, transparent 52%),
+        linear-gradient(90deg, rgba(112,72,31,.08), transparent 21%, transparent 78%, rgba(112,72,31,.07));
+      mix-blend-mode:multiply;
+    }
+    .project-section::after{
+      content:"";
+      position:absolute;
+      left:0;
+      right:0;
+      top:0;
+      height:1px;
+      background:linear-gradient(90deg, transparent, rgba(154,99,40,.26), transparent);
+      pointer-events:none;
+    }
+    .project-inner{
+      position:relative;
+      z-index:2;
+      width:min(100% - clamp(32px, 5vw, 96px), 1900px);
+      margin-inline:auto;
+    }
+    .project-heading{
+      position:relative;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:clamp(14px, 1.4vw, 24px);
+      margin:0 auto clamp(30px, 3vw, 54px);
+      text-align:center;
+    }
+    .project-heading::before,
+    .project-heading::after{
+      content:"";
+      flex:1 1 240px;
+      max-width:720px;
+      height:1px;
+      background:linear-gradient(90deg, transparent, rgba(104,70,38,.24), rgba(104,70,38,.16));
+      transform:translateY(2px);
+    }
+    .project-heading::after{
+      background:linear-gradient(90deg, rgba(104,70,38,.16), rgba(104,70,38,.24), transparent);
+    }
+    .project-heading-core{
+      position:relative;
+      display:inline-grid;
+      justify-items:center;
+      min-width:max-content;
+      padding:0 clamp(14px, 1.2vw, 22px);
+    }
+    .project-heading h2{
+      margin:0;
+      color:#5c3c22;
+      font-family:var(--serif);
+      font-weight:700;
+      font-size:clamp(38px, 3.1vw, 62px);
+      line-height:1.04;
+      letter-spacing:.045em;
+      text-shadow:0 1px 0 rgba(255,255,255,.48), 0 10px 26px rgba(110,67,24,.08);
+    }
+    .project-heading-diamond{
+      position:absolute;
+      top:50%;
+      width:13px;
+      height:13px;
+      transform:translateY(-50%);
+      background:url("assets/images/decor/decor-heading-diamond.svg") center / contain no-repeat;
+      opacity:.72;
+      filter:drop-shadow(0 2px 2px rgba(102,64,25,.1));
+    }
+    .project-heading-diamond.is-left{left:-14px}
+    .project-heading-diamond.is-right{right:-14px}
+    .project-heading-lotus{
+      width:clamp(32px, 2.3vw, 46px);
+      height:clamp(17px, 1.2vw, 24px);
+      margin-top:clamp(13px, 1.1vw, 18px);
+      background:url("assets/images/decor/decor-project-lotus.svg") center / contain no-repeat;
+      opacity:.82;
+    }
+    .project-list{
+      display:grid;
+      grid-template-columns:repeat(5, minmax(0, 1fr));
+      gap:clamp(18px, 1.35vw, 28px);
+      align-items:stretch;
+    }
+    .project-card{
+      position:relative;
+      min-width:0;
+      height:clamp(280px, 19.45vw, 398px);
+      border-radius:clamp(14px, 1.05vw, 20px);
+      overflow:hidden;
+      background:#201006;
+      box-shadow:
+        0 18px 34px rgba(80,48,16,.16),
+        0 5px 12px rgba(80,48,16,.10),
+        inset 0 0 0 1px rgba(255,224,139,.13);
+      transform:translateZ(0);
+      isolation:isolate;
+      transition:transform .45s cubic-bezier(.2,.8,.2,1), box-shadow .45s ease, filter .45s ease;
+    }
+    .project-card::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      z-index:3;
+      pointer-events:none;
+      border-radius:inherit;
+      box-shadow:inset 0 0 0 1px rgba(255,235,177,.18), inset 0 -100px 70px rgba(22,9,2,.34);
+    }
+    .project-card::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      z-index:2;
+      pointer-events:none;
+      opacity:.92;
+      background:
+        linear-gradient(180deg, rgba(0,0,0,.04) 0%, transparent 42%, rgba(19,8,2,.36) 100%),
+        radial-gradient(ellipse at 50% 20%, rgba(255,205,91,.10) 0 20%, transparent 56%);
+      transition:opacity .45s ease;
+    }
+    .project-card img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      object-position:center;
+      transform:scale(1.01);
+      filter:saturate(1.05) contrast(1.03) brightness(.95);
+      transition:transform .75s cubic-bezier(.2,.8,.2,1), filter .75s ease;
+    }
+    .project-card:hover{
+      transform:translateY(-9px);
+      filter:saturate(1.03);
+      box-shadow:
+        0 24px 48px rgba(70,39,10,.24),
+        0 0 28px rgba(215,168,63,.16),
+        inset 0 0 0 1px rgba(255,224,139,.18);
+    }
+    .project-card:hover img{
+      transform:scale(1.055);
+      filter:saturate(1.14) contrast(1.05) brightness(1.02);
+    }
+    .project-card:hover::after{opacity:.65}
+    .project-label{
+      position:absolute;
+      left:clamp(22px, 1.25vw, 32px);
+      right:clamp(22px, 1.25vw, 32px);
+      bottom:clamp(10px, .75vw, 15px);
+      z-index:6;
+      min-height:clamp(72px, 4.45vw, 90px);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:clamp(22px, 1.35vw, 28px) clamp(14px, 1vw, 20px) clamp(11px, .8vw, 15px);
+      color:#f7d685;
+      font-family:var(--serif);
+      font-size:clamp(15px, .82vw, 19px);
+      line-height:1.22;
+      letter-spacing:.028em;
+      text-align:center;
+      white-space:normal;
+      text-decoration:none;
+      border-radius:0 0 14px 14px;
+      background:
+        radial-gradient(ellipse at 50% 0%, rgba(246,204,103,.16), transparent 58%),
+        linear-gradient(180deg, rgba(67,34,9,.78), rgba(28,13,4,.9));
+      text-shadow:0 2px 5px rgba(0,0,0,.5);
+      filter:drop-shadow(0 8px 10px rgba(0,0,0,.22));
+      cursor:pointer;
+      transition:
+        transform .38s cubic-bezier(.2,.8,.2,1),
+        color .38s ease,
+        background .38s ease,
+        box-shadow .38s ease,
+        filter .38s ease;
+    }
+    .project-label::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      pointer-events:none;
+      background:
+        linear-gradient(90deg, transparent 0 7%, #d2a34d 9%, #f2d47e 50%, #d2a34d 91%, transparent 93% 100%) top / 100% 1px no-repeat,
+        linear-gradient(90deg, transparent 0 5%, #d2a34d 7%, #f2d47e 50%, #d2a34d 93%, transparent 95% 100%) bottom / 100% 1px no-repeat,
+        linear-gradient(180deg, transparent 0 18%, #d2a34d 28%, #f2d47e 50%, #d2a34d 72%, transparent 82% 100%) left / 1px 100% no-repeat,
+        linear-gradient(180deg, transparent 0 18%, #d2a34d 28%, #f2d47e 50%, #d2a34d 72%, transparent 82% 100%) right / 1px 100% no-repeat;
+      opacity:.95;
+    }
+    .project-label::after{
+      content:"";
+      position:absolute;
+      left:50%;
+      top:clamp(-16px, -.75vw, -10px);
+      width:clamp(34px, 2.4vw, 48px);
+      height:clamp(24px, 1.7vw, 34px);
+      transform:translateX(-50%);
+      background:url("assets/images/decor/decor-project-label-lotus.png") center / contain no-repeat;
+      filter:drop-shadow(0 2px 5px rgba(0,0,0,.34));
+    }
+    .project-label span{position:relative;z-index:2}
+    .project-label-text{
+      display:block;
+      max-width:100%;
+      overflow-wrap:normal;
+      text-wrap:balance;
+      transition:transform .38s ease, text-shadow .38s ease;
+    }
+    .project-label:hover,
+    .project-label:focus-visible{
+      color:#ffe9aa;
+      transform:translateY(-4px);
+      background:
+        radial-gradient(ellipse at 50% 0%, rgba(255,227,145,.32), transparent 62%),
+        linear-gradient(180deg, rgba(92,48,14,.88), rgba(30,13,4,.96));
+      box-shadow:
+        0 10px 22px rgba(0,0,0,.26),
+        0 0 20px rgba(241,200,102,.18),
+        inset 0 0 0 1px rgba(255,224,139,.18);
+      filter:drop-shadow(0 12px 14px rgba(0,0,0,.24));
+    }
+    .project-label:hover .project-label-text,
+    .project-label:focus-visible .project-label-text{
+      transform:translateY(-1px);
+      text-shadow:
+        0 2px 5px rgba(0,0,0,.58),
+        0 0 14px rgba(241,200,102,.42);
+    }
+    .project-label:focus-visible{
+      outline:2px solid rgba(246,211,122,.9);
+      outline-offset:3px;
+    }
+    .project-actions{
+      display:flex;
+      justify-content:center;
+      margin-top:clamp(30px, 2.6vw, 50px);
+    }
+    .project-cta{
+      position:relative;
+      isolation:isolate;
+      overflow:hidden;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:clamp(34px, 3vw, 58px);
+      min-width:clamp(300px, 24vw, 492px);
+      min-height:clamp(64px, 4.25vw, 76px);
+      padding:0 clamp(34px, 3vw, 58px);
+      border:1px solid rgba(216,166,78,.38);
+      border-radius:999px;
+      background:
+        radial-gradient(ellipse at 50% 0%, rgba(255,255,255,.44) 0 28%, transparent 62%),
+        linear-gradient(135deg, #f6d88f 0%, #dfae5a 50%, #f3cf86 100%);
+      color:#5b3518;
+      font-family:var(--sans);
+      font-weight:800;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+      font-size:clamp(17px, 1.15vw, 24px);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.55),
+        0 15px 28px rgba(107,68,22,.15),
+        0 4px 10px rgba(107,68,22,.08);
+      transition:transform .38s ease, box-shadow .38s ease, color .38s ease;
+    }
+    .project-cta::before{
+      content:"";
+      position:absolute;
+      top:0;
+      left:-120%;
+      width:70%;
+      height:100%;
+      z-index:2;
+      pointer-events:none;
+      background:linear-gradient(115deg, transparent 0%, rgba(255,255,255,.28) 45%, rgba(255,255,255,.58) 50%, rgba(255,255,255,.22) 55%, transparent 100%);
+      transform:skewX(-22deg);
+    }
+    .project-cta:hover{
+      transform:translateY(-3px);
+      color:#3a210e;
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.72),
+        inset 0 -2px 7px rgba(109,59,8,.18),
+        0 20px 40px rgba(91,51,12,.20),
+        0 0 26px rgba(216,166,78,.25);
+    }
+    .project-cta:hover::before{animation:goldShine .95s ease forwards}
+    .project-cta .project-cta-arrow{
+      font-size:clamp(32px, 2.3vw, 42px);
+      line-height:1;
+      font-weight:400;
+      transform:translateY(-1px);
+    }
+
+    @media (max-width:1320px){
+      .project-inner{width:min(100% - 40px, 1280px)}
+      .project-list{
+        display:flex;
+        gap:20px;
+        overflow-x:auto;
+        padding:2px 4px 20px;
+        margin-inline:-4px;
+        scroll-snap-type:x mandatory;
+        scrollbar-width:thin;
+      }
+      .project-card{
+        flex:0 0 min(370px, 35vw);
+        height:clamp(282px, 33vw, 396px);
+        scroll-snap-align:center;
+      }
+      .project-list::after{
+        content:"";
+        flex:0 0 1px;
+      }
+    }
+    @media (max-width:940px){
+      .project-section{padding:70px 0 82px}
+      .project-inner{width:min(100% - 32px, 1440px)}
+      .project-heading{margin-bottom:30px;gap:12px}
+      .project-heading::before,
+      .project-heading::after{flex-basis:70px}
+      .project-heading-core{padding-inline:12px}
+      .project-heading-diamond{width:10px;height:10px}
+      .project-heading-diamond.is-left{left:-6px}
+      .project-heading-diamond.is-right{right:-6px}
+      .project-list{
+        gap:16px;
+        padding:2px calc((100vw - min(100% - 32px, 1440px)) / 2) 18px;
+        margin-inline:calc((100vw - min(100% - 32px, 1440px)) / -2);
+      }
+      .project-card{
+        flex-basis:min(360px, 78vw);
+        height:clamp(292px, 74vw, 390px);
+        border-radius:18px;
+      }
+      .project-card:hover{transform:none}
+      .project-label{
+        left:22px;
+        right:22px;
+        bottom:12px;
+        min-height:76px;
+        padding-top:25px;
+        font-size:clamp(16px, 4.2vw, 19px);
+        line-height:1.22;
+      }
+      .project-cta{min-width:min(100%, 430px);min-height:64px;font-size:17px;gap:34px}
+    }
+    @media (max-width:560px){
+      .project-section{padding:58px 0 68px}
+      .project-heading::before,
+      .project-heading::after{display:none}
+      .project-heading h2{font-size:clamp(34px, 9vw, 44px)}
+      .project-heading-lotus{margin-top:11px}
+      .project-list{gap:14px;padding-bottom:16px}
+      .project-card{
+        flex-basis:calc(100vw - 48px);
+        height:clamp(274px, 75vw, 352px);
+      }
+      .project-label{
+        left:18px;
+        right:18px;
+        bottom:10px;
+        min-height:74px;
+        padding:24px 12px 11px;
+        font-size:clamp(15px, 4.05vw, 18px);
+        line-height:1.22;
+        letter-spacing:.015em;
+      }
+      .project-label::after{width:38px;height:28px;top:-13px}
+      .project-actions{margin-top:24px}
+      .project-cta{
+        width:100%;
+        min-width:0;
+        min-height:60px;
+        padding:0 26px;
+        gap:22px;
+        font-size:16px;
+      }
+      .project-cta .project-cta-arrow{font-size:34px}
+    }
+
+    /* ==========================================================
+       PROJECT SECTION HOTFIX — lotus icon lớn hơn + rút ngắn khoảng trống trên
+       Đặt cuối <style> để override phần project cũ.
+    ========================================================== */
+    .project-section{
+      padding-top:clamp(42px, 4.1vw, 72px) !important;
+    }
+
+    .project-heading{
+      margin-bottom:clamp(24px, 2.4vw, 42px) !important;
+    }
+
+    .project-heading-core{
+      row-gap:0;
+    }
+
+    .project-heading-lotus{
+      width:clamp(64px, 5vw, 98px) !important;
+      height:clamp(34px, 2.8vw, 56px) !important;
+      margin-top:clamp(2px, .35vw, 7px) !important;
+      opacity:.96 !important;
+      background-size:contain !important;
+      filter:
+        drop-shadow(0 3px 4px rgba(102,64,25,.10))
+        drop-shadow(0 0 10px rgba(185,139,69,.10));
+    }
+
+    @media (max-width:940px){
+      .project-section{
+        padding-top:48px !important;
+        padding-bottom:78px !important;
+      }
+
+      .project-heading{
+        margin-bottom:26px !important;
+      }
+
+      .project-heading-lotus{
+        width:82px !important;
+        height:48px !important;
+        margin-top:5px !important;
+      }
+    }
+
+    @media (max-width:560px){
+      .project-section{
+        padding-top:38px !important;
+        padding-bottom:66px !important;
+      }
+
+      .project-heading{
+        margin-bottom:24px !important;
+      }
+
+      .project-heading h2{
+        line-height:1.02 !important;
+      }
+
+      .project-heading-lotus{
+        width:76px !important;
+        height:44px !important;
+        margin-top:4px !important;
+      }
+    }
+
+
+
+
+    /* ==========================================================
+       PROJECT HEADING FINAL FIX — line/diamond căn theo riêng H2,
+       lotus decor vẫn giữ kích thước lớn theo SVG mới.
+       Đặt cuối <style> để override toàn bộ hotfix trước.
+    ========================================================== */
+    .project-heading{
+      align-items:flex-start !important;
+      margin-bottom:clamp(28px, 2.7vw, 48px) !important;
+      --project-title-size:clamp(38px, 3.1vw, 62px);
+      --project-title-center:calc(var(--project-title-size) * .54);
+    }
+
+    .project-heading::before,
+    .project-heading::after{
+      align-self:flex-start !important;
+      margin-top:var(--project-title-center) !important;
+      transform:none !important;
+    }
+
+    .project-heading-core{
+      display:inline-grid !important;
+      grid-template-columns:auto !important;
+      grid-template-rows:auto auto !important;
+      justify-items:center !important;
+      align-items:start !important;
+      row-gap:clamp(8px, .62vw, 12px) !important;
+      min-width:max-content !important;
+      padding:0 clamp(36px, 3vw, 58px) !important;
+    }
+
+    .project-heading h2{
+      grid-row:1 !important;
+      font-size:var(--project-title-size) !important;
+      line-height:1.04 !important;
+      margin:0 !important;
+    }
+
+    .project-heading-diamond{
+      top:var(--project-title-center) !important;
+      transform:translateY(-50%) !important;
+      width:clamp(11px, .78vw, 15px) !important;
+      height:clamp(11px, .78vw, 15px) !important;
+    }
+
+    .project-heading-diamond.is-left{
+      left:clamp(8px, .75vw, 14px) !important;
+    }
+
+    .project-heading-diamond.is-right{
+      right:clamp(8px, .75vw, 14px) !important;
+    }
+
+    .project-heading-lotus{
+      grid-row:2 !important;
+      width:clamp(190px, 14.8vw, 330px) !important;
+      height:clamp(42px, 3.45vw, 76px) !important;
+      margin-top:0 !important;
+      opacity:1 !important;
+      background:url("assets/images/decor/decor-project-lotus.svg") center / contain no-repeat !important;
+      filter:
+        drop-shadow(0 4px 5px rgba(102,64,25,.12))
+        drop-shadow(0 0 12px rgba(185,139,69,.16)) !important;
+    }
+
+    @media (max-width:940px){
+      .project-heading{
+        --project-title-size:clamp(36px, 6.1vw, 54px);
+        --project-title-center:calc(var(--project-title-size) * .54);
+        margin-bottom:30px !important;
+      }
+
+      .project-heading::before,
+      .project-heading::after{
+        flex-basis:80px !important;
+        margin-top:var(--project-title-center) !important;
+      }
+
+      .project-heading-core{
+        padding-inline:clamp(28px, 4vw, 42px) !important;
+        row-gap:8px !important;
+      }
+
+      .project-heading-diamond.is-left{left:8px !important;}
+      .project-heading-diamond.is-right{right:8px !important;}
+
+      .project-heading-lotus{
+        width:clamp(180px, 28vw, 260px) !important;
+        height:clamp(42px, 6.4vw, 64px) !important;
+      }
+    }
+
+    @media (max-width:560px){
+      .project-heading{
+        --project-title-size:clamp(34px, 9vw, 44px);
+        --project-title-center:calc(var(--project-title-size) * .54);
+        margin-bottom:26px !important;
+      }
+
+      .project-heading::before,
+      .project-heading::after{
+        display:none !important;
+      }
+
+      .project-heading-core{
+        padding-inline:0 !important;
+        row-gap:7px !important;
+        min-width:0 !important;
+        width:100% !important;
+      }
+
+      .project-heading-diamond{
+        display:none !important;
+      }
+
+      .project-heading h2{
+        line-height:1.04 !important;
+      }
+
+      .project-heading-lotus{
+        width:min(76vw, 235px) !important;
+        height:clamp(44px, 13vw, 62px) !important;
+      }
+    }
+
 </style>
 </head>
 <body>
@@ -8721,6 +9317,54 @@ body{
           <span class="trust-mobile-kicker">Lý do 01</span>
           <h3>Thấu hiểu tâm nguyện.</h3>
           <p>Lắng nghe và thấu hiểu tâm nguyện của từng gia chủ, khơi mở ý niệm an yên bản nguyên nhất.</p>
+        </div>
+      </div>
+    </section>
+
+
+    <section class="project-section" id="du-an" aria-labelledby="project-title">
+      <div class="project-inner">
+        <header class="project-heading">
+          <div class="project-heading-core">
+            <span class="project-heading-diamond is-left" aria-hidden="true"></span>
+            <h2 id="project-title">Dự án tiêu biểu</h2>
+            <span class="project-heading-diamond is-right" aria-hidden="true"></span>
+            <span class="project-heading-lotus" aria-hidden="true"></span>
+          </div>
+        </header>
+
+        <div class="project-list" aria-label="Các dự án tiêu biểu của Diệu Tướng Am">
+          <article class="project-card">
+            <img src="assets/images/projects/project-that-phat-duoc-su.webp" alt="Không gian tôn tượng Thất Phật Dược Sư trang nghiêm" loading="lazy" />
+            <a class="project-label" href="https://dieutuongam.com/tin-tuc/du-an/hanh-trinh-kien-tao-va-ho-tong-bo-ton-tuong-that-phat-duoc-su-ve-chua-sac-tu-khai-doan.html" target="_blank" rel="noopener noreferrer"><span class="project-label-text">Tôn tượng Thất Phật<br>Dược Sư</span></a>
+          </article>
+
+          <article class="project-card">
+            <img src="assets/images/projects/project-thanh-an-phap-tinh.webp" alt="Không gian Thanh An Pháp Tịnh với bàn thờ và ánh sáng ấm" loading="lazy" />
+            <a class="project-label" href="https://dieutuongam.com/tin-tuc/du-an/khong-gian-thanh-an-phap-tinh--noi-tinh-an-vun-day-chan-phuoc-tai-tp-ben-tre.html" target="_blank" rel="noopener noreferrer"><span class="project-label-text">Không gian Thanh An<br>Pháp Tịnh</span></a>
+          </article>
+
+          <article class="project-card">
+            <img src="assets/images/projects/project-tu-duong-nguyen-duc-luu-phuong.webp" alt="Tư đường Nguyễn Đức Lưu Phương bằng gỗ chạm khắc" loading="lazy" />
+            <a class="project-label" href="https://dieutuongam.com/tin-tuc/du-an/KH%C3%94NG%20GIAN%20LINH%20THI%C3%8ANG%20T%E1%BB%AA%20%C4%90%C6%AF%E1%BB%9CNG.html" target="_blank" rel="noopener noreferrer"><span class="project-label-text">Tư đường Nguyễn Đức<br>Lưu Phương</span></a>
+          </article>
+
+          <article class="project-card">
+            <img src="assets/images/projects/project-quan-am-tho-cong.webp" alt="Phòng thờ Quán Âm và Thổ Công với hoa tươi và ánh vàng" loading="lazy" />
+            <a class="project-label" href="https://dieutuongam.com/tin-tuc/du-an/thiet-ke-thi-cong-hoan-thien-phong-tho-quan-am-tho-cong-tai-tu-gia-thanh-hoa.html" target="_blank" rel="noopener noreferrer"><span class="project-label-text">Phòng thờ Quán Âm<br>&amp; Thổ Công</span></a>
+          </article>
+
+          <article class="project-card">
+            <img src="assets/images/projects/project-gian-tho-tu-gia.webp" alt="Thiết Trí Gian Thờ Phật - Không Gian Tâm Linh Trang Nghiêm Trong Công Trình Tư Gia Tân Cổ Điển" loading="lazy" />
+            <a class="project-label" href="https://dieutuongam.com/tin-tuc/du-an/thiet-tri-gian-tho-phat-trong-cong-trinh-tu-gia-tan-co-dien.html" target="_blank" rel="noopener noreferrer"><span class="project-label-text">Thiết trí Gian thờ tư gia</span></a>
+          </article>
+        </div>
+
+        <div class="project-actions">
+          <a class="project-cta" href="https://dieutuongam.com/tin-tuc/du-an.html" target="_blank" rel="noopener noreferrer">
+            <span>Xem thêm dự án</span>
+            <span class="project-cta-arrow" aria-hidden="true">›</span>
+          </a>
         </div>
       </div>
     </section>
