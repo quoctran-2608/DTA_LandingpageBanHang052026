@@ -10540,7 +10540,6 @@ body{
             <a href="#gioi-thieu">Giới thiệu</a>
             <a href="#dich-vu">Dịch vụ</a>
             <a href="#quy-trinh">Quy trình</a>
-            <a href="#ly-do-tin-chon">Tin chọn</a>
             <a href="#du-an">Dự án</a>
             <a href="#lien-he">Liên hệ</a>
           </nav>
@@ -10568,7 +10567,6 @@ body{
             <a href="#gioi-thieu">Giới thiệu</a>
             <a href="#dich-vu">Dịch vụ</a>
             <a href="#quy-trinh">Quy trình</a>
-            <a href="#ly-do-tin-chon">Tin chọn</a>
             <a href="#du-an">Dự án</a>
             <a href="#lien-he">Liên hệ</a>
             <a class="mobile-menu-cta" href="#tu-van" data-consult-trigger>BẮT ĐẦU HÀNH TRÌNH KIẾN TẠO</a>
@@ -11407,6 +11405,61 @@ body{
     }catch(error){}
 
     var links = Array.prototype.slice.call(document.querySelectorAll('.main-nav a[href^="#"], .mobile-menu-panel a[href^="#"]'));
+    var activeScroll = null;
+
+    function getScrollOffset(){
+      var rootStyles = window.getComputedStyle(document.documentElement);
+      var cssOffset = parseFloat(rootStyles.scrollPaddingTop) || 0;
+      var header = document.querySelector('.site-header');
+      var headerOffset = header ? header.getBoundingClientRect().height + 14 : 0;
+
+      return Math.max(cssOffset, headerOffset);
+    }
+
+    function easeSoft(t){
+      return t * t * t * (t * (t * 6 - 15) + 10);
+    }
+
+    function scrollGentlyTo(target){
+      var startY = window.pageYOffset || document.documentElement.scrollTop || 0;
+      var offset = getScrollOffset();
+      var documentHeight = Math.max(
+        document.body.scrollHeight,
+        document.documentElement.scrollHeight
+      );
+      var maxY = Math.max(0, documentHeight - window.innerHeight);
+      var targetY = Math.min(
+        maxY,
+        Math.max(0, target.getBoundingClientRect().top + startY - offset)
+      );
+      var distance = targetY - startY;
+
+      if(prefersReduced || Math.abs(distance) < 4){
+        window.scrollTo(0, targetY);
+        return;
+      }
+
+      if(activeScroll) window.cancelAnimationFrame(activeScroll);
+
+      var duration = Math.min(2200, Math.max(1250, Math.abs(distance) * 0.9));
+      var startedAt = null;
+
+      function step(timestamp){
+        if(!startedAt) startedAt = timestamp;
+        var progress = Math.min(1, (timestamp - startedAt) / duration);
+        var eased = easeSoft(progress);
+
+        window.scrollTo(0, startY + distance * eased);
+
+        if(progress < 1){
+          activeScroll = window.requestAnimationFrame(step);
+        }else{
+          activeScroll = null;
+        }
+      }
+
+      activeScroll = window.requestAnimationFrame(step);
+    }
 
     links.forEach(function(link){
       if(link.hasAttribute('data-consult-trigger')) return;
@@ -11419,10 +11472,7 @@ body{
         if(!target) return;
 
         event.preventDefault();
-        target.scrollIntoView({
-          behavior:prefersReduced ? 'auto' : 'smooth',
-          block:'start'
-        });
+        scrollGentlyTo(target);
 
         if(history.pushState){
           history.pushState(null, '', '#' + targetId);
