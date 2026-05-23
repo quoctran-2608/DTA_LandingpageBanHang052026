@@ -71,7 +71,11 @@
     }
 
     *{box-sizing:border-box}
-    html{scroll-behavior:smooth;background:#110a04}
+    html{
+      scroll-behavior:smooth;
+      scroll-padding-top:clamp(86px, 8vw, 126px);
+      background:#110a04;
+    }
     body{
       margin:0;
       color:#fff;
@@ -88,6 +92,10 @@
     img{display:block;max-width:100%}
     a{text-decoration:none;color:inherit}
     button{font:inherit}
+    section[id],
+    form[id]{
+      scroll-margin-top:clamp(86px, 8vw, 126px);
+    }
 
     .dta-page{
       width:100vw;
@@ -9094,6 +9102,159 @@ body{
     }
 
     /* ==========================================================
+       CONSULT POPUP — mở form tư vấn từ CTA chính
+    ========================================================== */
+    body.consult-modal-open{
+      overflow:hidden;
+    }
+
+    .consult-modal{
+      position:fixed;
+      inset:0;
+      z-index:10000;
+      display:grid;
+      place-items:center;
+      padding:clamp(18px, 3vw, 46px);
+      background:
+        radial-gradient(ellipse at 50% 28%, rgba(241,200,102,.22) 0 16%, transparent 54%),
+        linear-gradient(180deg, rgba(7,3,1,.74), rgba(7,3,1,.92));
+      -webkit-backdrop-filter:blur(12px);
+      backdrop-filter:blur(12px);
+      opacity:0;
+      visibility:hidden;
+      pointer-events:none;
+      transition:opacity .34s ease, visibility .34s ease;
+    }
+
+    .consult-modal.is-open{
+      opacity:1;
+      visibility:visible;
+      pointer-events:auto;
+    }
+
+    .consult-modal-panel{
+      position:relative;
+      width:min(940px, 100%);
+      max-height:min(88vh, 880px);
+      overflow:auto;
+      padding:clamp(22px, 2.4vw, 36px);
+      border:1px solid rgba(242,212,126,.62);
+      border-radius:clamp(18px, 2vw, 30px);
+      background:
+        radial-gradient(ellipse at 50% 0%, rgba(255,247,217,.22) 0 18%, transparent 48%),
+        linear-gradient(180deg, rgba(47,22,6,.96), rgba(24,10,3,.97));
+      box-shadow:0 34px 90px rgba(0,0,0,.58), 0 0 34px rgba(241,200,102,.18);
+      transform:translateY(18px) scale(.985);
+      transition:transform .4s cubic-bezier(.2,.82,.24,1);
+    }
+
+    .consult-modal.is-open .consult-modal-panel{
+      transform:none;
+    }
+
+    .consult-modal-close{
+      position:sticky;
+      top:0;
+      z-index:6;
+      float:right;
+      width:46px;
+      height:46px;
+      margin:-8px -8px 4px 14px;
+      border:1px solid rgba(242,212,126,.62);
+      border-radius:50%;
+      display:grid;
+      place-items:center;
+      background:rgba(39,19,6,.88);
+      color:#f8df91;
+      font-size:32px;
+      line-height:1;
+      cursor:pointer;
+      box-shadow:0 12px 28px rgba(0,0,0,.34);
+      transition:transform .25s ease, color .25s ease, box-shadow .25s ease;
+    }
+
+    .consult-modal-close:hover,
+    .consult-modal-close:focus-visible{
+      transform:scale(1.06);
+      color:#fff1bd;
+      box-shadow:0 16px 34px rgba(0,0,0,.42), 0 0 22px rgba(241,200,102,.24);
+      outline:none;
+    }
+
+    .consult-modal-kicker{
+      margin:2px 0 10px;
+      color:#f0c66b;
+      font-family:var(--sans);
+      font-size:13px;
+      font-weight:700;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+    }
+
+    .consult-modal-title{
+      margin:0 0 8px;
+      color:#fff7e9;
+      font-family:var(--serif);
+      font-weight:400;
+      font-size:clamp(30px, 3.1vw, 48px);
+      line-height:1.16;
+      letter-spacing:.06em;
+      text-shadow:0 8px 28px rgba(0,0,0,.5), 0 0 18px rgba(217,167,65,.16);
+    }
+
+    .consult-modal-note{
+      max-width:680px;
+      margin:0 0 clamp(18px, 1.7vw, 28px);
+      color:rgba(255,245,225,.84);
+      font-family:var(--sans);
+      font-size:clamp(15px, 1.05vw, 18px);
+      line-height:1.65;
+    }
+
+    .consult-modal .consult-form{
+      width:100%;
+      max-width:none;
+      margin:0;
+      box-shadow:0 22px 54px rgba(0,0,0,.24), inset 0 0 0 1px rgba(255,255,255,.42);
+    }
+
+    .consult-modal .consult-form h2{
+      display:none;
+    }
+
+    .consult-modal .form-feedback{
+      right:clamp(18px, 1.5vw, 28px);
+      bottom:clamp(16px, 1.4vw, 24px);
+    }
+
+    @media (max-width:720px){
+      .consult-modal{
+        padding:14px;
+        align-items:start;
+      }
+
+      .consult-modal-panel{
+        max-height:calc(100vh - 28px);
+        padding:20px 14px 16px;
+        border-radius:18px;
+      }
+
+      .consult-modal-close{
+        width:42px;
+        height:42px;
+        font-size:30px;
+      }
+
+      .consult-modal-title{
+        font-size:clamp(26px, 7.6vw, 36px);
+      }
+
+      .consult-modal-note{
+        font-size:15px;
+      }
+    }
+
+    /* ==========================================================
        HERO SACRED HOVER — trang nghiêm, huyền bí, đẳng cấp
     ========================================================== */
     .hero-media{
@@ -10379,8 +10540,8 @@ body{
             <a href="#gioi-thieu">Giới thiệu</a>
             <a href="#dich-vu">Dịch vụ</a>
             <a href="#quy-trinh">Quy trình</a>
+            <a href="#ly-do-tin-chon">Tin chọn</a>
             <a href="#du-an">Dự án</a>
-            <a href="#tin-tuc">Tin tức</a>
             <a href="#lien-he">Liên hệ</a>
           </nav>
           <a class="header-cta" href="#tu-van">
@@ -10407,10 +10568,10 @@ body{
             <a href="#gioi-thieu">Giới thiệu</a>
             <a href="#dich-vu">Dịch vụ</a>
             <a href="#quy-trinh">Quy trình</a>
+            <a href="#ly-do-tin-chon">Tin chọn</a>
             <a href="#du-an">Dự án</a>
-            <a href="#tin-tuc">Tin tức</a>
             <a href="#lien-he">Liên hệ</a>
-            <a class="mobile-menu-cta" href="#tu-van">BẮT ĐẦU HÀNH TRÌNH KIẾN TẠO</a>
+            <a class="mobile-menu-cta" href="#tu-van" data-consult-trigger>BẮT ĐẦU HÀNH TRÌNH KIẾN TẠO</a>
           </div>
         </nav>
       </header>
@@ -10453,7 +10614,7 @@ body{
           </div>
 
           <div class="hero-actions">
-            <a class="hero-button" href="#tu-van">
+            <a class="hero-button" href="#tu-van" data-consult-trigger>
               <span>BẮT ĐẦU HÀNH TRÌNH KIẾN TẠO</span>
               <span class="arrow">›</span>
             </a>
@@ -10833,7 +10994,7 @@ body{
             </div>
           </div>
 
-          <form class="consult-form" action="#" method="post" novalidate>
+          <form class="consult-form" id="tu-van" action="#" method="post" novalidate>
             <h2>Gửi tâm nguyện – Nhận tư vấn</h2>
 
             <div class="form-grid">
@@ -10845,7 +11006,7 @@ body{
 
               <label class="form-field">
                 <span>Số điện thoại <sup>*</sup></span>
-                <input id="consult-phone" type="tel" name="so-dien-thoai" autocomplete="tel" inputmode="tel" maxlength="20" placeholder="VD: 0936 066 112" required aria-describedby="consult-phone-error" />
+                <input id="consult-phone" type="tel" name="so-dien-thoai" autocomplete="tel" inputmode="tel" maxlength="20" placeholder="0938 959 503" required aria-describedby="consult-phone-error" />
                 <small class="form-error" id="consult-phone-error" aria-live="polite"></small>
               </label>
 
@@ -10968,7 +11129,7 @@ body{
               </div>
               <div class="footer-info-row">
                 <img src="assets/icons/footer/icon-phone.svg" alt="" loading="lazy" />
-                <span>Ms. Huệ: <a href="tel:0936066112">0936 066 112</a></span>
+                <span>Mr. Duy: <a href="tel:0936066112">0936 066 112</a></span>
               </div>
             </div>
           </div>
@@ -11017,6 +11178,16 @@ body{
       <img class="service-lightbox-image" alt="" />
       <figcaption class="service-lightbox-caption" hidden></figcaption>
     </figure>
+  </div>
+
+  <div class="consult-modal" id="consult-modal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="consult-modal-title" hidden>
+    <div class="consult-modal-panel" role="document">
+      <button class="consult-modal-close" type="button" aria-label="Đóng form tư vấn" data-consult-modal-close>×</button>
+      <div class="consult-modal-kicker">Bắt đầu hành trình kiến tạo</div>
+      <h2 class="consult-modal-title" id="consult-modal-title">Gửi tâm nguyện – Nhận tư vấn</h2>
+      <p class="consult-modal-note">Chia sẻ mong muốn của bạn, Diệu Tướng Am sẽ lắng nghe và phản hồi với định hướng phù hợp nhất.</p>
+      <div class="consult-modal-form-slot" data-consult-modal-form></div>
+    </div>
   </div>
 
 <script>
@@ -11226,6 +11397,37 @@ body{
 
     window.addEventListener('resize', function(){
       if(window.innerWidth > 940) closeMenu();
+    });
+  })();
+
+  (function(){
+    var prefersReduced = false;
+    try{
+      prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    }catch(error){}
+
+    var links = Array.prototype.slice.call(document.querySelectorAll('.main-nav a[href^="#"], .mobile-menu-panel a[href^="#"]'));
+
+    links.forEach(function(link){
+      if(link.hasAttribute('data-consult-trigger')) return;
+
+      link.addEventListener('click', function(event){
+        var targetId = decodeURIComponent((link.getAttribute('href') || '').slice(1));
+        if(!targetId) return;
+
+        var target = document.getElementById(targetId);
+        if(!target) return;
+
+        event.preventDefault();
+        target.scrollIntoView({
+          behavior:prefersReduced ? 'auto' : 'smooth',
+          block:'start'
+        });
+
+        if(history.pushState){
+          history.pushState(null, '', '#' + targetId);
+        }
+      });
     });
   })();
 
@@ -11454,6 +11656,116 @@ body{
       if(!rawAction || rawAction === '#' || rawAction.toLowerCase().indexOf('javascript:') === 0){
         event.preventDefault();
         setFeedback('Thông tin đã hợp lệ. Cảm ơn bạn đã chia sẻ tâm nguyện.', 'success');
+      }
+    });
+  })();
+
+  (function(){
+    var modal = document.getElementById('consult-modal');
+    var form = document.querySelector('.consult-form');
+    var triggers = Array.prototype.slice.call(document.querySelectorAll('[data-consult-trigger]'));
+    if(!modal || !form || !triggers.length) return;
+
+    var slot = modal.querySelector('[data-consult-modal-form]');
+    var closeButtons = Array.prototype.slice.call(modal.querySelectorAll('[data-consult-modal-close]'));
+    if(!slot) return;
+
+    var homeMarker = document.createComment('consult-form-home');
+    form.parentNode.insertBefore(homeMarker, form);
+
+    var closeTimer = null;
+    var lastFocused = null;
+
+    function getFocusable(){
+      return Array.prototype.slice.call(modal.querySelectorAll('a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'))
+        .filter(function(item){
+          return !!(item.offsetWidth || item.offsetHeight || item.getClientRects().length);
+        });
+    }
+
+    function moveFormToModal(){
+      slot.appendChild(form);
+      form.classList.add('is-visible', 'has-revealed');
+    }
+
+    function restoreForm(){
+      if(homeMarker.parentNode && form.parentNode !== homeMarker.parentNode){
+        homeMarker.parentNode.insertBefore(form, homeMarker.nextSibling);
+      }
+    }
+
+    function openModal(trigger){
+      if(closeTimer) window.clearTimeout(closeTimer);
+      lastFocused = trigger || document.activeElement;
+      moveFormToModal();
+
+      modal.hidden = false;
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('consult-modal-open');
+
+      window.requestAnimationFrame(function(){
+        modal.classList.add('is-open');
+        var firstField = form.querySelector('input, select, textarea');
+        if(firstField) firstField.focus({preventScroll:true});
+      });
+    }
+
+    function closeModal(){
+      if(modal.getAttribute('aria-hidden') === 'true') return;
+
+      modal.classList.remove('is-open');
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('consult-modal-open');
+
+      closeTimer = window.setTimeout(function(){
+        if(modal.getAttribute('aria-hidden') === 'true'){
+          modal.hidden = true;
+          restoreForm();
+        }
+      }, 360);
+
+      if(lastFocused && typeof lastFocused.focus === 'function'){
+        lastFocused.focus({preventScroll:true});
+      }
+    }
+
+    triggers.forEach(function(trigger){
+      trigger.setAttribute('aria-haspopup', 'dialog');
+      trigger.setAttribute('aria-controls', 'consult-modal');
+      trigger.addEventListener('click', function(event){
+        event.preventDefault();
+        openModal(trigger);
+      });
+    });
+
+    closeButtons.forEach(function(button){
+      button.addEventListener('click', closeModal);
+    });
+
+    modal.addEventListener('click', function(event){
+      if(event.target === modal) closeModal();
+    });
+
+    modal.addEventListener('keydown', function(event){
+      if(event.key === 'Escape'){
+        event.preventDefault();
+        closeModal();
+        return;
+      }
+
+      if(event.key !== 'Tab') return;
+      var focusable = getFocusable();
+      if(!focusable.length) return;
+
+      var first = focusable[0];
+      var last = focusable[focusable.length - 1];
+
+      if(event.shiftKey && document.activeElement === first){
+        event.preventDefault();
+        last.focus();
+      }else if(!event.shiftKey && document.activeElement === last){
+        event.preventDefault();
+        first.focus();
       }
     });
   })();
