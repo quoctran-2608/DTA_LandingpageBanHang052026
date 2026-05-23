@@ -10479,12 +10479,19 @@ body{
        đường kẻ footer cắt ngang khoảng 1/3 hoa sen, đồng thời làm
        chữ/icon Zalo lớn hơn và rõ hơn trong vòng tròn.
     ========================================================== */
+    .footer-connect-col,
+    .footer-connect-col .social-list,
+    .footer-connect-col .social-link{
+      position:relative;
+      z-index:3;
+    }
+
     .footer-lotus-line{
       right:clamp(-96px, -4.4vw, -52px) !important;
-      bottom:clamp(18px, 2.2vw, 38px) !important;
+      bottom:clamp(-8px, 1vw, 16px) !important;
       width:clamp(230px, 18.5vw, 330px) !important;
       opacity:.32 !important;
-      z-index:1 !important;
+      z-index:0 !important;
     }
 
     .social-link[aria-label*="Zalo"] img{
@@ -10497,7 +10504,7 @@ body{
     @media (max-width:1120px){
       .footer-lotus-line{
         right:clamp(-92px, -6vw, -58px) !important;
-        bottom:clamp(24px, 3vw, 46px) !important;
+        bottom:clamp(0px, 1.5vw, 22px) !important;
         width:clamp(220px, 24vw, 300px) !important;
         opacity:.28 !important;
       }
@@ -10506,7 +10513,7 @@ body{
     @media (max-width:720px){
       .footer-lotus-line{
         right:-86px !important;
-        bottom:96px !important;
+        bottom:64px !important;
         width:210px !important;
         opacity:.22 !important;
       }
@@ -10520,7 +10527,7 @@ body{
     @media (max-width:420px){
       .footer-lotus-line{
         right:-92px !important;
-        bottom:104px !important;
+        bottom:72px !important;
         width:198px !important;
       }
     }
@@ -10543,7 +10550,7 @@ body{
             <a href="#du-an">Dự án</a>
             <a href="#lien-he">Liên hệ</a>
           </nav>
-          <a class="header-cta" href="#tu-van">
+          <a class="header-cta" href="#tu-van" data-consult-trigger>
             <span>NHẬN TƯ VẤN</span>
             <span class="cta-lotus-icon" aria-hidden="true">
               <svg viewBox="0 0 32 32" focusable="false" role="img">
