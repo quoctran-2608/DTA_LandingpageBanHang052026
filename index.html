@@ -4936,7 +4936,7 @@
   }
 
   .intro-title{
-    margin:105px 0 104px !important;
+    margin:123px 0 104px !important;
   }
 
   .intro-title::before{
@@ -11051,6 +11051,58 @@ body{
       }
     }
 
+  
+
+    /* ==========================================================
+       MOBILE TITLE BLUR LOCK — lớp blur bám đúng từng dòng chữ
+       Dùng span inline + box-decoration-break để khi chữ tự xuống dòng
+       trên iPhone/Android, nền sáng vẫn đi theo đúng hộp chữ.
+    ========================================================== */
+    @media (max-width:680px){
+      .intro-title{
+        isolation:isolate !important;
+        overflow:visible !important;
+        background:none !important;
+      }
+
+      .intro-title::before{
+        display:none !important;
+        content:none !important;
+      }
+
+      .intro-title-line{
+        position:relative !important;
+        z-index:1 !important;
+        display:inline !important;
+        padding:.055em .22em .09em .18em !important;
+        margin-left:-.12em !important;
+        border-radius:18px !important;
+        background:
+          radial-gradient(ellipse at 18% 50%, rgba(255,252,244,.86) 0%, rgba(255,252,244,.58) 42%, rgba(255,252,244,.18) 76%, rgba(255,252,244,0) 100%),
+          linear-gradient(90deg, rgba(247,238,220,.72) 0%, rgba(247,238,220,.52) 58%, rgba(247,238,220,.18) 84%, rgba(247,238,220,0) 100%) !important;
+        box-shadow:
+          0 0 16px 9px rgba(255,250,238,.50),
+          0 0 34px 14px rgba(246,234,211,.26) !important;
+        -webkit-box-decoration-break:clone !important;
+        box-decoration-break:clone !important;
+      }
+
+      .intro-title br{
+        display:block !important;
+      }
+    }
+
+    @media (max-width:380px){
+      .intro-title-line{
+        padding:.045em .18em .08em .15em !important;
+        margin-left:-.08em !important;
+        border-radius:15px !important;
+        box-shadow:
+          0 0 14px 7px rgba(255,250,238,.48),
+          0 0 28px 12px rgba(246,234,211,.24) !important;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -11172,7 +11224,7 @@ body{
     <section class="intro-section" id="gioi-thieu" aria-label="Triết lý Diệu Tướng Am">
       <div class="intro-inner">
         <div class="intro-copy">
-          <h2 class="intro-title">Mỗi không gian đều bắt đầu<br/>từ một ý niệm trong tâm</h2>
+          <h2 class="intro-title"><span class="intro-title-line">Mỗi không gian đều bắt đầu</span><br/><span class="intro-title-line">từ một ý niệm trong tâm</span></h2>
           <div class="title-mark"></div>
           <p class="intro-text">Mỗi nếp nhà là một dòng chảy văn hóa riêng biệt. 15 năm qua, Diệu Tướng Am luôn là người bạn đồng hành lắng nghe những tâm nguyện riêng của từng gia chủ, để cùng kiến tạo nên những không gian có khả năng nuôi dưỡng đời sống tinh thần.</p>
 
