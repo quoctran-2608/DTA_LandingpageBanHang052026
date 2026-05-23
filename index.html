@@ -417,10 +417,14 @@
     .premium-title{
       position:relative;
       display:inline-block;
+      overflow:visible;
+      padding-top:.24em;
+      margin-top:-.24em;
     }
     .premium-title span{
       position:relative;
       display:inline-block;
+      overflow:visible;
       white-space:nowrap;
       background:
         linear-gradient(
@@ -1050,7 +1054,7 @@
         background-clip:initial;
       }
       .premium-title::after{display:none}
-      .hero-section{min-height:890px;padding-top:88px}.hero-media{height:48%}.hero-inner{padding-top:40vh}.eyebrow{display:none}.hero-title{letter-spacing:2.1px;line-height:1.16;max-width:100%}.premium-title span{white-space:normal}.hero-subtitle{font-size:17px;line-height:1.65}.hero-values{margin-top:34px;max-width:100%}.hero-value{padding-inline:8px;font-size:14px;min-height:94px}.hero-value img{width:52px;height:52px}.hero-value + .hero-value::before{height:62px}.hero-button{width:100%;min-width:0;min-height:58px;font-size:15px}.hero-note{text-align:center;font-size:14px}
+      .hero-section{min-height:890px;padding-top:88px}.hero-media{height:48%}.hero-inner{padding-top:40vh}.eyebrow{display:none}.hero-title{letter-spacing:2.1px;line-height:1.26;max-width:100%}.premium-title span{white-space:normal}.hero-subtitle{font-size:17px;line-height:1.65}.hero-values{margin-top:34px;max-width:100%}.hero-value{padding-inline:8px;font-size:14px;min-height:94px}.hero-value img{width:52px;height:52px}.hero-value + .hero-value::before{height:62px}.hero-button{width:100%;min-width:0;min-height:58px;font-size:15px}.hero-note{text-align:center;font-size:14px}
       .section-divider{height:92px}.divider-medallion{width:86px;height:86px;bottom:5px}.divider-gold{stroke-width:2}.divider-glow{stroke-width:7}
       .intro-section{padding-top:0}.intro-section::after{height:26px;background:linear-gradient(180deg,rgba(246,234,211,.58) 0%,rgba(246,234,211,.18) 70%,rgba(246,234,211,0) 100%)}.intro-inner{gap:14px}.intro-copy{order:2;padding-top:0}.intro-copy::before{display:none}.intro-title{font-size:clamp(30px, 8.2vw, 42px);letter-spacing:.9px;line-height:1.15}.intro-text{font-size:15px;line-height:1.72;letter-spacing:.01em;max-width:100%}.philosophy-cards{grid-template-columns:1fr;gap:14px}.philosophy-card{min-height:auto;padding:20px 18px}.philosophy-card img{width:70px;height:70px}.intro-visual{order:1;width:100vw;height:270px;min-height:0;margin:-30px calc((100vw - var(--container)) / -2) 0;isolation:isolate;background:#f6ead3;overflow:hidden}.intro-visual::before{content:"";display:block;position:absolute;left:0;right:0;top:0;width:auto;height:72px;z-index:7;background:linear-gradient(180deg,#f6ead3 0%,rgba(246,234,211,.68) 32%,rgba(246,234,211,.22) 68%,rgba(246,234,211,0) 100%);pointer-events:none}.intro-visual::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:48%;z-index:7;background:linear-gradient(180deg,rgba(246,234,211,0) 0%,rgba(246,234,211,.46) 46%,rgba(246,234,211,.9) 76%,#f6ead3 100%);pointer-events:none}.intro-visual img{position:absolute;inset:-24px 0 -32px auto;width:100%;height:calc(100% + 56px);object-fit:cover;object-position:center top;filter:saturate(1.04) contrast(1.02) brightness(.98);mask-image:linear-gradient(180deg,transparent 0%,rgba(0,0,0,.1) 7%,rgba(0,0,0,.72) 18%,#000 33%,#000 58%,rgba(0,0,0,.5) 72%,rgba(0,0,0,.12) 86%,transparent 100%);-webkit-mask-image:linear-gradient(180deg,transparent 0%,rgba(0,0,0,.1) 7%,rgba(0,0,0,.72) 18%,#000 33%,#000 58%,rgba(0,0,0,.5) 72%,rgba(0,0,0,.12) 86%,transparent 100%)}.intro-fog-top{display:none}
     }
@@ -3816,7 +3820,7 @@
     margin-top:92px !important;
     margin-bottom:96px !important;
     font-size:clamp(28px, 7.7vw, 34px) !important;
-    line-height:1.16 !important;
+    line-height:1.22 !important;
   }
 
   .intro-title::before{
@@ -5357,9 +5361,10 @@ body{
 .hero-title{
   max-width:690px !important;
   font-size:clamp(46px, 4.35vw, 72px) !important;
-  line-height:1.07 !important;
+  line-height:1.22 !important;
   letter-spacing:clamp(1.4px, .17vw, 3px) !important;
   font-weight:500 !important;
+  overflow:visible !important;
 }
 
 .premium-title span{
@@ -5381,7 +5386,7 @@ body{
 
 .hero-value{
   font-size:clamp(15px, 1.05vw, 18px) !important;
-  line-height:1.16 !important;
+  line-height:1.22 !important;
   font-weight:500 !important;
   letter-spacing:.005em !important;
 }
@@ -7213,6 +7218,8 @@ body{
 
 .hero-title{
   letter-spacing:clamp(.4px, .12vw, 2px) !important;
+  line-height:1.22 !important;
+  overflow:visible !important;
 }
 
 .intro-title{
@@ -9306,7 +9313,9 @@ body{
 
 
     /* =========================
-       CONTACT CTA + FOOTER
+       CONTACT CTA + FOOTER — REBALANCED V2
+       Fix chính: không cho form đè cột trái, hoa sen né title,
+       benefit cards có vùng an toàn, footer cân lại theo 4 cột.
     ========================== */
     .contact-footer-section{
       position:relative;
@@ -9315,7 +9324,7 @@ body{
       isolation:isolate;
       overflow:hidden;
       background:#120902 url("assets/images/bg/bg-footer-dark-wood.webp") center center / cover no-repeat;
-      padding:clamp(36px, 3.8vw, 66px) 0 clamp(28px, 3.2vw, 52px);
+      padding:clamp(36px, 3.2vw, 58px) 0 clamp(28px, 2.6vw, 44px);
     }
     .contact-footer-section::before{
       content:"";
@@ -9324,27 +9333,25 @@ body{
       z-index:-2;
       pointer-events:none;
       background:
-        radial-gradient(ellipse at 12% 24%, rgba(235,190,103,.12) 0 14%, transparent 42%),
-        radial-gradient(ellipse at 80% 10%, rgba(241,198,107,.08) 0 12%, transparent 45%),
-        linear-gradient(180deg, rgba(0,0,0,.18) 0%, rgba(0,0,0,.05) 36%, rgba(0,0,0,.38) 100%),
-        linear-gradient(90deg, rgba(0,0,0,.38) 0%, rgba(0,0,0,.06) 44%, rgba(0,0,0,.24) 100%);
+        radial-gradient(ellipse at 13% 25%, rgba(235,190,103,.11) 0 14%, transparent 42%),
+        radial-gradient(ellipse at 82% 8%, rgba(241,198,107,.075) 0 12%, transparent 44%),
+        linear-gradient(180deg, rgba(0,0,0,.20) 0%, rgba(0,0,0,.06) 38%, rgba(0,0,0,.40) 100%),
+        linear-gradient(90deg, rgba(0,0,0,.42) 0%, rgba(0,0,0,.06) 45%, rgba(0,0,0,.28) 100%);
     }
     .contact-footer-section::after{
       content:"";
       position:absolute;
-      inset:clamp(18px, 1.8vw, 34px) clamp(18px, 1.8vw, 34px) auto clamp(18px, 1.8vw, 34px);
-      height:clamp(560px, 45vw, 640px);
+      inset:clamp(18px, 1.6vw, 30px) clamp(18px, 1.6vw, 30px) auto clamp(18px, 1.6vw, 30px);
+      height:clamp(548px, 44vw, 650px);
       z-index:-1;
-      border:1px solid rgba(214,159,42,.55);
-      border-bottom-color:rgba(214,159,42,.34);
+      border:1px solid rgba(214,159,42,.56);
+      border-bottom-color:rgba(214,159,42,.30);
       border-radius:14px 14px 0 0;
-      box-shadow:
-        inset 0 0 0 1px rgba(255,223,139,.08),
-        0 0 28px rgba(181,118,28,.08);
+      box-shadow:inset 0 0 0 1px rgba(255,223,139,.075), 0 0 28px rgba(181,118,28,.08);
       pointer-events:none;
     }
     .contact-footer-inner{
-      width:var(--container);
+      width:min(100% - clamp(40px, 3.2vw, 72px), 1600px);
       margin-inline:auto;
       position:relative;
       z-index:5;
@@ -9354,87 +9361,97 @@ body{
     .footer-lotus-line,
     .footer-lotus-pattern-left{
       position:absolute;
-      z-index:1;
       pointer-events:none;
       user-select:none;
     }
     .footer-lotus-left{
-      left:clamp(-118px, -3.5vw, -42px);
-      top:clamp(70px, 7vw, 110px);
-      width:clamp(250px, 20vw, 380px);
-      opacity:.92;
-      filter:drop-shadow(0 18px 40px rgba(0,0,0,.28)) saturate(1.05);
+      left:clamp(-150px, -7vw, -88px);
+      top:clamp(18px, 3vw, 48px);
+      width:clamp(250px, 22vw, 360px);
+      z-index:1;
+      opacity:.84;
+      filter:drop-shadow(0 18px 40px rgba(0,0,0,.30)) saturate(1.05);
     }
     .footer-lotus-bud{
       left:clamp(6px, 1.1vw, 24px);
       top:clamp(0px, .8vw, 16px);
       width:clamp(54px, 4.8vw, 88px);
+      z-index:2;
       opacity:.9;
       filter:drop-shadow(0 8px 22px rgba(0,0,0,.25));
     }
     .footer-lotus-pattern-left{
-      left:clamp(-110px, -6vw, -40px);
-      top:clamp(54px, 5vw, 88px);
-      width:clamp(330px, 31vw, 520px);
-      opacity:.2;
+      left:clamp(-125px, -6vw, -58px);
+      top:clamp(58px, 5vw, 92px);
+      width:clamp(340px, 31vw, 520px);
+      z-index:0;
+      opacity:.20;
       mix-blend-mode:screen;
       filter:drop-shadow(0 0 10px rgba(219,168,62,.12));
     }
     .footer-lotus-line{
-      right:clamp(-80px, -2.5vw, -28px);
-      bottom:clamp(34px, 4.1vw, 78px);
-      width:clamp(190px, 17vw, 305px);
-      opacity:.5;
+      right:clamp(-90px, -4vw, -48px);
+      bottom:clamp(70px, 6vw, 105px);
+      width:clamp(220px, 18vw, 320px);
+      z-index:1;
+      opacity:.34;
       mix-blend-mode:screen;
       filter:drop-shadow(0 0 12px rgba(217,167,65,.16));
     }
     .contact-cta{
       display:grid;
-      grid-template-columns:minmax(390px, .93fr) minmax(560px, 1.28fr);
-      gap:clamp(32px, 4.2vw, 74px);
-      align-items:center;
-      min-height:clamp(430px, 31vw, 520px);
-      padding:clamp(34px, 3vw, 58px) 0 clamp(18px, 2vw, 34px);
+      grid-template-columns:minmax(560px, .9fr) minmax(680px, 1.1fr);
+      gap:clamp(56px, 4.2vw, 78px);
+      align-items:start;
+      min-height:clamp(455px, 32vw, 570px);
+      padding:clamp(42px, 4vw, 66px) clamp(24px, 2.6vw, 46px) clamp(26px, 2.8vw, 42px);
       position:relative;
+      z-index:5;
     }
     .contact-copy{
       position:relative;
       z-index:4;
-      padding-left:clamp(162px, 15vw, 250px);
-      max-width:680px;
+      align-self:start;
+      min-width:0;
+      overflow:visible;
     }
     .contact-copy h2{
-      margin:0 0 clamp(18px, 1.4vw, 26px);
-      max-width:510px;
+      margin:0 0 clamp(18px, 1.4vw, 26px) clamp(136px, 12vw, 210px);
+      width:min(430px, calc(100% - clamp(136px, 12vw, 210px)));
       color:#fff7e9;
       font-family:var(--serif);
       font-weight:400;
-      font-size:clamp(38px, 3.2vw, 58px);
+      font-size:clamp(38px, 3.05vw, 58px);
       line-height:1.18;
-      letter-spacing:.06em;
+      letter-spacing:.045em;
+      text-wrap:balance;
       text-shadow:0 8px 28px rgba(0,0,0,.55), 0 0 18px rgba(217,167,65,.14);
     }
     .contact-copy p{
-      margin:0;
-      max-width:520px;
+      margin:0 0 0 clamp(136px, 12vw, 210px);
+      width:min(430px, calc(100% - clamp(136px, 12vw, 210px)));
       color:rgba(255,255,255,.88);
       font-family:var(--sans);
-      font-size:clamp(17px, 1.25vw, 22px);
+      font-size:clamp(16px, 1.15vw, 21px);
       line-height:1.68;
       letter-spacing:.025em;
       text-shadow:0 7px 22px rgba(0,0,0,.58);
     }
     .contact-benefits{
       margin-top:clamp(26px, 2.2vw, 42px);
+      margin-left:clamp(108px, 9.8vw, 170px);
       display:grid;
       grid-template-columns:repeat(3, minmax(0, 1fr));
-      gap:clamp(14px, 1.2vw, 20px);
-      width:min(100%, 610px);
+      gap:clamp(12px, 1vw, 18px);
+      width:min(535px, calc(100% - clamp(108px, 9.8vw, 170px) + 36px));
+      max-width:535px;
+      overflow:visible;
     }
     .contact-benefit-card{
       position:relative;
-      min-height:clamp(170px, 11.4vw, 210px);
-      padding:clamp(18px, 1.4vw, 24px) clamp(12px, 1.1vw, 18px);
+      min-width:0;
+      min-height:clamp(164px, 11vw, 184px);
+      padding:clamp(18px, 1.5vw, 24px) clamp(12px, 1.1vw, 18px);
       display:flex;
       flex-direction:column;
       align-items:center;
@@ -9456,10 +9473,10 @@ body{
       pointer-events:none;
     }
     .contact-benefit-card img{
-      width:clamp(58px, 4.4vw, 78px);
-      height:clamp(58px, 4.4vw, 78px);
+      width:clamp(52px, 4vw, 72px);
+      height:clamp(52px, 4vw, 72px);
       object-fit:contain;
-      margin-bottom:clamp(16px, 1.4vw, 24px);
+      margin-bottom:clamp(14px, 1.2vw, 20px);
       filter:drop-shadow(0 0 12px rgba(217,167,65,.22));
       transition:transform .38s ease, filter .38s ease;
     }
@@ -9468,16 +9485,17 @@ body{
       color:#fff7eb;
       font-family:var(--serif);
       font-weight:400;
-      font-size:clamp(17px, 1.2vw, 22px);
+      font-size:clamp(16px, 1vw, 19px);
       line-height:1.22;
       letter-spacing:.035em;
     }
     .contact-benefit-card p{
       margin:0;
+      width:auto;
       color:rgba(255,255,255,.86);
       font-family:var(--sans);
-      font-size:clamp(13px, .92vw, 16px);
-      line-height:1.52;
+      font-size:clamp(12.5px, .86vw, 15px);
+      line-height:1.45;
       letter-spacing:.02em;
     }
     .contact-benefit-card:hover{
@@ -9492,15 +9510,19 @@ body{
     }
     .consult-form{
       position:relative;
-      z-index:5;
-      padding:clamp(28px, 2.2vw, 42px) clamp(28px, 2.4vw, 48px) clamp(20px, 1.8vw, 32px);
+      z-index:6;
+      align-self:start;
+      width:100%;
+      max-width:780px;
+      justify-self:end;
+      padding:clamp(30px, 2.7vw, 46px);
       color:#3c241d;
-      border-radius:14px;
+      border-radius:16px;
       background:
-        radial-gradient(ellipse at 22% 0%, rgba(255,255,255,.72) 0 18%, transparent 58%),
-        linear-gradient(135deg, rgba(255,251,243,.98), rgba(246,232,212,.95));
+        radial-gradient(ellipse at 22% 0%, rgba(255,255,255,.76) 0 18%, transparent 58%),
+        linear-gradient(135deg, rgba(255,250,239,.98), rgba(246,234,214,.95));
       border:1px solid rgba(132,79,31,.16);
-      box-shadow:0 26px 70px rgba(0,0,0,.34), inset 0 0 0 1px rgba(255,255,255,.42);
+      box-shadow:0 26px 70px rgba(0,0,0,.32), inset 0 1px 0 rgba(255,255,255,.8);
       overflow:hidden;
     }
     .consult-form::before{
@@ -9517,37 +9539,34 @@ body{
       margin:0 0 clamp(24px, 2vw, 34px);
       color:#613338;
       font-family:var(--serif);
-      font-size:clamp(24px, 1.75vw, 34px);
+      font-size:clamp(22px, 1.65vw, 30px);
       font-weight:700;
-      letter-spacing:.08em;
+      letter-spacing:.12em;
       text-transform:uppercase;
       text-align:center;
     }
     .form-grid{
       display:grid;
       grid-template-columns:repeat(2, minmax(0, 1fr));
-      gap:clamp(18px, 1.4vw, 26px) clamp(18px, 1.6vw, 30px);
+      gap:clamp(16px, 1.25vw, 24px) clamp(18px, 1.6vw, 30px);
     }
     .form-field{
+      position:relative;
       display:flex;
       flex-direction:column;
       gap:8px;
       color:#432a20;
       font-family:var(--sans);
-      font-size:clamp(14px, .98vw, 17px);
+      font-size:clamp(14px, .95vw, 17px);
       letter-spacing:.01em;
     }
     .form-field.is-full{grid-column:1 / -1}
-    .form-field sup{
-      color:#a05b32;
-      font-size:.8em;
-      top:0;
-    }
+    .form-field sup{color:#a05b32;font-size:.8em;top:0}
     .form-field input,
     .form-field select,
     .form-field textarea{
       width:100%;
-      min-height:clamp(48px, 3.7vw, 58px);
+      min-height:clamp(46px, 3.25vw, 54px);
       padding:0 18px;
       border:1px solid rgba(166,104,33,.28);
       border-radius:7px;
@@ -9560,7 +9579,7 @@ body{
       transition:border-color .3s ease, box-shadow .3s ease, background .3s ease;
     }
     .form-field textarea{
-      min-height:clamp(96px, 6.7vw, 128px);
+      min-height:clamp(88px, 5.6vw, 112px);
       padding-top:16px;
       resize:vertical;
     }
@@ -9573,13 +9592,57 @@ body{
       background:rgba(255,253,248,.82);
       box-shadow:0 0 0 3px rgba(217,167,65,.16), inset 0 1px 0 rgba(255,255,255,.65);
     }
+    .form-error{
+      position:absolute;
+      left:0;
+      right:0;
+      top:calc(100% + 5px);
+      z-index:12;
+      max-width:100%;
+      min-height:0;
+      padding:6px 9px;
+      border:1px solid rgba(166,49,28,.18);
+      border-radius:7px;
+      color:#9a2d1c;
+      background:rgba(255,247,241,.96);
+      box-shadow:0 10px 22px rgba(77,31,18,.16);
+      font-family:var(--sans);
+      font-size:clamp(11px, .76vw, 13px);
+      font-weight:700;
+      line-height:1.25;
+      letter-spacing:.01em;
+      opacity:0;
+      visibility:hidden;
+      transform:translateY(-4px);
+      pointer-events:none;
+      transition:opacity .22s ease, transform .22s ease, visibility .22s ease;
+    }
+    .form-field.is-invalid:focus-within .form-error,
+    .form-field.is-invalid:hover .form-error{
+      opacity:1;
+      visibility:visible;
+      transform:translateY(0);
+    }
+    .form-field.is-invalid input,
+    .form-field.is-invalid select,
+    .form-field.is-invalid textarea{
+      border-color:rgba(166,49,28,.86);
+      background:rgba(255,244,239,.88);
+      box-shadow:0 0 0 3px rgba(166,49,28,.13), inset 0 1px 0 rgba(255,255,255,.64);
+    }
+    .form-field.is-valid input,
+    .form-field.is-valid select,
+    .form-field.is-valid textarea{
+      border-color:rgba(95,128,68,.54);
+      background:rgba(255,253,248,.78);
+    }
     .consult-submit{
       position:relative;
       isolation:isolate;
       overflow:hidden;
       margin-top:clamp(18px, 1.55vw, 28px);
       width:100%;
-      min-height:clamp(58px, 4.3vw, 72px);
+      min-height:clamp(56px, 4.1vw, 70px);
       border:0;
       border-radius:7px;
       cursor:pointer;
@@ -9592,7 +9655,7 @@ body{
       box-shadow:inset 0 1px 0 rgba(255,255,255,.28), 0 14px 34px rgba(142,81,13,.2);
       font-family:var(--sans);
       font-weight:700;
-      font-size:clamp(18px, 1.35vw, 25px);
+      font-size:clamp(18px, 1.3vw, 25px);
       letter-spacing:.12em;
       text-transform:uppercase;
       transition:transform .35s ease, box-shadow .35s ease, filter .35s ease;
@@ -9610,17 +9673,8 @@ body{
     }
     .consult-submit span,
     .consult-submit img{position:relative;z-index:2}
-    .consult-submit img{
-      width:clamp(30px, 2.6vw, 44px);
-      height:clamp(30px, 2.6vw, 44px);
-      object-fit:contain;
-      opacity:.92;
-    }
-    .consult-submit:hover{
-      transform:translateY(-2px);
-      filter:brightness(1.05);
-      box-shadow:inset 0 1px 0 rgba(255,255,255,.34), 0 18px 40px rgba(142,81,13,.3), 0 0 24px rgba(217,167,65,.2);
-    }
+    .consult-submit img{width:clamp(30px, 2.6vw, 44px);height:clamp(30px, 2.6vw, 44px);object-fit:contain;opacity:.92}
+    .consult-submit:hover{transform:translateY(-2px);filter:brightness(1.05);box-shadow:inset 0 1px 0 rgba(255,255,255,.34), 0 18px 40px rgba(142,81,13,.3), 0 0 24px rgba(217,167,65,.2)}
     .consult-submit:hover::before{animation:goldShine .95s ease forwards}
     .form-privacy{
       margin:clamp(14px, 1.2vw, 22px) 0 0;
@@ -9635,20 +9689,51 @@ body{
       letter-spacing:.04em;
       text-align:center;
     }
-    .form-privacy img{
-      width:18px;
-      height:18px;
-      object-fit:contain;
-      opacity:.78;
+    .form-privacy img{width:18px;height:18px;object-fit:contain;opacity:.78}
+    .form-feedback{
+      position:absolute;
+      z-index:15;
+      right:clamp(14px, 1.4vw, 24px);
+      bottom:clamp(12px, 1.2vw, 20px);
+      max-width:min(380px, calc(100% - 28px));
+      margin:0;
+      padding:10px 14px;
+      border-radius:999px;
+      font-family:var(--sans);
+      font-weight:700;
+      font-size:clamp(13px, .92vw, 15px);
+      line-height:1.45;
+      text-align:center;
+      box-shadow:0 14px 34px rgba(0,0,0,.18);
+      opacity:1;
+      transform:translateY(0);
+      pointer-events:none;
+      transition:opacity .25s ease, transform .25s ease, visibility .25s ease;
+    }
+    .form-feedback.is-empty{
+      opacity:0;
+      visibility:hidden;
+      transform:translateY(8px);
+    }
+    .form-feedback.is-error{
+      color:#8d2617;
+      background:rgba(255,238,230,.82);
+      border:1px solid rgba(166,49,28,.24);
+    }
+    .form-feedback.is-success{
+      color:#35531f;
+      background:rgba(246,251,235,.82);
+      border:1px solid rgba(95,128,68,.25);
     }
     .footer-main{
       position:relative;
+      z-index:4;
       margin-top:clamp(18px, 2vw, 38px);
-      padding:clamp(30px, 2.3vw, 48px) 0 clamp(24px, 2vw, 40px);
+      padding:clamp(34px, 3.2vw, 54px) 0 clamp(24px, 2vw, 40px);
       border-top:1px solid rgba(215,167,65,.54);
       display:grid;
-      grid-template-columns:minmax(260px, .9fr) minmax(280px, 1fr) minmax(300px, 1fr) minmax(270px, .95fr);
-      gap:clamp(20px, 2vw, 36px);
+      grid-template-columns:minmax(220px, 1.05fr) minmax(270px, 1.25fr) minmax(285px, 1.25fr) minmax(230px, 1fr);
+      gap:clamp(18px, 1.7vw, 32px);
     }
     .footer-main::before{
       content:"";
@@ -9661,6 +9746,7 @@ body{
     }
     .footer-col{
       position:relative;
+      z-index:2;
       min-width:0;
       padding:0 clamp(14px, 1.5vw, 28px);
     }
@@ -9674,197 +9760,137 @@ body{
       width:1px;
       background:linear-gradient(180deg, transparent, rgba(215,167,65,.56), transparent);
     }
-    .footer-logo{
-      width:clamp(150px, 10vw, 210px);
-      height:auto;
-      margin:0 auto clamp(18px, 1.7vw, 28px);
-      filter:drop-shadow(0 0 18px rgba(217,167,65,.16));
-    }
-    .footer-tagline{
-      margin:0;
-      color:rgba(255,242,217,.88);
-      font-family:var(--sans);
-      font-size:clamp(13px, .92vw, 16px);
-      line-height:1.65;
-      letter-spacing:.02em;
-      text-align:center;
-    }
-    .footer-col h3{
-      margin:0 0 clamp(16px, 1.3vw, 24px);
-      color:#d9a741;
-      font-family:var(--serif);
-      font-weight:400;
-      font-size:clamp(18px, 1.26vw, 24px);
-      line-height:1.18;
-      letter-spacing:.08em;
-      text-transform:uppercase;
-    }
-    .footer-info{
-      display:grid;
-      gap:clamp(14px, 1.35vw, 24px);
-    }
-    .footer-info-row{
-      display:grid;
-      grid-template-columns:24px 1fr;
-      gap:12px;
-      align-items:start;
-      color:rgba(255,255,255,.9);
-      font-family:var(--sans);
-      font-size:clamp(15px, 1.08vw, 19px);
-      line-height:1.65;
-      letter-spacing:.015em;
-    }
-    .footer-info-row img{
-      width:20px;
-      height:20px;
-      margin-top:.3em;
-      object-fit:contain;
-      filter:drop-shadow(0 0 9px rgba(217,167,65,.25));
-    }
-    .social-list{
-      display:flex;
-      align-items:center;
-      gap:clamp(12px, 1.2vw, 18px);
-      margin-bottom:clamp(20px, 1.7vw, 30px);
-    }
-    .social-link{
-      width:clamp(48px, 3.5vw, 62px);
-      height:clamp(48px, 3.5vw, 62px);
-      display:grid;
-      place-items:center;
-      border:1px solid rgba(217,167,65,.62);
-      border-radius:50%;
-      background:rgba(12,6,2,.18);
-      transition:transform .35s ease, border-color .35s ease, box-shadow .35s ease, background .35s ease;
-    }
-    .social-link img{
-      width:45%;
-      height:45%;
-      object-fit:contain;
-      filter:drop-shadow(0 0 8px rgba(217,167,65,.18));
-    }
-    .social-link:hover{
-      transform:translateY(-4px);
-      border-color:rgba(240,198,107,.95);
-      background:rgba(217,167,65,.08);
-      box-shadow:0 0 22px rgba(217,167,65,.18);
-    }
-    .footer-website{
-      display:grid;
-      grid-template-columns:24px 1fr;
-      gap:12px;
-      align-items:center;
-      color:rgba(255,255,255,.92);
-      font-family:var(--sans);
-      font-size:clamp(16px, 1.15vw, 21px);
-      letter-spacing:.02em;
-    }
-    .footer-website img{width:21px;height:21px;object-fit:contain}
-    .footer-bottom{
-      position:relative;
-      display:grid;
-      grid-template-columns:1fr auto 1fr;
-      align-items:center;
-      gap:24px;
-      padding-top:clamp(18px, 1.5vw, 26px);
-      border-top:1px solid rgba(215,167,65,.44);
-      color:#c79b4a;
-      font-family:var(--sans);
-      font-size:clamp(13px, .95vw, 16px);
-      letter-spacing:.025em;
-    }
-    .footer-bottom::before{
-      content:"";
-      position:absolute;
-      top:-1px;
-      left:0;
-      right:0;
-      height:1px;
-      background:linear-gradient(90deg, rgba(215,167,65,.44), rgba(255,220,132,.18), transparent);
-    }
-    .footer-policy{
-      grid-column:2;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      gap:18px;
-      white-space:nowrap;
-    }
-    .footer-policy span{opacity:.65}
-    .footer-policy a,
+    .footer-logo{width:clamp(150px, 10vw, 210px);height:auto;margin:0 auto clamp(1px, .18vw, 4px);filter:drop-shadow(0 0 18px rgba(217,167,65,.16))}
+    .footer-tagline{margin:0;color:rgba(255,242,217,.88);font-family:var(--sans);font-size:clamp(13px, .9vw, 17px);line-height:1.35;letter-spacing:.005em;text-align:center;white-space:nowrap}
+    .footer-col h3{margin:0 0 clamp(16px, 1.3vw, 24px);color:#d9a741;font-family:var(--serif);font-weight:400;font-size:clamp(18px, 1.26vw, 24px);line-height:1.18;letter-spacing:.08em;text-transform:uppercase}
+    .footer-info{display:grid;gap:clamp(14px, 1.35vw, 24px)}
+    .footer-info-row{display:grid;grid-template-columns:24px 1fr;gap:12px;align-items:start;color:rgba(255,255,255,.9);font-family:var(--sans);font-size:clamp(15px, 1.08vw, 19px);line-height:1.65;letter-spacing:.015em}
+    .footer-info-row img{width:20px;height:20px;margin-top:.3em;object-fit:contain;filter:drop-shadow(0 0 9px rgba(217,167,65,.25))}
+    .social-list{display:flex;align-items:center;gap:clamp(12px, 1.2vw, 18px);margin-bottom:clamp(20px, 1.7vw, 30px)}
+    .social-link{width:clamp(48px, 3.5vw, 62px);height:clamp(48px, 3.5vw, 62px);display:grid;place-items:center;border:1px solid rgba(217,167,65,.62);border-radius:50%;background:rgba(12,6,2,.18);transition:transform .35s ease, border-color .35s ease, box-shadow .35s ease, background .35s ease}
+    .social-link img{width:45%;height:45%;object-fit:contain;filter:drop-shadow(0 0 8px rgba(217,167,65,.18))}
+    .social-link:hover{transform:translateY(-4px);border-color:rgba(240,198,107,.95);background:rgba(217,167,65,.08);box-shadow:0 0 22px rgba(217,167,65,.18)}
+    .footer-website{display:grid;grid-template-columns:24px minmax(0,1fr);gap:12px;align-items:center;color:rgba(255,255,255,.92);font-family:var(--sans);font-size:clamp(16px, 1.15vw, 21px);letter-spacing:.02em}
+    .footer-website img{width:21px;height:21px;object-fit:contain}.footer-website span{min-width:0;overflow-wrap:anywhere}
+    .footer-bottom{position:relative;z-index:4;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:24px;padding-top:clamp(18px, 1.5vw, 26px);border-top:1px solid rgba(215,167,65,.44);color:#c79b4a;font-family:var(--sans);font-size:clamp(13px, .95vw, 16px);letter-spacing:.025em}
+    .footer-bottom::before{content:"";position:absolute;top:-1px;left:0;right:0;height:1px;background:linear-gradient(90deg, rgba(215,167,65,.44), rgba(255,220,132,.18), transparent)}
     .footer-bottom a{transition:color .3s ease, text-shadow .3s ease}
-    .footer-policy a:hover,
     .footer-bottom a:hover{color:#f0c66b;text-shadow:0 0 12px rgba(240,198,107,.28)}
     .footer-copyright{grid-column:1;margin:0}
 
-    @media (max-width:1280px){
-      .contact-copy{padding-left:clamp(132px, 13vw, 210px)}
-      .contact-cta{grid-template-columns:minmax(340px, .85fr) minmax(520px, 1.15fr);gap:34px}
-      .footer-main{grid-template-columns:repeat(2, minmax(0,1fr))}
-      .footer-col:nth-child(3)::before{display:none}
-      .footer-col:first-child{padding-left:clamp(14px, 1.5vw, 28px)}
+    @media (max-width:1320px){
+      .contact-footer-inner{width:min(100% - 48px, 1480px)}
+      .contact-cta{grid-template-columns:minmax(500px, .88fr) minmax(620px, 1.12fr);gap:clamp(38px, 3.2vw, 54px);padding-inline:clamp(20px, 2.2vw, 36px)}
+      .contact-copy h2,.contact-copy p{margin-left:clamp(118px, 10.4vw, 150px);width:min(410px, calc(100% - clamp(118px, 10.4vw, 150px)))}
+      .contact-benefits{margin-left:clamp(94px, 8.5vw, 128px);width:min(482px, calc(100% - clamp(94px, 8.5vw, 128px) + 26px))}
+      .consult-form{max-width:720px}
+      .footer-main{grid-template-columns:minmax(200px, 1.05fr) minmax(235px, 1.25fr) minmax(245px, 1.25fr) minmax(210px, 1fr);gap:clamp(12px, 1.3vw, 22px)}
+      .footer-col{padding-inline:clamp(10px, 1vw, 16px)}
+      .footer-col:first-child{padding-left:0}
     }
-    @media (max-width:980px){
+    @media (max-width:1120px){
       .contact-footer-section{padding-top:56px}
       .contact-footer-section::after{height:clamp(720px, 85vw, 890px)}
       .contact-cta{grid-template-columns:1fr;gap:34px;min-height:0;padding-top:32px}
-      .contact-copy{padding-left:clamp(110px, 18vw, 170px);max-width:none}
-      .contact-copy h2{max-width:620px}
-      .contact-copy p{max-width:640px}
-      .contact-benefits{width:100%;max-width:none}
-      .consult-form{max-width:850px;width:100%;margin-inline:auto}
+      .contact-copy h2,.contact-copy p{margin-left:clamp(110px, 18vw, 170px);width:min(620px, calc(100% - clamp(110px, 18vw, 170px)))}
+      .contact-benefits{margin-left:clamp(110px, 18vw, 170px);width:min(680px, calc(100% - clamp(110px, 18vw, 170px)));max-width:680px}
+      .consult-form{max-width:850px;width:100%;margin-inline:auto;justify-self:center}
       .footer-lotus-left{top:78px;width:260px;left:-92px;opacity:.72}
       .footer-lotus-pattern-left{top:58px;width:380px;left:-120px;opacity:.15}
+      .footer-main{grid-template-columns:repeat(2, minmax(0,1fr));gap:0 clamp(18px, 3vw, 28px)}
+      .footer-col:nth-child(3)::before{display:none}
       .footer-bottom{grid-template-columns:1fr;gap:12px;text-align:center}
-      .footer-copyright,.footer-policy{grid-column:auto;justify-content:center}
+      .footer-copyright{grid-column:auto;justify-content:center}
     }
     @media (max-width:720px){
       .contact-footer-section{padding:44px 0 32px}
+      .contact-footer-inner{width:min(100% - 32px, 680px)}
       .contact-footer-section::after{inset:16px 12px auto;height:760px;border-radius:10px 10px 0 0}
       .footer-lotus-bud{width:58px;left:12px;top:4px;opacity:.68}
       .footer-lotus-left{width:220px;left:-90px;top:78px;opacity:.42;filter:blur(.1px) drop-shadow(0 14px 30px rgba(0,0,0,.3))}
       .footer-lotus-pattern-left{width:310px;left:-132px;top:62px;opacity:.12}
       .footer-lotus-line{width:210px;right:-84px;bottom:126px;opacity:.24}
-      .contact-cta{padding-top:34px;gap:28px}
-      .contact-copy{padding-left:0;text-align:left}
-      .contact-copy h2{font-size:clamp(34px, 9vw, 48px);line-height:1.18;letter-spacing:.045em;max-width:460px;padding-left:84px;min-height:118px;display:flex;align-items:center}
-      .contact-copy p{font-size:16px;line-height:1.68;max-width:none}
-      .contact-benefits{grid-template-columns:1fr;gap:12px;margin-top:22px}
-      .contact-benefit-card{min-height:0;display:grid;grid-template-columns:66px 1fr;align-items:center;justify-items:start;text-align:left;gap:14px;padding:16px 18px}
-      .contact-benefit-card img{width:54px;height:54px;margin:0;grid-row:1 / span 2}
-      .contact-benefit-card h3{font-size:20px;margin:0 0 4px}
-      .contact-benefit-card p{font-size:14px;line-height:1.42}
-      .consult-form{padding:26px 18px 22px;border-radius:12px}
-      .consult-form h2{font-size:clamp(21px, 5.8vw, 28px);line-height:1.25;letter-spacing:.05em;margin-bottom:22px}
+      .contact-cta{padding:34px 0 24px;gap:28px}
+      .contact-copy{text-align:left}
+      .contact-copy h2{margin-left:0;width:100%;font-size:clamp(34px, 9vw, 48px);line-height:1.18;letter-spacing:.045em;max-width:460px;padding-left:84px;min-height:118px;display:flex;align-items:center}
+      .contact-copy p{margin-left:0;width:100%;font-size:16px;line-height:1.68;max-width:none}
+      .contact-benefits{margin-left:0;width:100%;max-width:none;grid-template-columns:1fr;gap:12px}
+      .contact-benefit-card{min-height:0;display:grid;grid-template-columns:68px 1fr;align-items:center;text-align:left;padding:16px 18px;column-gap:14px}
+      .contact-benefit-card img{grid-row:1 / span 2;width:56px;height:56px;margin:0}
+      .contact-benefit-card h3{font-size:19px;margin:0 0 6px}.contact-benefit-card p{font-size:14px}
+      .consult-form{padding:26px 18px 22px;border-radius:14px}
+      .consult-form h2{font-size:clamp(20px, 5.4vw, 26px);line-height:1.28;letter-spacing:.1em}
       .form-grid{grid-template-columns:1fr;gap:15px}
-      .form-field input,.form-field select{min-height:50px;font-size:16px}
-      .form-field textarea{min-height:104px;font-size:16px}
-      .consult-submit{min-height:58px;font-size:16px;letter-spacing:.08em;gap:12px}
-      .consult-submit img{width:32px;height:32px}
-      .form-privacy{font-size:13px;line-height:1.45;align-items:flex-start}
-      .footer-main{grid-template-columns:1fr;gap:0;padding-top:28px;margin-top:28px}
-      .footer-col{padding:24px 0;border-bottom:1px solid rgba(215,167,65,.18)}
-      .footer-col:first-child{padding-left:0;padding-top:0}
-      .footer-col + .footer-col::before{display:none}
-      .footer-logo{margin-inline:0;width:165px}
-      .footer-tagline{text-align:left;max-width:320px}
-      .footer-col h3{font-size:20px;margin-bottom:14px}
-      .footer-info-row{font-size:16px;line-height:1.58}
-      .social-list{gap:12px;flex-wrap:wrap;margin-bottom:18px}
-      .social-link{width:50px;height:50px}
-      .footer-website{font-size:17px}
-      .footer-bottom{font-size:13px;line-height:1.55;padding-top:20px}
-      .footer-policy{flex-wrap:wrap;gap:10px 14px;white-space:normal}
+      .form-field input,.form-field select{min-height:50px}.form-field textarea{min-height:104px}
+      .consult-submit{min-height:56px;font-size:16px;letter-spacing:.1em}.consult-submit img{width:30px;height:30px}
+      .form-privacy{font-size:13px;line-height:1.4;align-items:flex-start}.form-privacy img{margin-top:1px;flex:0 0 auto}
+      .footer-main{margin-top:22px;padding-top:30px;grid-template-columns:1fr;gap:0;border-top-color:rgba(215,167,65,.45)}
+      .footer-col{padding:24px 0;text-align:center}.footer-col + .footer-col::before{display:none}.footer-col:not(:first-child){border-top:1px solid rgba(215,167,65,.18)}
+      .footer-tagline{white-space:normal;max-width:320px;margin-inline:auto}
+      .footer-info-row{grid-template-columns:22px 1fr;text-align:left;max-width:390px;margin-inline:auto}.social-list{justify-content:center}.footer-website{width:max-content;max-width:100%;margin-inline:auto;text-align:left}
+      .footer-bottom{padding-top:20px}
     }
     @media (max-width:420px){
-      .contact-copy h2{padding-left:68px;min-height:108px;font-size:32px}
-      .footer-lotus-left{width:194px;left:-88px;top:88px}
-      .contact-benefit-card{grid-template-columns:58px 1fr;padding:15px 15px;gap:12px}
-      .contact-benefit-card img{width:50px;height:50px}
-      .consult-form{padding-inline:16px}
+      .contact-footer-inner{width:min(100% - 28px, 420px)}
+      .contact-copy h2{padding-left:72px;min-height:104px;font-size:clamp(31px, 9vw, 38px)}
+      .footer-lotus-left{width:190px;left:-86px;top:84px}.footer-lotus-bud{width:50px}.contact-benefit-card{grid-template-columns:60px 1fr;padding:15px 15px}.contact-benefit-card img{width:50px;height:50px}.consult-form{padding-inline:15px}.social-list{gap:10px}.social-link{width:46px;height:46px}.footer-copyright{line-height:1.5}
     }
 
-</style>
+
+
+    /* ==========================================================
+       FOOTER MICRO FIX — lotus line + Zalo icon
+       Yêu cầu: hạ hoa sen line ở cột "Kết nối với chúng tôi" để
+       đường kẻ footer cắt ngang khoảng 1/3 hoa sen, đồng thời làm
+       chữ/icon Zalo lớn hơn và rõ hơn trong vòng tròn.
+    ========================================================== */
+    .footer-lotus-line{
+      right:clamp(-96px, -4.4vw, -52px) !important;
+      bottom:clamp(18px, 2.2vw, 38px) !important;
+      width:clamp(230px, 18.5vw, 330px) !important;
+      opacity:.32 !important;
+      z-index:1 !important;
+    }
+
+    .social-link[aria-label*="Zalo"] img{
+      width:62% !important;
+      height:62% !important;
+      transform:scale(1.14);
+      transform-origin:center;
+    }
+
+    @media (max-width:1120px){
+      .footer-lotus-line{
+        right:clamp(-92px, -6vw, -58px) !important;
+        bottom:clamp(24px, 3vw, 46px) !important;
+        width:clamp(220px, 24vw, 300px) !important;
+        opacity:.28 !important;
+      }
+    }
+
+    @media (max-width:720px){
+      .footer-lotus-line{
+        right:-86px !important;
+        bottom:96px !important;
+        width:210px !important;
+        opacity:.22 !important;
+      }
+      .social-link[aria-label*="Zalo"] img{
+        width:64% !important;
+        height:64% !important;
+        transform:scale(1.16);
+      }
+    }
+
+    @media (max-width:420px){
+      .footer-lotus-line{
+        right:-92px !important;
+        bottom:104px !important;
+        width:198px !important;
+      }
+    }
+
+    </style>
 </head>
 <body>
   <main class="dta-page">
@@ -10331,47 +10357,110 @@ body{
             </div>
           </div>
 
-          <form class="consult-form" action="#" method="post">
+          <form class="consult-form" action="#" method="post" novalidate>
             <h2>Gửi tâm nguyện – Nhận tư vấn</h2>
 
             <div class="form-grid">
               <label class="form-field">
                 <span>Họ và tên <sup>*</sup></span>
-                <input type="text" name="ho-ten" autocomplete="name" required />
+                <input id="consult-name" type="text" name="ho-ten" autocomplete="name" minlength="2" maxlength="80" required aria-describedby="consult-name-error" />
+                <small class="form-error" id="consult-name-error" aria-live="polite"></small>
               </label>
 
               <label class="form-field">
                 <span>Số điện thoại <sup>*</sup></span>
-                <input type="tel" name="so-dien-thoai" autocomplete="tel" required />
+                <input id="consult-phone" type="tel" name="so-dien-thoai" autocomplete="tel" inputmode="tel" maxlength="20" placeholder="VD: 0936 066 112" required aria-describedby="consult-phone-error" />
+                <small class="form-error" id="consult-phone-error" aria-live="polite"></small>
               </label>
 
               <label class="form-field">
-                <span>Loại hình không gian</span>
-                <select name="loai-hinh-khong-gian">
+                <span>Loại hình không gian <sup>*</sup></span>
+                <select id="consult-space-type" name="loai-hinh-khong-gian" required aria-describedby="consult-space-type-error">
                   <option value="">Chọn loại hình</option>
                   <option>Không gian thờ Phật</option>
                   <option>Không gian thờ Gia tiên</option>
                   <option>Không gian Thiền - Trà</option>
                   <option>Tư viện / Nhà thờ họ</option>
                 </select>
+                <small class="form-error" id="consult-space-type-error" aria-live="polite"></small>
               </label>
 
               <label class="form-field">
-                <span>Khu vực</span>
-                <select name="khu-vuc">
-                  <option value="">Chọn khu vực</option>
-                  <option>Hà Nội</option>
-                  <option>TP.HCM</option>
-                  <option>Miền Bắc</option>
-                  <option>Miền Trung</option>
-                  <option>Miền Nam</option>
-                  <option>Khu vực khác</option>
+                <span>Khu vực <sup>*</sup></span>
+                <select id="consult-province" name="khu-vuc" autocomplete="address-level1" required aria-describedby="consult-province-error">
+                  <option value="">Chọn tỉnh/thành</option>
+                  <option value="Thành phố Hà Nội" data-old-code="01" data-new-province="Thành phố Hà Nội" data-new-code="01">Hà Nội</option>
+                  <option value="Tỉnh Hà Giang" data-old-code="02" data-new-province="Tỉnh Tuyên Quang" data-new-code="08">Hà Giang (nay: Tuyên Quang)</option>
+                  <option value="Tỉnh Cao Bằng" data-old-code="04" data-new-province="Tỉnh Cao Bằng" data-new-code="04">Cao Bằng</option>
+                  <option value="Tỉnh Bắc Kạn" data-old-code="06" data-new-province="Tỉnh Thái Nguyên" data-new-code="19">Bắc Kạn (nay: Thái Nguyên)</option>
+                  <option value="Tỉnh Tuyên Quang" data-old-code="08" data-new-province="Tỉnh Tuyên Quang" data-new-code="08">Tuyên Quang</option>
+                  <option value="Tỉnh Lào Cai" data-old-code="10" data-new-province="Tỉnh Lào Cai" data-new-code="15">Lào Cai</option>
+                  <option value="Tỉnh Điện Biên" data-old-code="11" data-new-province="Tỉnh Điện Biên" data-new-code="11">Điện Biên</option>
+                  <option value="Tỉnh Lai Châu" data-old-code="12" data-new-province="Tỉnh Lai Châu" data-new-code="12">Lai Châu</option>
+                  <option value="Tỉnh Sơn La" data-old-code="14" data-new-province="Tỉnh Sơn La" data-new-code="14">Sơn La</option>
+                  <option value="Tỉnh Yên Bái" data-old-code="15" data-new-province="Tỉnh Lào Cai" data-new-code="15">Yên Bái (nay: Lào Cai)</option>
+                  <option value="Tỉnh Hòa Bình" data-old-code="17" data-new-province="Tỉnh Phú Thọ" data-new-code="25">Hòa Bình (nay: Phú Thọ)</option>
+                  <option value="Tỉnh Thái Nguyên" data-old-code="19" data-new-province="Tỉnh Thái Nguyên" data-new-code="19">Thái Nguyên</option>
+                  <option value="Tỉnh Lạng Sơn" data-old-code="20" data-new-province="Tỉnh Lạng Sơn" data-new-code="20">Lạng Sơn</option>
+                  <option value="Tỉnh Quảng Ninh" data-old-code="22" data-new-province="Tỉnh Quảng Ninh" data-new-code="22">Quảng Ninh</option>
+                  <option value="Tỉnh Bắc Giang" data-old-code="24" data-new-province="Tỉnh Bắc Ninh" data-new-code="24">Bắc Giang (nay: Bắc Ninh)</option>
+                  <option value="Tỉnh Phú Thọ" data-old-code="25" data-new-province="Tỉnh Phú Thọ" data-new-code="25">Phú Thọ</option>
+                  <option value="Tỉnh Vĩnh Phúc" data-old-code="26" data-new-province="Tỉnh Phú Thọ" data-new-code="25">Vĩnh Phúc (nay: Phú Thọ)</option>
+                  <option value="Tỉnh Bắc Ninh" data-old-code="27" data-new-province="Tỉnh Bắc Ninh" data-new-code="24">Bắc Ninh</option>
+                  <option value="Tỉnh Hải Dương" data-old-code="30" data-new-province="Thành phố Hải Phòng" data-new-code="31">Hải Dương (nay: Hải Phòng)</option>
+                  <option value="Thành phố Hải Phòng" data-old-code="31" data-new-province="Thành phố Hải Phòng" data-new-code="31">Hải Phòng</option>
+                  <option value="Tỉnh Hưng Yên" data-old-code="33" data-new-province="Tỉnh Hưng Yên" data-new-code="33">Hưng Yên</option>
+                  <option value="Tỉnh Thái Bình" data-old-code="34" data-new-province="Tỉnh Hưng Yên" data-new-code="33">Thái Bình (nay: Hưng Yên)</option>
+                  <option value="Tỉnh Hà Nam" data-old-code="35" data-new-province="Tỉnh Ninh Bình" data-new-code="37">Hà Nam (nay: Ninh Bình)</option>
+                  <option value="Tỉnh Nam Định" data-old-code="36" data-new-province="Tỉnh Ninh Bình" data-new-code="37">Nam Định (nay: Ninh Bình)</option>
+                  <option value="Tỉnh Ninh Bình" data-old-code="37" data-new-province="Tỉnh Ninh Bình" data-new-code="37">Ninh Bình</option>
+                  <option value="Tỉnh Thanh Hóa" data-old-code="38" data-new-province="Tỉnh Thanh Hóa" data-new-code="38">Thanh Hóa</option>
+                  <option value="Tỉnh Nghệ An" data-old-code="40" data-new-province="Tỉnh Nghệ An" data-new-code="40">Nghệ An</option>
+                  <option value="Tỉnh Hà Tĩnh" data-old-code="42" data-new-province="Tỉnh Hà Tĩnh" data-new-code="42">Hà Tĩnh</option>
+                  <option value="Tỉnh Quảng Bình" data-old-code="44" data-new-province="Tỉnh Quảng Trị" data-new-code="44">Quảng Bình (nay: Quảng Trị)</option>
+                  <option value="Tỉnh Quảng Trị" data-old-code="45" data-new-province="Tỉnh Quảng Trị" data-new-code="44">Quảng Trị</option>
+                  <option value="Thành phố Huế" data-old-code="46" data-new-province="Thành phố Huế" data-new-code="46">Huế</option>
+                  <option value="Thành phố Đà Nẵng" data-old-code="48" data-new-province="Thành phố Đà Nẵng" data-new-code="48">Đà Nẵng</option>
+                  <option value="Tỉnh Quảng Nam" data-old-code="49" data-new-province="Thành phố Đà Nẵng" data-new-code="48">Quảng Nam (nay: Đà Nẵng)</option>
+                  <option value="Tỉnh Quảng Ngãi" data-old-code="51" data-new-province="Tỉnh Quảng Ngãi" data-new-code="51">Quảng Ngãi</option>
+                  <option value="Tỉnh Bình Định" data-old-code="52" data-new-province="Tỉnh Gia Lai" data-new-code="52">Bình Định (nay: Gia Lai)</option>
+                  <option value="Tỉnh Phú Yên" data-old-code="54" data-new-province="Tỉnh Đắk Lắk" data-new-code="66">Phú Yên (nay: Đắk Lắk)</option>
+                  <option value="Tỉnh Khánh Hòa" data-old-code="56" data-new-province="Tỉnh Khánh Hòa" data-new-code="56">Khánh Hòa</option>
+                  <option value="Tỉnh Ninh Thuận" data-old-code="58" data-new-province="Tỉnh Khánh Hòa" data-new-code="56">Ninh Thuận (nay: Khánh Hòa)</option>
+                  <option value="Tỉnh Bình Thuận" data-old-code="60" data-new-province="Tỉnh Lâm Đồng" data-new-code="68">Bình Thuận (nay: Lâm Đồng)</option>
+                  <option value="Tỉnh Kon Tum" data-old-code="62" data-new-province="Tỉnh Quảng Ngãi" data-new-code="51">Kon Tum (nay: Quảng Ngãi)</option>
+                  <option value="Tỉnh Gia Lai" data-old-code="64" data-new-province="Tỉnh Gia Lai" data-new-code="52">Gia Lai</option>
+                  <option value="Tỉnh Đắk Lắk" data-old-code="66" data-new-province="Tỉnh Đắk Lắk" data-new-code="66">Đắk Lắk</option>
+                  <option value="Tỉnh Đắk Nông" data-old-code="67" data-new-province="Tỉnh Lâm Đồng" data-new-code="68">Đắk Nông (nay: Lâm Đồng)</option>
+                  <option value="Tỉnh Lâm Đồng" data-old-code="68" data-new-province="Tỉnh Lâm Đồng" data-new-code="68">Lâm Đồng</option>
+                  <option value="Tỉnh Bình Phước" data-old-code="70" data-new-province="Tỉnh Đồng Nai" data-new-code="75">Bình Phước (nay: Đồng Nai)</option>
+                  <option value="Tỉnh Tây Ninh" data-old-code="72" data-new-province="Tỉnh Tây Ninh" data-new-code="80">Tây Ninh</option>
+                  <option value="Tỉnh Bình Dương" data-old-code="74" data-new-province="Thành phố Hồ Chí Minh" data-new-code="79">Bình Dương (nay: TP. Hồ Chí Minh)</option>
+                  <option value="Tỉnh Đồng Nai" data-old-code="75" data-new-province="Tỉnh Đồng Nai" data-new-code="75">Đồng Nai</option>
+                  <option value="Tỉnh Bà Rịa - Vũng Tàu" data-old-code="77" data-new-province="Thành phố Hồ Chí Minh" data-new-code="79">Bà Rịa - Vũng Tàu (nay: TP. Hồ Chí Minh)</option>
+                  <option value="Thành phố Hồ Chí Minh" data-old-code="79" data-new-province="Thành phố Hồ Chí Minh" data-new-code="79">TP. Hồ Chí Minh</option>
+                  <option value="Tỉnh Long An" data-old-code="80" data-new-province="Tỉnh Tây Ninh" data-new-code="80">Long An (nay: Tây Ninh)</option>
+                  <option value="Tỉnh Tiền Giang" data-old-code="82" data-new-province="Tỉnh Đồng Tháp" data-new-code="82">Tiền Giang (nay: Đồng Tháp)</option>
+                  <option value="Tỉnh Bến Tre" data-old-code="83" data-new-province="Tỉnh Vĩnh Long" data-new-code="86">Bến Tre (nay: Vĩnh Long)</option>
+                  <option value="Tỉnh Trà Vinh" data-old-code="84" data-new-province="Tỉnh Vĩnh Long" data-new-code="86">Trà Vinh (nay: Vĩnh Long)</option>
+                  <option value="Tỉnh Vĩnh Long" data-old-code="86" data-new-province="Tỉnh Vĩnh Long" data-new-code="86">Vĩnh Long</option>
+                  <option value="Tỉnh Đồng Tháp" data-old-code="87" data-new-province="Tỉnh Đồng Tháp" data-new-code="82">Đồng Tháp</option>
+                  <option value="Tỉnh An Giang" data-old-code="89" data-new-province="Tỉnh An Giang" data-new-code="91">An Giang</option>
+                  <option value="Tỉnh Kiên Giang" data-old-code="91" data-new-province="Tỉnh An Giang" data-new-code="91">Kiên Giang (nay: An Giang)</option>
+                  <option value="Thành phố Cần Thơ" data-old-code="92" data-new-province="Thành phố Cần Thơ" data-new-code="92">Cần Thơ</option>
+                  <option value="Tỉnh Hậu Giang" data-old-code="93" data-new-province="Thành phố Cần Thơ" data-new-code="92">Hậu Giang (nay: Cần Thơ)</option>
+                  <option value="Tỉnh Sóc Trăng" data-old-code="94" data-new-province="Thành phố Cần Thơ" data-new-code="92">Sóc Trăng (nay: Cần Thơ)</option>
+                  <option value="Tỉnh Bạc Liêu" data-old-code="95" data-new-province="Tỉnh Cà Mau" data-new-code="96">Bạc Liêu (nay: Cà Mau)</option>
+                  <option value="Tỉnh Cà Mau" data-old-code="96" data-new-province="Tỉnh Cà Mau" data-new-code="96">Cà Mau</option>
                 </select>
+                <input id="consult-new-province" type="hidden" name="khu-vuc-moi" />
+                <small class="form-error" id="consult-province-error" aria-live="polite"></small>
               </label>
 
               <label class="form-field is-full">
-                <span>Nội dung tâm nguyện</span>
-                <textarea name="noi-dung" placeholder="Chia sẻ mong muốn của bạn..."></textarea>
+                <span>Nội dung tâm nguyện <sup>*</sup></span>
+                <textarea id="consult-message" name="noi-dung" placeholder="Chia sẻ mong muốn của bạn..." minlength="10" maxlength="600" required aria-describedby="consult-message-error"></textarea>
+                <small class="form-error" id="consult-message-error" aria-live="polite"></small>
               </label>
             </div>
 
@@ -10384,6 +10473,7 @@ body{
               <img src="assets/icons/footer/icon-lock.svg" alt="" loading="lazy" />
               <span>Thông tin của bạn được bảo mật tuyệt đối</span>
             </p>
+            <p class="form-feedback is-empty" id="consult-form-feedback" role="status" aria-live="polite"></p>
           </form>
         </div>
 
@@ -10424,10 +10514,10 @@ body{
           <div class="footer-col footer-connect-col">
             <h3>Kết nối với chúng tôi</h3>
             <div class="social-list" aria-label="Mạng xã hội Diệu Tướng Am">
-              <a class="social-link" href="#" aria-label="Facebook Diệu Tướng Am"><img src="assets/icons/social/icon-facebook.svg" alt="" loading="lazy" /></a>
-              <a class="social-link" href="#" aria-label="YouTube Diệu Tướng Am"><img src="assets/icons/social/icon-youtube.svg" alt="" loading="lazy" /></a>
-              <a class="social-link" href="#" aria-label="Instagram Diệu Tướng Am"><img src="assets/icons/social/icon-instagram.svg" alt="" loading="lazy" /></a>
-              <a class="social-link" href="#" aria-label="Zalo Diệu Tướng Am"><img src="assets/icons/social/icon-zalo.svg" alt="" loading="lazy" /></a>
+              <a class="social-link" href="https://www.facebook.com/dieutuongam.nghethuatphatgiao" target="_blank" rel="noopener noreferrer" aria-label="Facebook Diệu Tướng Am"><img src="assets/icons/social/icon-facebook.svg" alt="" loading="lazy" /></a>
+              <a class="social-link" href="https://www.youtube.com/@dieutuongamnghethuatphatgiao" target="_blank" rel="noopener noreferrer" aria-label="YouTube Diệu Tướng Am"><img src="assets/icons/social/icon-youtube.svg" alt="" loading="lazy" /></a>
+              <a class="social-link" href="https://www.tiktok.com/@dieu_tuong_am" target="_blank" rel="noopener noreferrer" aria-label="TikTok Diệu Tướng Am"><img src="assets/icons/social/icon-tiktok.svg" alt="" loading="lazy" /></a>
+              <a class="social-link" href="https://zalo.me/dieutuongam" target="_blank" rel="noopener noreferrer" aria-label="Zalo Diệu Tướng Am"><img src="assets/icons/social/icon-zalo.svg" alt="" loading="lazy" /></a>
             </div>
             <a class="footer-website" href="https://dieutuongam.com" target="_blank" rel="noopener noreferrer">
               <img src="assets/icons/footer/icon-globe.svg" alt="" loading="lazy" />
@@ -10438,11 +10528,6 @@ body{
 
         <div class="footer-bottom">
           <p class="footer-copyright">© 2011 – 2026 Diệu Tướng Am. All rights reserved.</p>
-          <div class="footer-policy">
-            <a href="#">Chính sách bảo mật</a>
-            <span aria-hidden="true">|</span>
-            <a href="#">Điều khoản sử dụng</a>
-          </div>
         </div>
       </div>
     </section>
@@ -10588,6 +10673,167 @@ body{
     });
 
     activateTrustCard(cards[activeIndex], activeIndex);
+  })();
+
+  (function(){
+    var form = document.querySelector('.consult-form');
+    if(!form) return;
+
+    var fields = Array.prototype.slice.call(form.querySelectorAll('input:not([type="hidden"]), select, textarea'));
+    var feedback = document.getElementById('consult-form-feedback');
+    var newProvinceInput = document.getElementById('consult-new-province');
+    var namePattern;
+    try{
+      namePattern = new RegExp("^[\\p{L}\\s'.-]+$", 'u');
+    }catch(error){
+      namePattern = new RegExp("^[A-Za-zÀ-ỹ\\s'.-]+$");
+    }
+
+    function normalizeText(value){
+      return (value || '').replace(/\s+/g, ' ').trim();
+    }
+
+    function setFeedback(message, type){
+      if(!feedback) return;
+      feedback.textContent = message || '';
+      feedback.classList.toggle('is-empty', !message);
+      feedback.classList.toggle('is-error', type === 'error');
+      feedback.classList.toggle('is-success', type === 'success');
+    }
+
+    function getErrorNode(field){
+      var errorId = field.getAttribute('aria-describedby');
+      return errorId ? document.getElementById(errorId) : null;
+    }
+
+    function setFieldState(field, message){
+      var wrapper = field.closest('.form-field');
+      var errorNode = getErrorNode(field);
+      var isInvalid = !!message;
+      var hasValue = normalizeText(field.value);
+
+      field.setCustomValidity(message || '');
+      field.setAttribute('aria-invalid', isInvalid ? 'true' : 'false');
+      if(errorNode) errorNode.textContent = message || '';
+      if(wrapper){
+        wrapper.classList.toggle('is-invalid', isInvalid);
+        wrapper.classList.toggle('is-valid', !isInvalid && !!hasValue);
+      }
+
+      return !isInvalid;
+    }
+
+    function normalizePhone(value){
+      var raw = normalizeText(value);
+      if(!raw) return '';
+      if(/[A-Za-zÀ-ỹ]/.test(raw) || /[^\d\s()+.-]/.test(raw)) return null;
+
+      var compact = raw.replace(/[\s().-]/g, '');
+      if((compact.match(/\+/g) || []).length > 1 || compact.indexOf('+') > 0) return null;
+
+      if(compact.indexOf('+84') === 0){
+        compact = '0' + compact.slice(3);
+      }else if(compact.indexOf('84') === 0 && compact.length >= 11){
+        compact = '0' + compact.slice(2);
+      }
+
+      return compact.replace(/\D/g, '');
+    }
+
+    function isVietnamPhone(value){
+      var phone = normalizePhone(value);
+      if(!phone) return false;
+      return /^(0(?:3|5|7|8|9)\d{8}|02\d{8,9}|(?:1800|1900)\d{4,6})$/.test(phone);
+    }
+
+    function syncProvinceMapping(field){
+      if(field.name !== 'khu-vuc' || !newProvinceInput) return;
+      var selected = field.options[field.selectedIndex];
+      newProvinceInput.value = selected && selected.value ? (selected.getAttribute('data-new-province') || selected.value) : '';
+    }
+
+    function validateName(field){
+      var value = normalizeText(field.value);
+      if(!value) return setFieldState(field, 'Vui lòng nhập họ và tên.');
+      if(value.length < 2 || value.length > 80) return setFieldState(field, 'Họ và tên cần từ 2 đến 80 ký tự.');
+      if(value.split(' ').length < 2) return setFieldState(field, 'Vui lòng nhập đầy đủ họ và tên.');
+      if(!namePattern.test(value)) return setFieldState(field, "Họ tên chỉ dùng chữ cái, khoảng trắng và dấu . ' -");
+      field.value = value;
+      return setFieldState(field, '');
+    }
+
+    function validatePhone(field){
+      var normalized = normalizePhone(field.value);
+      if(!normalizeText(field.value)) return setFieldState(field, 'Vui lòng nhập số điện thoại.');
+      if(!normalized || !isVietnamPhone(field.value)){
+        return setFieldState(field, 'Số điện thoại chưa đúng định dạng Việt Nam.');
+      }
+      field.value = normalized;
+      return setFieldState(field, '');
+    }
+
+    function validateSelect(field){
+      syncProvinceMapping(field);
+      if(!field.value) return setFieldState(field, 'Vui lòng chọn ' + (field.name === 'khu-vuc' ? 'tỉnh/thành phố.' : 'loại hình không gian.'));
+      return setFieldState(field, '');
+    }
+
+    function validateMessage(field){
+      var value = normalizeText(field.value);
+      if(!value) return setFieldState(field, 'Vui lòng chia sẻ nội dung tâm nguyện.');
+      if(value.length < 10) return setFieldState(field, 'Nội dung cần tối thiểu 10 ký tự.');
+      if(value.length > 600) return setFieldState(field, 'Nội dung không vượt quá 600 ký tự.');
+      field.value = value;
+      return setFieldState(field, '');
+    }
+
+    function validateField(field){
+      if(field.name === 'ho-ten') return validateName(field);
+      if(field.name === 'so-dien-thoai') return validatePhone(field);
+      if(field.name === 'loai-hinh-khong-gian' || field.name === 'khu-vuc') return validateSelect(field);
+      if(field.name === 'noi-dung') return validateMessage(field);
+      return field.checkValidity();
+    }
+
+    function validateAll(){
+      var firstInvalid = null;
+      var isValid = fields.reduce(function(valid, field){
+        var fieldValid = validateField(field);
+        if(!fieldValid && !firstInvalid) firstInvalid = field;
+        return valid && fieldValid;
+      }, true);
+
+      if(firstInvalid){
+        firstInvalid.focus({preventScroll:false});
+      }
+
+      return isValid;
+    }
+
+    fields.forEach(function(field){
+      field.addEventListener('blur', function(){
+        validateField(field);
+      });
+
+      field.addEventListener(field.tagName === 'SELECT' ? 'change' : 'input', function(){
+        setFeedback('', '');
+        if(field.getAttribute('aria-invalid') === 'true') validateField(field);
+      });
+    });
+
+    form.addEventListener('submit', function(event){
+      if(!validateAll()){
+        event.preventDefault();
+        setFeedback('Vui lòng kiểm tra lại các thông tin được đánh dấu.', 'error');
+        return;
+      }
+
+      var rawAction = (form.getAttribute('action') || '').trim();
+      if(!rawAction || rawAction === '#' || rawAction.toLowerCase().indexOf('javascript:') === 0){
+        event.preventDefault();
+        setFeedback('Thông tin đã hợp lệ. Cảm ơn bạn đã chia sẻ tâm nguyện.', 'success');
+      }
+    });
   })();
 
   (function(){
