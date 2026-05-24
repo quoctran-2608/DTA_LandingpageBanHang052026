@@ -11315,7 +11315,13 @@ body{
     }
 
   </style>
-  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+  <script>
+    window.dtaTurnstileReady = function(){
+      window.dtaTurnstileLoaded = true;
+      if(typeof window.dtaRenderTurnstile === 'function') window.dtaRenderTurnstile();
+    };
+  </script>
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit&onload=dtaTurnstileReady" async defer></script>
 </head>
 <body>
   <main class="dta-page">
@@ -11890,7 +11896,7 @@ body{
             </div>
 
             <div class="turnstile-field">
-              <div class="cf-turnstile" data-sitekey="0x4AAAAAADVWiAS3wnrrPpGt"></div>
+              <div class="cf-turnstile" id="dta-turnstile" data-sitekey="0x4AAAAAADVWiAS3wnrrPpGt" data-theme="light"></div>
             </div>
  
             <button class="consult-submit" type="submit">
@@ -12407,6 +12413,59 @@ body{
     var fields = Array.prototype.slice.call(form.querySelectorAll('input:not([type="hidden"]), select, textarea'));
     var feedback = document.getElementById('consult-form-feedback');
     var newProvinceInput = document.getElementById('consult-new-province');
+    var turnstileWidgetId = null;
+
+    function renderTurnstile(force){
+      var el = form.querySelector('.cf-turnstile');
+      if(!el || !el.getAttribute('data-sitekey')) return false;
+      if(!window.turnstile || typeof window.turnstile.render !== 'function') return false;
+
+      if(force && turnstileWidgetId !== null && typeof window.turnstile.remove === 'function'){
+        try{ window.turnstile.remove(turnstileWidgetId); }catch(error){}
+        turnstileWidgetId = null;
+        el.removeAttribute('data-dta-rendered');
+        el.innerHTML = '';
+      }
+
+      if(el.getAttribute('data-dta-rendered') === 'true') return true;
+
+      try{
+        turnstileWidgetId = window.turnstile.render(el, {
+          sitekey: el.getAttribute('data-sitekey'),
+          theme: el.getAttribute('data-theme') || 'light',
+          callback: function(){ setFeedback('', ''); },
+          'expired-callback': function(){
+            setFeedback('Phiên xác minh bảo mật đã hết hạn, vui lòng xác minh lại.', 'error');
+          },
+          'error-callback': function(){
+            setFeedback('Mã xác minh bảo mật chưa tải được. Vui lòng tải lại trang và thử lại.', 'error');
+          }
+        });
+        el.setAttribute('data-dta-rendered', 'true');
+        return true;
+      }catch(error){
+        return false;
+      }
+    }
+
+    function resetTurnstile(){
+      if(window.turnstile && turnstileWidgetId !== null && typeof window.turnstile.reset === 'function'){
+        try{ window.turnstile.reset(turnstileWidgetId); }catch(error){}
+      }
+    }
+
+    window.dtaRenderTurnstile = function(force){
+      return renderTurnstile(!!force);
+    };
+
+    function waitForTurnstile(attempt){
+      if(renderTurnstile(false)) return;
+      if((attempt || 0) < 30){
+        window.setTimeout(function(){ waitForTurnstile((attempt || 0) + 1); }, 200);
+      }
+    }
+
+    waitForTurnstile(0);
     var namePattern;
     try{
       namePattern = new RegExp("^[\\p{L}\\s'.-]+$", 'u');
@@ -12595,11 +12654,11 @@ body{
         form.reset();
         if(newProvinceInput) newProvinceInput.value = '';
         fields.forEach(function(field){ setFieldState(field, ''); });
-        if(window.turnstile) window.turnstile.reset();
+        resetTurnstile();
       })
       .catch(function(error){
         setFeedback(error.message || 'Có lỗi xảy ra. Vui lòng thử lại sau.', 'error');
-        if(window.turnstile) window.turnstile.reset();
+        resetTurnstile();
       })
       .finally(function(){
         if(submitButton){
@@ -12636,11 +12695,17 @@ body{
     function moveFormToModal(){
       slot.appendChild(form);
       form.classList.add('is-visible', 'has-revealed');
+      if(typeof window.dtaRenderTurnstile === 'function'){
+        window.setTimeout(function(){ window.dtaRenderTurnstile(true); }, 60);
+      }
     }
 
     function restoreForm(){
       if(homeMarker.parentNode && form.parentNode !== homeMarker.parentNode){
         homeMarker.parentNode.insertBefore(form, homeMarker.nextSibling);
+        if(typeof window.dtaRenderTurnstile === 'function'){
+          window.setTimeout(function(){ window.dtaRenderTurnstile(true); }, 60);
+        }
       }
     }
 
