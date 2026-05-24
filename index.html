@@ -6674,7 +6674,7 @@ body{
   
 
     /* ==========================================================
-       SERVICE BOTTOM LINE — dùng file line-lotus.svg thay cho 2 line CSS + icon giữa
+       SERVICE BOTTOM LINE — dùng file line-lotus.png thay cho 2 line CSS + icon giữa
     ========================================================== */
     .service-bottom-ornament{
       width:min(760px, 58vw) !important;
@@ -8468,7 +8468,7 @@ body{
       width:clamp(32px, 2.3vw, 46px);
       height:clamp(17px, 1.2vw, 24px);
       margin-top:clamp(13px, 1.1vw, 18px);
-      background:url("assets/images/decor/decor-project-lotus.svg") center / contain no-repeat;
+      background:url("assets/images/decor/decor-project-lotus.png") center / contain no-repeat;
       opacity:.82;
     }
     .project-list{
@@ -8906,7 +8906,7 @@ body{
       height:clamp(42px, 3.45vw, 76px) !important;
       margin-top:0 !important;
       opacity:1 !important;
-      background:url("assets/images/decor/decor-project-lotus.svg") center / contain no-repeat !important;
+      background:url("assets/images/decor/decor-project-lotus.png") center / contain no-repeat !important;
       filter:
         drop-shadow(0 4px 5px rgba(102,64,25,.12))
         drop-shadow(0 0 12px rgba(185,139,69,.16)) !important;
@@ -11182,6 +11182,115 @@ body{
         filter:blur(9px) !important;
       }
     }
+
+
+    /* ==========================================================
+       MOBILE FINAL HOTFIX — giữ CTA hero và footer slogan trên 1 hàng
+       - Nút "BẮT ĐẦU HÀNH TRÌNH KIẾN TẠO" không gãy dòng ở chữ TẠO
+       - Footer slogan luôn nằm 1 hàng trên mobile
+    ========================================================== */
+    @media (max-width:680px){
+      .hero-button{
+        width:100% !important;
+        min-width:0 !important;
+        max-width:100% !important;
+        padding:0 clamp(10px, 3.2vw, 16px) !important;
+        gap:clamp(7px, 2.1vw, 10px) !important;
+        font-size:clamp(12px, 3.35vw, 14px) !important;
+        letter-spacing:.012em !important;
+        white-space:nowrap !important;
+        overflow:hidden !important;
+      }
+
+      .hero-button span:first-child{
+        display:block !important;
+        min-width:0 !important;
+        white-space:nowrap !important;
+        flex:0 1 auto !important;
+        line-height:1 !important;
+        transform:none !important;
+      }
+
+      .hero-button .arrow{
+        flex:0 0 auto !important;
+        font-size:22px !important;
+        line-height:1 !important;
+      }
+
+      .footer-tagline{
+        white-space:nowrap !important;
+        width:max-content !important;
+        max-width:none !important;
+        margin-inline:auto !important;
+        font-size:clamp(10px, 2.9vw, 12px) !important;
+        line-height:1.25 !important;
+        letter-spacing:-.018em !important;
+        transform:scaleX(.94) !important;
+        transform-origin:center center !important;
+      }
+    }
+
+    @media (max-width:380px){
+      .hero-button{
+        padding:0 10px !important;
+        gap:6px !important;
+        font-size:11.4px !important;
+        letter-spacing:0 !important;
+      }
+
+      .hero-button .arrow{
+        font-size:20px !important;
+      }
+
+      .footer-tagline{
+        font-size:10.1px !important;
+        letter-spacing:-.03em !important;
+        transform:scaleX(.9) !important;
+      }
+    }
+
+    @media (max-width:340px){
+      .hero-button{
+        font-size:10.8px !important;
+        padding-inline:8px !important;
+      }
+
+      .footer-tagline{
+        font-size:9.5px !important;
+        transform:scaleX(.88) !important;
+      }
+    }
+
+
+
+    /* ==========================================================
+       MOBILE PROJECT FIX — Dự án tiêu biểu hiện ngay, không reveal/loading
+       Chỉ áp dụng mobile/tablet nhỏ để desktop vẫn giữ hiệu ứng hiện tại.
+    ========================================================== */
+    @media (max-width:940px){
+      html.dta-motion-js .project-section .dta-reveal,
+      html.dta-motion-js .project-section .dta-reveal:not(.is-visible),
+      html.dta-motion-js .project-section .dta-reveal.is-visible,
+      html.dta-motion-js .project-section .dta-reveal.is-visible.has-revealed,
+      html.dta-motion-js .project-heading-core,
+      html.dta-motion-js .project-card,
+      html.dta-motion-js .project-actions{
+        opacity:1 !important;
+        visibility:visible !important;
+        transform:none !important;
+        filter:none !important;
+        animation:none !important;
+        transition:transform .45s cubic-bezier(.2,.8,.2,1), box-shadow .45s ease, filter .45s ease !important;
+        will-change:auto !important;
+      }
+
+      html.dta-motion-js .project-section .dta-reveal[data-reveal],
+      html.dta-motion-js .project-section .dta-reveal[data-reveal]:not(.is-visible){
+        opacity:1 !important;
+        transform:none !important;
+        filter:none !important;
+      }
+    }
 </style>
 </head>
 <body>
@@ -11190,7 +11299,7 @@ body{
       <header class="site-header">
         <div class="header-inner">
           <a class="brand" href="#" aria-label="Diệu Tướng Am">
-            <img class="brand-logo" src="assets/logo/logo-dieu-tuong-am-gold.svg" alt="Diệu Tướng Am" />
+            <img class="brand-logo" src="assets/logo/logo-dieu-tuong-am-gold.png" alt="Diệu Tướng Am" />
           </a>
           <div class="brand-slogan">Không gian văn hoá<br/>Nghệ thuật tâm linh</div>
           <nav class="main-nav" aria-label="Điều hướng chính">
@@ -11295,7 +11404,7 @@ body{
           <path class="divider-gold" d="M0,67 C250,109 407,110 597,90 C725,77 856,60 1017,71 C1186,82 1297,118 1440,105" />
         </svg>
         <div class="divider-medallion">
-          <img src="assets/images/decor/decor-lotus-medallion.svg" alt="" />
+          <img src="assets/images/decor/decor-lotus-medallion.png" alt="" />
         </div>
       </div>
     </section>
@@ -11309,17 +11418,17 @@ body{
 
           <div class="philosophy-cards">
             <article class="philosophy-card">
-              <img src="assets/icons/intro/icon-tu-tam-khai-mo.svg" alt="" />
+              <img src="assets/icons/intro/icon-tu-tam-khai-mo.png" alt="" />
               <h3>Từ Tâm Khai Mở</h3>
               <p>Mọi không gian đều bắt đầu từ ý niệm.</p>
             </article>
             <article class="philosophy-card">
-              <img src="assets/icons/intro/icon-tac-hinh-tinh-hoa.svg" alt="" />
+              <img src="assets/icons/intro/icon-tac-hinh-tinh-hoa.png" alt="" />
               <h3>Tạc Hình Tinh Hoa</h3>
               <p>Hiện thực hóa những tâm niệm vô hình thành hình tượng hữu hình.</p>
             </article>
             <article class="philosophy-card">
-              <img src="assets/icons/intro/icon-kien-tao-chon-an.svg" alt="" />
+              <img src="assets/icons/intro/icon-kien-tao-chon-an.png" alt="" />
               <h3>Kiến Tạo Chốn An</h3>
               <p>Mỗi không gian không chỉ để thờ cúng mà còn là trạng thái an trú.</p>
             </article>
@@ -11435,7 +11544,7 @@ body{
         </div>
 
         <div class="service-bottom-ornament" aria-hidden="true">
-          <img class="service-bottom-line" src="assets/images/decor/line-lotus.svg" alt="" />
+          <img class="service-bottom-line" src="assets/images/decor/line-lotus.png" alt="" />
         </div>
       </div>
     </section>
@@ -11516,44 +11625,44 @@ body{
     <section class="trust-section" id="ly-do-tin-chon" aria-labelledby="trust-title">
       <div class="trust-container">
         <header class="trust-heading">
-          <img class="trust-title-ornament" src="assets/images/decor/trust-title-ornament.svg" alt="" loading="lazy" />
+          <img class="trust-title-ornament" src="assets/images/decor/trust-title-ornament.png" alt="" loading="lazy" />
           <h2 id="trust-title">Vì sao gia chủ tin chọn Diệu Tướng Am?</h2>
-          <img class="trust-heading-flower" src="assets/images/decor/trust-flower-divider.svg" alt="" loading="lazy" />
+          <img class="trust-heading-flower" src="assets/images/decor/trust-flower-divider.png" alt="" loading="lazy" />
         </header>
 
         <div class="trust-grid" aria-label="Lý do gia chủ tin chọn Diệu Tướng Am">
           <article class="trust-card is-active" data-trust-index="01" data-trust-title="Thấu hiểu tâm nguyện." data-trust-copy="Lắng nghe và thấu hiểu tâm nguyện của từng gia chủ, khơi mở ý niệm an yên bản nguyên nhất.">
-            <img class="trust-icon" src="assets/icons/trust/icon-thau-hieu-tam-nguyen.svg" alt="" loading="lazy" />
+            <img class="trust-icon" src="assets/icons/trust/icon-thau-hieu-tam-nguyen.png" alt="" loading="lazy" />
             <h3>Thấu hiểu<br/>tâm nguyện.</h3>
             <p>Lắng nghe và thấu hiểu tâm nguyện của từng gia chủ, khơi mở ý niệm an yên bản nguyên nhất.</p>
           </article>
 
           <article class="trust-card" data-trust-index="02" data-trust-title="Hệ sinh thái sản phẩm đa dạng." data-trust-copy="Hơn 27.700 tác phẩm nghệ thuật phục vụ mọi nhu cầu của khách hàng.">
-            <img class="trust-icon" src="assets/icons/trust/icon-he-sinh-thai-san-pham.svg" alt="" loading="lazy" />
+            <img class="trust-icon" src="assets/icons/trust/icon-he-sinh-thai-san-pham.png" alt="" loading="lazy" />
             <h3>Hệ sinh thái<br/>sản phẩm đa dạng.</h3>
             <p>Hơn 27.700 tác phẩm nghệ thuật phục vụ mọi nhu cầu của khách hàng.</p>
           </article>
 
           <article class="trust-card" data-trust-index="03" data-trust-title="15 năm kinh nghiệm." data-trust-copy="Hành trình bền bỉ đồng hành cùng hàng chục nghìn khách hàng kiến tạo nên những không gian an lạc.">
-            <img class="trust-icon" src="assets/icons/trust/icon-15-nam-kinh-nghiem.svg" alt="" loading="lazy" />
+            <img class="trust-icon" src="assets/icons/trust/icon-15-nam-kinh-nghiem.png" alt="" loading="lazy" />
             <h3>15 năm<br/>kinh nghiệm.</h3>
             <p>Hành trình bền bỉ đồng hành cùng hàng chục nghìn khách hàng kiến tạo nên những không gian an lạc.</p>
           </article>
 
           <article class="trust-card" data-trust-index="04" data-trust-title="Có sự đồng hành từ chuyên gia." data-trust-copy="Có sự bảo chứng từ các chuyên gia hàng đầu và sự chỉ dạy của các vị Tôn túc.">
-            <img class="trust-icon" src="assets/icons/trust/icon-dong-hanh-chuyen-gia.svg" alt="" loading="lazy" />
+            <img class="trust-icon" src="assets/icons/trust/icon-dong-hanh-chuyen-gia.png" alt="" loading="lazy" />
             <h3>Có sự đồng hành<br/>từ chuyên gia.</h3>
             <p>Có sự bảo chứng từ các chuyên gia hàng đầu và sự chỉ dạy của các vị Tôn túc.</p>
           </article>
 
           <article class="trust-card" data-trust-index="05" data-trust-title="Cá nhân hóa theo từng gia chủ." data-trust-copy="Mỗi không gian được thiết kế riêng theo tâm nguyện và nếp sống gia chủ.">
-            <img class="trust-icon" src="assets/icons/trust/icon-ca-nhan-hoa.svg" alt="" loading="lazy" />
+            <img class="trust-icon" src="assets/icons/trust/icon-ca-nhan-hoa.png" alt="" loading="lazy" />
             <h3>Cá nhân hóa<br/>theo từng gia chủ.</h3>
             <p>Mỗi không gian được thiết kế riêng theo tâm nguyện và nếp sống gia chủ.</p>
           </article>
 
           <article class="trust-card" data-trust-index="06" data-trust-title="Không gian trải nghiệm." data-trust-copy="Showroom quy mô lớn tại Hà Nội &amp; TPHCM, nơi cảm nhận bằng tất cả giác quan.">
-            <img class="trust-icon" src="assets/icons/trust/icon-khong-gian-trai-nghiem.svg" alt="" loading="lazy" />
+            <img class="trust-icon" src="assets/icons/trust/icon-khong-gian-trai-nghiem.png" alt="" loading="lazy" />
             <h3>Không gian<br/>trải nghiệm.</h3>
             <p>Showroom quy mô lớn tại Hà Nội &amp; TPHCM, nơi cảm nhận bằng tất cả giác quan.</p>
           </article>
@@ -11617,10 +11726,10 @@ body{
 
 
     <section class="contact-footer-section" id="lien-he" aria-labelledby="contact-footer-title">
-      <img class="footer-lotus-pattern-left" src="assets/images/decor/footer-lotus-pattern-left.svg" alt="" loading="lazy" />
+      <img class="footer-lotus-pattern-left" src="assets/images/decor/footer-lotus-pattern-left.png" alt="" loading="lazy" />
       <img class="footer-lotus-bud" src="assets/images/decor/footer-lotus-bud.png" alt="" loading="lazy" />
       <img class="footer-lotus-left" src="assets/images/decor/footer-lotus-left.png" alt="" loading="lazy" />
-      <img class="footer-lotus-line" src="assets/images/decor/footer-lotus-line-right.svg" alt="" loading="lazy" />
+      <img class="footer-lotus-line" src="assets/images/decor/footer-lotus-line-right.png" alt="" loading="lazy" />
 
       <div class="contact-footer-inner">
         <div class="contact-cta">
@@ -11630,19 +11739,19 @@ body{
 
             <div class="contact-benefits" aria-label="Lợi ích khi nhận tư vấn từ Diệu Tướng Am">
               <article class="contact-benefit-card">
-                <img src="assets/icons/footer/icon-consult.svg" alt="" loading="lazy" />
+                <img src="assets/icons/footer/icon-consult.png" alt="" loading="lazy" />
                 <h3>Tư vấn miễn phí</h3>
                 <p>Tận tâm - Chuyên sâu</p>
               </article>
 
               <article class="contact-benefit-card">
-                <img src="assets/icons/footer/icon-survey.svg" alt="" loading="lazy" />
+                <img src="assets/icons/footer/icon-survey.png" alt="" loading="lazy" />
                 <h3>Khảo sát tận nơi</h3>
                 <p>Đúng nhu cầu - Đúng thực tế</p>
               </article>
 
               <article class="contact-benefit-card">
-                <img src="assets/icons/footer/icon-solution.svg" alt="" loading="lazy" />
+                <img src="assets/icons/footer/icon-solution.png" alt="" loading="lazy" />
                 <h3>Giải pháp tối ưu</h3>
                 <p>Chất liệu chọn lọc - Chuẩn nghi thức</p>
               </article>
@@ -11758,7 +11867,7 @@ body{
 
             <button class="consult-submit" type="submit">
               <span>Gửi tâm nguyện</span>
-              <img src="assets/icons/footer/icon-lotus-submit.svg" alt="" loading="lazy" />
+              <img src="assets/icons/footer/icon-lotus-submit.png" alt="" loading="lazy" />
             </button>
 
             <p class="form-privacy">
@@ -11771,7 +11880,7 @@ body{
 
         <footer class="footer-main" aria-label="Thông tin liên hệ Diệu Tướng Am">
           <div class="footer-col footer-brand-col">
-            <img class="footer-logo" src="assets/logo/logo-dieu-tuong-am-gold.svg" alt="Diệu Tướng Am" loading="lazy" />
+            <img class="footer-logo" src="assets/logo/logo-dieu-tuong-am-gold.png" alt="Diệu Tướng Am" loading="lazy" />
             <p class="footer-tagline">Từ tâm khai mở – Tạc hình tinh hoa – Kiến tạo chốn an</p>
           </div>
 
