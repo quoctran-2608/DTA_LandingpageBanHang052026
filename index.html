@@ -11299,7 +11299,23 @@ body{
         filter:none !important;
       }
     }
-</style>
+
+    /* Cloudflare Turnstile captcha */
+    .turnstile-field{
+      grid-column:1 / -1;
+      display:flex;
+      justify-content:center;
+      margin:clamp(10px, 1.2vw, 16px) 0 clamp(4px, .8vw, 10px);
+      min-height:65px;
+    }
+    .consult-submit[disabled]{
+      cursor:not-allowed;
+      opacity:.72;
+      filter:saturate(.78);
+    }
+
+  </style>
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </head>
 <body>
   <main class="dta-page">
@@ -11766,7 +11782,7 @@ body{
             </div>
           </div>
 
-          <form class="consult-form" id="tu-van" action="#" method="post" novalidate>
+          <form class="consult-form" id="tu-van" action="/api/contact" method="post" novalidate>
             <h2>Gửi tâm nguyện – Nhận tư vấn</h2>
 
             <div class="form-grid">
@@ -11873,6 +11889,10 @@ body{
               </label>
             </div>
 
+            <div class="turnstile-field">
+              <div class="cf-turnstile" data-sitekey="THAY_BANG_TURNSTILE_SITE_KEY"></div>
+            </div>
+ 
             <button class="consult-submit" type="submit">
               <span>Gửi tâm nguyện</span>
               <img src="assets/icons/footer/icon-lotus-submit.png" alt="" loading="lazy" />
@@ -12527,17 +12547,66 @@ body{
     });
 
     form.addEventListener('submit', function(event){
+      event.preventDefault();
+
       if(!validateAll()){
-        event.preventDefault();
         setFeedback('Vui lòng kiểm tra lại các thông tin được đánh dấu.', 'error');
         return;
       }
 
-      var rawAction = (form.getAttribute('action') || '').trim();
-      if(!rawAction || rawAction === '#' || rawAction.toLowerCase().indexOf('javascript:') === 0){
-        event.preventDefault();
-        setFeedback('Thông tin đã hợp lệ. Cảm ơn bạn đã chia sẻ tâm nguyện.', 'success');
+      var submitButton = form.querySelector('.consult-submit');
+      var action = (form.getAttribute('action') || '/api/contact').trim();
+      var formData = new FormData(form);
+      var turnstileToken = formData.get('cf-turnstile-response');
+
+      if(!turnstileToken){
+        setFeedback('Vui lòng hoàn tất xác minh bảo mật trước khi gửi.', 'error');
+        return;
       }
+
+      var payload = {};
+      formData.forEach(function(value, key){
+        payload[key] = value;
+      });
+
+      if(submitButton){
+        submitButton.disabled = true;
+        submitButton.setAttribute('aria-busy', 'true');
+      }
+      setFeedback('Đang gửi thông tin, vui lòng chờ trong giây lát...', 'success');
+
+      fetch(action, {
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify(payload)
+      })
+      .then(function(response){
+        return response.json().catch(function(){
+          return {success:false, message:'Máy chủ phản hồi không hợp lệ.'};
+        }).then(function(data){
+          if(!response.ok || !data.success){
+            throw new Error(data.message || 'Gửi thông tin chưa thành công. Vui lòng thử lại.');
+          }
+          return data;
+        });
+      })
+      .then(function(data){
+        setFeedback(data.message || 'Cảm ơn bạn. Diệu Tướng Am đã nhận được tâm nguyện và sẽ liên hệ lại sớm.', 'success');
+        form.reset();
+        if(newProvinceInput) newProvinceInput.value = '';
+        fields.forEach(function(field){ setFieldState(field, ''); });
+        if(window.turnstile) window.turnstile.reset();
+      })
+      .catch(function(error){
+        setFeedback(error.message || 'Có lỗi xảy ra. Vui lòng thử lại sau.', 'error');
+        if(window.turnstile) window.turnstile.reset();
+      })
+      .finally(function(){
+        if(submitButton){
+          submitButton.disabled = false;
+          submitButton.removeAttribute('aria-busy');
+        }
+      });
     });
   })();
 
