@@ -8,6 +8,21 @@
   <script>
     document.documentElement.classList.add('dta-motion-js');
   </script>
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-DZY5HPEL8K"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-DZY5HPEL8K');
+    window.dtaTrackEvent = function(eventName, eventParams){
+      if(!eventName || typeof gtag !== 'function') return;
+      gtag('event', eventName, Object.assign({
+        page_location: window.location.href,
+        page_title: document.title
+      }, eventParams || {}));
+    };
+  </script>
   <style>
     @font-face{
       font-family:"DVN DAREK";
@@ -11341,7 +11356,7 @@ body{
             <a href="#du-an">Dự án</a>
             <a href="#lien-he">Liên hệ</a>
           </nav>
-          <a class="header-cta" href="#tu-van" data-consult-trigger>
+          <a id="dta-header-cta" class="header-cta" href="#tu-van" data-consult-trigger data-ga-event="click_header_cta" data-ga-cta-name="header_cta">
             <span>NHẬN TƯ VẤN</span>
             <span class="cta-lotus-icon" aria-hidden="true">
               <svg viewBox="0 0 32 32" focusable="false" role="img">
@@ -11367,7 +11382,7 @@ body{
             <a href="#quy-trinh">Quy trình</a>
             <a href="#du-an">Dự án</a>
             <a href="#lien-he">Liên hệ</a>
-            <a class="mobile-menu-cta" href="#tu-van" data-consult-trigger>BẮT ĐẦU HÀNH TRÌNH KIẾN TẠO</a>
+            <a class="mobile-menu-cta" href="#tu-van" data-consult-trigger data-ga-event="click_header_cta" data-ga-cta-name="mobile_header_cta">BẮT ĐẦU HÀNH TRÌNH KIẾN TẠO</a>
           </div>
         </nav>
       </header>
@@ -11410,7 +11425,7 @@ body{
           </div>
 
           <div class="hero-actions">
-            <a class="hero-button" href="#tu-van" data-consult-trigger>
+            <a id="dta-hero-cta" class="hero-button" href="#tu-van" data-consult-trigger data-ga-event="click_hero_cta" data-ga-cta-name="hero_cta">
               <span>BẮT ĐẦU HÀNH TRÌNH KIẾN TẠO</span>
               <span class="arrow">›</span>
             </a>
@@ -11790,7 +11805,7 @@ body{
             </div>
           </div>
 
-          <form class="consult-form" id="tu-van" action="/api/contact" method="post" novalidate>
+          <form class="consult-form dta-consult-form" id="tu-van" action="/api/contact" method="post" novalidate data-ga-form-name="consultation_form">
             <h2>Gửi tâm nguyện – Nhận tư vấn</h2>
 
             <div class="form-grid">
@@ -11991,7 +12006,7 @@ body{
   </div>
 
 
-  <a class="sticky-call" href="tel:0938959503" aria-label="Gọi tư vấn Diệu Tướng Am qua số 0938959503">
+  <a id="dta-call-sticky" class="sticky-call" href="tel:0938959503" aria-label="Gọi tư vấn Diệu Tướng Am qua số 0938959503" data-ga-event="click_call_sticky" data-ga-cta-name="sticky_call" data-ga-phone="0938959503">
     <span class="sticky-call-wave" aria-hidden="true"></span>
     <span class="sticky-call-wave sticky-call-wave--delay" aria-hidden="true"></span>
     <span class="sticky-call-label" aria-hidden="true">Gọi tư vấn <strong>0938959503</strong></span>
@@ -12663,6 +12678,12 @@ body{
       })
       .then(function(data){
         setFeedback(data.message || 'Cảm ơn bạn. Diệu Tướng Am đã nhận được tâm nguyện và sẽ liên hệ lại sớm.', 'success');
+        if(window.dtaTrackEvent){
+          window.dtaTrackEvent('submit_form_success', {
+            form_name: form.getAttribute('data-ga-form-name') || 'consultation_form',
+            form_id: form.id || 'tu-van'
+          });
+        }
         form.reset();
         if(newProvinceInput) newProvinceInput.value = '';
         fields.forEach(function(field){ setFieldState(field, ''); });
@@ -13091,6 +13112,38 @@ body{
     });
 
     window.dtaTurtleScrollTo = turtleScrollTo;
+  })();
+</script>
+
+
+<script>
+  (function(){
+    function getTrackingParams(element){
+      var params = {
+        cta_name: element.getAttribute('data-ga-cta-name') || element.id || element.className || 'cta'
+      };
+      var phone = element.getAttribute('data-ga-phone');
+      if(phone) params.phone_number = phone;
+      return params;
+    }
+
+    function bindGaClickTracking(){
+      var elements = Array.prototype.slice.call(document.querySelectorAll('[data-ga-event]'));
+      elements.forEach(function(element){
+        if(element.dataset.gaTrackingBound === 'true') return;
+        element.dataset.gaTrackingBound = 'true';
+        element.addEventListener('click', function(){
+          if(!window.dtaTrackEvent) return;
+          window.dtaTrackEvent(element.getAttribute('data-ga-event'), getTrackingParams(element));
+        });
+      });
+    }
+
+    if(document.readyState === 'loading'){
+      document.addEventListener('DOMContentLoaded', bindGaClickTracking);
+    }else{
+      bindGaClickTracking();
+    }
   })();
 </script>
 
