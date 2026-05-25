@@ -103,9 +103,6 @@
       overflow:hidden;
     }
 
-    /* =========================
-       HEADER
-    ========================== */
     .site-header{
       position:absolute;
       top:clamp(10px, 1vw, 18px);
@@ -290,9 +287,6 @@
       to{left:135%}
     }
 
-    /* =========================
-       HERO
-    ========================== */
     .hero-section{
       position:relative;
       width:100vw;
@@ -637,7 +631,6 @@
       text-shadow:0 5px 18px rgba(0,0,0,.6);
     }
 
-    /* SVG divider between two real sections */
     .section-divider{
       position:absolute;
       left:0;
@@ -752,9 +745,6 @@
       100%{opacity:0;transform:translateX(130%) rotate(8deg)}
     }
 
-    /* =========================
-       INTRO
-    ========================== */
     .intro-section{
       position:relative;
       z-index:2;
@@ -1048,9 +1038,6 @@
       transition:transform .35s ease, color .35s ease, filter .45s ease;
     }
 
-    /* =========================
-       RESPONSIVE
-    ========================== */
     @media (max-width:1180px){
       .header-inner{grid-template-columns:auto 1fr auto}.brand-slogan{display:none}.main-nav{gap:26px}.hero-media{width:75vw}.intro-inner{grid-template-columns:minmax(500px, 680px) 1fr}.philosophy-cards{grid-template-columns:repeat(3, minmax(0,1fr));max-width:680px}.philosophy-card{min-height:156px;text-align:center;display:block}.philosophy-card img{margin:0 auto 12px;width:70px;height:58px}.philosophy-card p{max-width:190px;margin:0 auto}.intro-visual{width:64vw;height:clamp(470px, 40vw, 590px)}.intro-title{font-size:clamp(40px,4.4vw,58px)}.intro-text{font-size:clamp(15px,1.1vw,18px);max-width:610px;letter-spacing:.025em}
     }
@@ -1078,11 +1065,6 @@
       .intro-section{padding-top:0}.intro-section::after{height:26px;background:linear-gradient(180deg,rgba(246,234,211,.58) 0%,rgba(246,234,211,.18) 70%,rgba(246,234,211,0) 100%)}.intro-inner{gap:14px}.intro-copy{order:2;padding-top:0}.intro-copy::before{display:none}.intro-title{font-size:clamp(30px, 8.2vw, 42px);letter-spacing:.9px;line-height:1.15}.intro-text{font-size:15px;line-height:1.72;letter-spacing:.01em;max-width:100%}.philosophy-cards{grid-template-columns:1fr;gap:14px}.philosophy-card{min-height:auto;padding:20px 18px}.philosophy-card img{width:70px;height:70px}.intro-visual{order:1;width:100vw;height:270px;min-height:0;margin:-30px calc((100vw - var(--container)) / -2) 0;isolation:isolate;background:#f6ead3;overflow:hidden}.intro-visual::before{content:"";display:block;position:absolute;left:0;right:0;top:0;width:auto;height:72px;z-index:7;background:linear-gradient(180deg,#f6ead3 0%,rgba(246,234,211,.68) 32%,rgba(246,234,211,.22) 68%,rgba(246,234,211,0) 100%);pointer-events:none}.intro-visual::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:48%;z-index:7;background:linear-gradient(180deg,rgba(246,234,211,0) 0%,rgba(246,234,211,.46) 46%,rgba(246,234,211,.9) 76%,#f6ead3 100%);pointer-events:none}.intro-visual img{position:absolute;inset:-24px 0 -32px auto;width:100%;height:calc(100% + 56px);object-fit:cover;object-position:center top;filter:saturate(1.04) contrast(1.02) brightness(.98);mask-image:linear-gradient(180deg,transparent 0%,rgba(0,0,0,.1) 7%,rgba(0,0,0,.72) 18%,#000 33%,#000 58%,rgba(0,0,0,.5) 72%,rgba(0,0,0,.12) 86%,transparent 100%);-webkit-mask-image:linear-gradient(180deg,transparent 0%,rgba(0,0,0,.1) 7%,rgba(0,0,0,.72) 18%,#000 33%,#000 58%,rgba(0,0,0,.5) 72%,rgba(0,0,0,.12) 86%,transparent 100%)}.intro-fog-top{display:none}
     }
 
-    /* ==========================================================
-       MOBILE FIX — Intro section: image full-width + natural blur
-       Mục tiêu: phần "Mỗi không gian..." hòa vào nền, ảnh trải ngang,
-       title đè lên ảnh bằng lớp giấy sáng thay vì bóng đen lệch.
-    ========================================================== */
     @media (max-width:680px){
       .intro-section{
         padding:0 0 58px;
@@ -1158,7 +1140,6 @@
         -webkit-mask-image:none;
       }
 
-      /* Lớp sương phía trên dày hơn: xóa cảm giác ảnh bị cắt ngang */
       .intro-visual::before{
         content:"";
         display:block;
@@ -1183,7 +1164,6 @@
         backdrop-filter:blur(1.2px);
       }
 
-      /* Lớp hòa nền phía dưới, không dùng mảng bóng đen nên không bị lệch */
       .intro-visual::after{
         content:"";
         position:absolute;
@@ -1259,7 +1239,6 @@
           0 10px 26px rgba(255,246,224,.42);
       }
 
-      /* Vệt giấy sáng bám theo title — thay cho vùng bóng đen bị lệch */
       .intro-title::before{
         content:"";
         position:absolute;
@@ -1398,12 +1377,6 @@
     }
 
 
-    /* ==========================================================
-       MOBILE HOTFIX V2 — Đưa ảnh intro lên đầu vùng + hiện title rõ
-       Lý do: bản trước dùng display:block nên thứ tự DOM làm ảnh rơi xuống sau content.
-       Fix: mobile dùng flex-column, intro-visual order:1, intro-copy order:2
-       và kéo title phủ nhẹ lên ảnh giống Mobile1.
-    ========================================================== */
     @media (max-width:680px){
       .intro-section{
         padding:0 0 60px !important;
@@ -1426,7 +1399,6 @@
         z-index:5 !important;
       }
 
-      /* ẢNH PHẢI NẰM ĐẦU VÙNG INTRO, ngay sau đường cong */
       .intro-visual{
         order:1 !important;
         position:relative !important;
@@ -1497,7 +1469,6 @@
           ) !important;
       }
 
-      /* CONTENT NẰM SAU ẢNH, nhưng title được kéo phủ lên đầu ảnh */
       .intro-copy{
         order:2 !important;
         position:relative !important;
@@ -1593,12 +1564,6 @@
 
 
 
-    /* ==========================================================
-       MOBILE FINAL FIX — Intro section blend hoàn thiện
-       Đặt cuối <style> để override toàn bộ HOTFIX cũ.
-       Trọng tâm: ảnh nằm đầu vùng, title rõ, lớp giấy sau chữ trong hơn,
-       không còn cảm giác mảng trắng tách khỏi ảnh.
-    ========================================================== */
     @media (max-width:680px){
       .intro-section{
         padding:0 0 60px !important;
@@ -1679,7 +1644,6 @@
         -webkit-mask-image:none !important;
       }
 
-      /* Sương phía trên chỉ còn vai trò nối nền, không phủ trắng mạnh xuống title */
       .intro-visual::before{
         content:"" !important;
         display:block !important;
@@ -1702,7 +1666,6 @@
         backdrop-filter:blur(.5px) !important;
       }
 
-      /* Sương phía dưới nối ảnh xuống nền giấy mềm, không tạo đường cắt ngang */
       .intro-visual::after{
         content:"" !important;
         position:absolute !important;
@@ -1793,7 +1756,6 @@
           0 8px 22px rgba(255,246,224,.26) !important;
       }
 
-      /* Lớp giấy sau chữ đã giảm độ trắng và tăng độ tan ở rìa phải */
       .intro-title::before{
         content:"" !important;
         position:absolute !important;
@@ -1936,14 +1898,6 @@
     }
 
   
-/* ==========================================================
-   MOBILE HOTFIX V4 — Top-edge blur tự nhiên như desktop
-   Cách dùng: dán block này ở CUỐI thẻ <style>, sau V2/V3.
-   Mục tiêu:
-   - Xóa đường tách lớp ở cạnh trên ảnh intro trên mobile.
-   - Cho ảnh "chui" nhẹ dưới đường cong và hòa vào nền giấy.
-   - Giữ vùng sáng sau title trong, không trắng đặc.
-========================================================== */
 @media (max-width:680px){
   .intro-section{
     position:relative !important;
@@ -1959,7 +1913,6 @@
       url("assets/images/bg/bg-intro-parchment.webp") center top / cover no-repeat !important;
   }
 
-  /* Lớp cầu nối ngay dưới đường cong: làm giống desktop hơn */
   .intro-section::after{
     content:"" !important;
     position:absolute !important;
@@ -1991,7 +1944,7 @@
     position:relative !important;
     width:100vw !important;
     height:clamp(360px, 88vw, 440px) !important;
-    margin:-58px 0 0 !important; /* kéo ảnh lên dưới đường cong để không còn mép ngang */
+    margin:-58px 0 0 !important;
     overflow:hidden !important;
     background:#f6ead3 !important;
     isolation:isolate !important;
@@ -2006,7 +1959,6 @@
     object-position:center top !important;
     filter:saturate(1.045) contrast(1.025) brightness(1.015) !important;
 
-    /* Đây là phần quan trọng: làm ảnh tự tan ở cạnh trên và dưới */
     mask-image:
       linear-gradient(180deg,
         transparent 0%,
@@ -2033,7 +1985,6 @@
       ) !important;
   }
 
-  /* Sương trên ảnh: rộng và loang hơn, không tạo mảng ngang */
   .intro-visual::before{
     content:"" !important;
     display:block !important;
@@ -2067,7 +2018,6 @@
     backdrop-filter:none !important;
   }
 
-  /* Sương dưới ảnh: nối liền xuống vùng text/cards */
   .intro-visual::after{
     content:"" !important;
     position:absolute !important;
@@ -2128,7 +2078,6 @@
     filter:blur(26px) !important;
   }
 
-  /* Vì ảnh được kéo lên, kéo content lên tương ứng để title vẫn đúng vị trí */
   .intro-copy{
     order:2 !important;
     width:var(--container) !important;
@@ -2147,7 +2096,6 @@
       0 10px 28px rgba(255,246,224,.26) !important;
   }
 
-  /* Nền sau chữ trong hơn nữa: không còn miếng trắng cứng */
   .intro-title::before{
     left:-26px !important;
     top:-28px !important;
@@ -2187,14 +2135,6 @@
 }
 
   
-/* ==========================================================
-   MOBILE HOTFIX V5 — Blend hoàn thiện cạnh trên + title rõ hơn
-   Đặt cuối <style>. Override toàn bộ V2/V3/V4 trước đó.
-   Trọng tâm:
-   - Mép trên ảnh tan tự nhiên hơn như desktop.
-   - Chữ nổi hơn nhưng không tạo mảng trắng đặc.
-   - Giảm khoảng rơi giữa title và mô tả.
-========================================================== */
 @media (max-width:680px){
   .intro-section{
     padding:0 0 58px !important;
@@ -2225,7 +2165,6 @@
       linear-gradient(180deg, rgba(246,234,211,.72) 0%, rgba(246,234,211,.48) 100%) !important;
   }
 
-  /* Cầu nối dưới đường cong: sâu hơn, loang rộng hơn, không còn dải ngang */
   .intro-section::after{
     content:"" !important;
     position:absolute !important;
@@ -2293,7 +2232,6 @@
     transform:none !important;
     filter:saturate(1.04) contrast(1.025) brightness(1.02) !important;
 
-    /* Mép trên và dưới của ảnh tự tan; phần giữa vẫn giữ chi tiết */
     mask-image:
       linear-gradient(180deg,
         transparent 0%,
@@ -2322,7 +2260,6 @@
       ) !important;
   }
 
-  /* Sương trên ảnh: loang xuống sâu, nhưng không phủ trắng cứng lên title */
   .intro-visual::before{
     content:"" !important;
     display:block !important;
@@ -2356,7 +2293,6 @@
     backdrop-filter:none !important;
   }
 
-  /* Sương dưới ảnh: làm nền mô tả nối mềm lên hình */
   .intro-visual::after{
     content:"" !important;
     position:absolute !important;
@@ -2454,7 +2390,6 @@
       0 14px 32px rgba(98,61,25,.14) !important;
   }
 
-  /* Veil sau title: mềm hơn, trong hơn, chỉ nâng tương phản chữ */
   .intro-title::before{
     content:"" !important;
     position:absolute !important;
@@ -2602,14 +2537,6 @@
 }
 
   
-/* ==========================================================
-   MOBILE HOTFIX V6 — FIX NGUYÊN NHÂN GỐC
-   Nguyên nhân bản trước bị giống cũ:
-   .intro-section::after đang có z-index cao hơn .intro-inner,
-   nên lớp sương phủ lên cả title làm chữ bị bạc/mờ và nhìn tách lớp.
-   V6 đưa lớp chuyển nền xuống dưới content, để title nằm trên cùng,
-   đồng thời dùng intro-visual::before/after để làm blur cạnh ảnh.
-========================================================== */
 @media (max-width:680px){
   .intro-section{
     position:relative !important;
@@ -2640,7 +2567,6 @@
       linear-gradient(180deg, rgba(246,234,211,.70), rgba(246,234,211,.48)) !important;
   }
 
-  /* QUAN TRỌNG: lớp này KHÔNG được nằm trên title nữa */
   .intro-section::after{
     content:"" !important;
     position:absolute !important;
@@ -2736,7 +2662,6 @@
       ) !important;
   }
 
-  /* Blur cạnh trên của ẢNH, nằm trong visual, không phủ lên title */
   .intro-visual::before{
     content:"" !important;
     display:block !important;
@@ -2828,7 +2753,6 @@
     filter:blur(30px) !important;
   }
 
-  /* Content luôn nằm trên tất cả lớp sương */
   .intro-copy{
     order:2 !important;
     position:relative !important;
@@ -2865,7 +2789,6 @@
       0 12px 28px rgba(70,42,18,.16) !important;
   }
 
-  /* Veil chỉ nằm SAU title, mềm và không trắng đặc */
   .intro-title::before{
     content:"" !important;
     position:absolute !important;
@@ -3010,14 +2933,6 @@
 }
 
   
-/* ==========================================================
-   MOBILE FINAL FIX V7 — dùng intro-wood-carving.png có alpha
-   Mục tiêu:
-   - Ảnh rõ hơn, trải ngang mobile.
-   - Không còn cảm giác tấm ảnh bị cắt/tách lớp ở cạnh đầu/cuối.
-   - Tiêu đề nổi rõ trên ảnh bằng lớp parchment-glass mềm, không dùng mảng bóng đen.
-   - Ghi đè toàn bộ các hotfix mobile trước đó.
-========================================================== */
 @media (max-width:680px){
   .intro-section{
     padding:0 0 58px !important;
@@ -3097,7 +3012,6 @@
     -webkit-mask-image:none !important;
   }
 
-  /* PNG đã có alpha ở cạnh trên/dưới, nên lớp nối chỉ thật nhẹ để không làm ảnh bị mờ */
   .intro-visual::before{
     content:"" !important;
     display:block !important;
@@ -3337,17 +3251,6 @@
 
 
 
-/* ==========================================================
-   MOBILE FINAL FIX V8 — sạch lớp, ảnh rõ, title gọn trên ảnh
-   Nguyên nhân bản trước xấu:
-   1) Lớp phủ giấy sau title quá rộng và quá trắng nên làm ảnh bị đục.
-   2) Title quá lớn + letter-spacing rộng nên vỡ thành nhiều dòng nặng mắt.
-   3) Khoảng âm/height chưa khớp nên text dưới bị rơi xa, tạo cảm giác tách lớp.
-   Cách sửa:
-   - Dùng PNG alpha làm chính, giảm fog xuống mức nhẹ.
-   - Đặt title cao hơn, nhỏ hơn, nền sau title chỉ là veil mỏng ở nửa trái.
-   - Rút height ảnh và cân lại khoảng cách text dưới.
-========================================================== */
 @media (max-width:680px){
   .intro-section{
     padding:0 0 54px !important;
@@ -3421,7 +3324,6 @@
     -webkit-mask-image:none !important;
   }
 
-  /* chỉ nối cạnh trên, không phủ đục ảnh */
   .intro-visual::before{
     content:"" !important;
     position:absolute !important;
@@ -3438,7 +3340,6 @@
     backdrop-filter:none !important;
   }
 
-  /* nối cạnh dưới mềm hơn, thấp hơn để không rửa trắng toàn bộ ảnh */
   .intro-visual::after{
     content:"" !important;
     position:absolute !important;
@@ -3489,7 +3390,6 @@
       0 10px 28px rgba(35,22,8,.08) !important;
   }
 
-  /* Veil mỏng bám bên trái, không còn mảng trắng rộng che ảnh */
   .intro-title::before{
     content:"" !important;
     position:absolute !important;
@@ -3601,11 +3501,6 @@
 
 
 
-/* ==========================================================
-   MOBILE FINAL FIX V9 — Intro image as framed card
-   Ý tưởng mới: ảnh không full màn hình, nằm trong khung vừa phải,
-   border #7c4520; title nằm trong khung ảnh; đoạn mô tả nằm dưới khung.
-========================================================== */
 @media (max-width:680px){
   .intro-section{
     padding:0 0 58px !important;
@@ -3681,7 +3576,6 @@
     -webkit-mask-image:none !important;
   }
 
-  /* Chỉ blend rất nhẹ bên trong khung, không phủ trắng toàn ảnh */
   .intro-visual::before{
     content:"" !important;
     display:block !important;
@@ -3749,7 +3643,6 @@
       0 4px 16px rgba(255,247,229,.42) !important;
   }
 
-  /* Nền trắng sau title trong hơn, chỉ nâng độ đọc, không che ảnh */
   .intro-title::before{
     content:"" !important;
     position:absolute !important;
@@ -3868,14 +3761,6 @@
 
 
 
-/* ==========================================================
-   MOBILE V10 — Khung intro chữ nhật, border dày #7c4520
-   Override cuối cùng theo yêu cầu:
-   - intro-wood-carving.webp nằm trong khung chữ nhật, không bo góc
-   - border dày hơn màu #7c4520
-   - title nằm trong khung ảnh, nền trắng/transparency nhẹ hơn
-   - đoạn mô tả nằm dưới khung hình
-========================================================== */
 @media (max-width:680px){
   .intro-section{
     padding:0 0 60px !important;
@@ -3951,7 +3836,6 @@
     border-radius:0 !important;
   }
 
-  /* Lớp phủ trong khung: chỉ làm chữ nổi, không làm ảnh bị đục */
   .intro-visual::before{
     content:"" !important;
     display:block !important;
@@ -4017,7 +3901,6 @@
       0 2px 10px rgba(255,246,224,.32) !important;
   }
 
-  /* Nền trắng dưới title trong hơn, không tạo mảng trắng lớn */
   .intro-title::before{
     content:"" !important;
     position:absolute !important;
@@ -4051,7 +3934,6 @@
 
   .title-mark{display:none !important;}
 
-  /* Đoạn mô tả nằm dưới khung hình, không chồng vào ảnh */
   .intro-text{
     position:relative !important;
     z-index:26 !important;
@@ -4146,13 +4028,6 @@
 }
 
 
-/* ==========================================================
-   MOBILE V11 — Rect frame 2px + title/white blur fully inside frame
-   - Khung ảnh chữ nhật, border #7c4520 dày 2px
-   - Bổ sung border-top rõ ràng bằng outline/inset line
-   - Title và blur trắng nằm gọn bên trong khung hình
-   - Blur trắng quay lại cảm giác mềm kiểu cũ nhưng không tràn khỏi khung
-========================================================== */
 @media (max-width:680px){
   .intro-section{
     padding:0 0 60px !important;
@@ -4211,7 +4086,6 @@
     z-index:1 !important;
   }
 
-  /* Lớp phủ nền ảnh nằm trong khung, rất nhẹ để ảnh vẫn rõ */
   .intro-visual::before{
     content:"" !important;
     display:block !important;
@@ -4281,7 +4155,6 @@
       0 1px 8px rgba(58,31,12,.10) !important;
   }
 
-  /* Blur trắng kiểu cũ, nhưng bị giới hạn trong box title nên không tràn khỏi khung ảnh */
   .intro-title::before{
     content:"" !important;
     position:absolute !important;
@@ -4391,13 +4264,6 @@
 }
 
 
-/* ==========================================================
-   MOBILE V12 — White blur like reference + 3px full rectangular border
-   - Border khung ảnh: 3px #7c4520, bắt buộc có top border
-   - Title + white blur nằm hoàn toàn bên trong khung ảnh
-   - Lớp blur trắng giống mẫu: một dải sương trắng ngang phía sau title,
-     đậm ở vùng chữ, mờ dần sang trên/dưới, không tràn ra ngoài khung
-========================================================== */
 @media (max-width:680px){
   .intro-section{
     padding:0 0 62px !important;
@@ -4442,7 +4308,6 @@
     z-index:8 !important;
   }
 
-  /* ép thêm một đường top border bên trong để tránh bị các lớp ảnh/overlay che mất */
   .intro-visual .intro-frame-top-border{
     display:none;
   }
@@ -4531,13 +4396,6 @@
       0 1px 8px rgba(58,31,12,.12) !important;
   }
 
-  /*
-    Dải blur trắng giống ảnh mẫu:
-    - kéo full ngang trong khung
-    - nằm sau title
-    - đậm ở giữa, mờ dần lên/xuống
-    - có blur mạnh ở cạnh để tạo cảm giác sương
-  */
   .intro-title::before{
     content:"" !important;
     position:absolute !important;
@@ -4663,13 +4521,6 @@
 }
 
 
-/* ==========================================================
-   MOBILE V13 — Blur transparent hơn + ép border-top luôn hiện
-   - Blur trắng sau title giống mẫu nhưng trong hơn
-   - Border khung ảnh 3px #7c4520
-   - Thêm 2 lớp top border: trên .intro-visual và trên .intro-copy
-     để không bị các layer/negative margin che mất
-========================================================== */
 @media (max-width:680px){
   .intro-visual{
     border:3px solid #7c4520 !important;
@@ -4681,7 +4532,6 @@
       inset 0 3px 0 #7c4520 !important;
   }
 
-  /* Đường top border nằm trên cùng bên trong khung ảnh */
   .intro-visual::before{
     z-index:60 !important;
     background:
@@ -4693,10 +4543,6 @@
     opacity:.72 !important;
   }
 
-  /*
-    Vì .intro-copy đang được kéo phủ lên ảnh bằng margin âm,
-    thêm một đường border-top ở chính layer copy để không thể bị che.
-  */
   .intro-copy::after{
     content:"" !important;
     position:absolute !important;
@@ -4717,7 +4563,6 @@
     z-index:22 !important;
   }
 
-  /* Blur trắng giống mẫu nhưng transparent hơn, để ảnh phía sau rõ hơn */
   .intro-title::before{
     height:clamp(90px, 23vw, 118px) !important;
     background:
@@ -4787,12 +4632,6 @@
 }
 
 
-/* ==========================================================
-   MOBILE V15 — ÉP BORDER TOP HIỆN BẰNG LINE RIÊNG TRÊN INTRO-INNER
-   Vấn đề: border-top của .intro-visual có thể bị ảnh/overlay/copy layer hoặc
-   lớp chuyển section phía trên che mất. Bản này vẽ thêm một đường top-border
-   độc lập, z-index rất cao, canh đúng theo khung ảnh.
-========================================================== */
 @media (max-width:680px){
   .intro-section{
     overflow:hidden !important;
@@ -4855,10 +4694,6 @@
     background:linear-gradient(180deg, rgba(255,248,232,0) 0%, rgba(255,248,232,.08) 100%) !important;
   }
 
-  /*
-    Top border độc lập, nằm trên tất cả layer.
-    Đây là đường xử lý chính để không còn bị che bởi ảnh/title/overlay.
-  */
   .intro-inner::before{
     content:"" !important;
     position:absolute !important;
@@ -4970,11 +4805,7 @@
 }
 
 
-/* ==========================================================
-   MOBILE V16 — Slogan 1 hàng + Hamburger menu + Font CTA chuẩn tiếng Việt
-========================================================== */
 
-/* Font UI an toàn cho tiếng Việt: dùng system font thay cho serif/uppercase lỗi dấu */
 .header-cta,
 .hero-button,
 .mobile-menu,
@@ -4996,7 +4827,6 @@
   transform:translateY(-.5px);
 }
 
-/* Hamburger mặc định ẩn trên desktop */
 .mobile-nav-toggle{
   display:none;
   appearance:none;
@@ -5011,7 +4841,6 @@
   display:none;
 }
 
-/* Tablet/mobile header */
 @media (max-width:940px){
   .header-inner{
     position:relative;
@@ -5154,7 +4983,6 @@
   }
 }
 
-/* Mobile nhỏ: giữ subtitle hero trên đúng 1 hàng */
 @media (max-width:680px){
   .hero-subtitle{
     max-width:none !important;
@@ -5208,11 +5036,7 @@
 }
 
 
-/* ==========================================================
-   MOBILE V17 — CTA uppercase + tăng slogan + ẩn Header CTA mobile
-========================================================== */
 
-/* Font CTA hỗ trợ tiếng Việt tốt, giữ chữ IN HOA theo yêu cầu */
 .header-cta,
 .hero-button,
 .mobile-menu-cta{
@@ -5222,14 +5046,12 @@
   font-weight:850 !important;
 }
 
-/* Đảm bảo CTA hero và CTA trong menu luôn là chữ in hoa, không bị rule cũ ghi đè */
 .hero-button span:first-child,
 .header-cta span:first-child,
 .mobile-menu-cta{
   text-transform:uppercase !important;
 }
 
-/* Desktop/tablet vẫn giữ header CTA; chỉ ẩn trên mobile nhỏ */
 @media (max-width:680px){
   .site-header .header-cta{
     display:none !important;
@@ -5244,7 +5066,6 @@
     margin-left:auto !important;
   }
 
-  /* Slogan hero lớn hơn nhưng vẫn cố giữ 1 hàng */
   .hero-subtitle{
     white-space:nowrap !important;
     max-width:100% !important;
@@ -5280,10 +5101,6 @@
 }
 
 
-/* ==========================================================
-   MOBILE V18 — Tăng kích thước dòng slogan hero cho thật rõ
-   Dùng scaleX để chữ cao/lớn hơn nhưng vẫn giữ 1 hàng trên mobile.
-========================================================== */
 @media (max-width:680px){
   .hero-subtitle{
     display:block !important;
@@ -5326,10 +5143,6 @@
 }
 
 
-/* ==========================================================
-   DTA TYPOGRAPHY FINAL — Font Việt nghệ thuật + spacing an toàn
-   Lớp này đặt cuối cùng để tối ưu thẩm mỹ mà không phá cấu trúc layout.
-========================================================== */
 body{
   font-family:var(--body) !important;
   font-weight:400;
@@ -5607,10 +5420,6 @@ body{
 
 
 
-    /* ==========================================================
-       MOBILE HERO SUBTITLE FINAL — 2 dòng rõ hơn, chữ lớn hơn
-       Override cuối cùng để bỏ các rule cũ đang ép slogan thành 1 hàng.
-    ========================================================== */
     @media (max-width:680px){
       .hero-subtitle{
         display:block !important;
@@ -5651,12 +5460,6 @@ body{
     }
 
 
-/* ==========================================================
-   HEADER BRAND SLOGAN FIX — closer to logo + visible on mobile
-   - Desktop: kéo cụm "Không gian văn hoá / Nghệ thuật tâm linh" sát logo hơn.
-   - Mobile: hiện slogan cạnh logo, giữ hamburger ở bên phải.
-   - Chỉ override header, không ảnh hưởng hero/intro layout.
-========================================================== */
 @media (min-width:941px){
   .site-header{
     top:0 !important;
@@ -5738,10 +5541,6 @@ body{
 
 
 
-/* ==========================================================
-   HEADER CTA LOTUS ICON — thay icon cũ bằng hoa sen SVG tinh tế
-   Icon nằm trong nút Nhận tư vấn, hợp tinh thần Diệu Tướng Am.
-========================================================== */
 .header-cta{
   gap:12px !important;
   padding-right:18px !important;
@@ -5832,11 +5631,6 @@ body{
 
 
 
-/* ==========================================================
-   DTA PHILOSOPHY CARDS — Hover tinh tế & sang hơn
-   Giữ nguyên màu sắc và đường vàng cạnh dưới, chỉ làm chậm nhịp,
-   giảm độ giật, thêm easing mềm để cảm giác cao cấp hơn.
-========================================================== */
 .philosophy-card{
   will-change:transform, box-shadow, background, border-color;
   transform:translateY(0);
@@ -5930,10 +5724,6 @@ body{
 
 
 
-    /* ==========================================================
-       SERVICE SECTION — Dịch vụ thiết trí không gian thờ
-       Nối tiếp sau intro-section, dùng asset tách trong dta_service_assets_v2.zip
-    ========================================================== */
     .service-section{
       position:relative;
       z-index:3;
@@ -6414,11 +6204,6 @@ body{
     }
 
 
-    /* ==========================================================
-       FINAL REFINEMENT V2 — Service section premium layout fix
-       Fix: giảm khoảng trống sau intro, làm section dịch vụ đậm chất hơn,
-       ảnh lớn hơn, màu ấm hơn, và chuyển layout 2 cột card khi màn hình không đủ rộng.
-    ========================================================== */
     @media (min-width:681px){
       .intro-section{
         min-height:auto !important;
@@ -6681,9 +6466,6 @@ body{
 
   
 
-    /* ==========================================================
-       SERVICE BOTTOM LINE — dùng file line-lotus.png thay cho 2 line CSS + icon giữa
-    ========================================================== */
     .service-bottom-ornament{
       width:min(760px, 58vw) !important;
       margin:clamp(30px, 3vw, 52px) auto 0 !important;
@@ -6727,12 +6509,6 @@ body{
     }
 
 
-/* ==========================================================
-   SERVICE FINAL V6 — Title nghệ thuật + ảnh lớn + viền vàng kim 3px
-   - Font tiêu đề dùng bộ font local: DVN DAREK nghệ thuật, Philosopher dễ đọc.
-   - Giữ nguyên fix ornament hình thoi bằng CSS shape, không dùng ký tự ◇.
-   - 4 ảnh service dùng đuôi .webp trong HTML.
-========================================================== */
 .service-title{
   font-family:var(--display) !important;
   font-weight:600 !important;
@@ -6864,7 +6640,6 @@ body{
   }
 }
 
-/* Final safety: ornament hình thoi phải là CSS shape, không dùng ký tự text */
 .service-copy .service-rule::after{
   content:"" !important;
   position:absolute !important;
@@ -6894,14 +6669,6 @@ body{
 
 
 
-/* ==========================================================
-   SERVICE FINAL FIX V7 — diamond clean-up, bigger gallery, tighter bottom
-   Ghi đè cuối cùng cho vùng "Dịch vụ thiết trí không gian thờ".
-   - Ẩn toàn bộ diamond/service-rule cũ để không còn đè chữ/lệch chỗ.
-   - Tạo nhịp phân tách bằng khoảng thở + line nhẹ, không dùng ký tự ◇.
-   - 4 ảnh lớn hơn, viền vàng kim 3px, dùng path .webp.
-   - Rút khoảng trống bên dưới và tăng icon hoa sen trên title.
-========================================================== */
 .service-container{
   width:min(100% - clamp(28px, 4.2vw, 72px), 1660px) !important;
 }
@@ -6960,7 +6727,6 @@ body{
   filter:saturate(1.10) contrast(1.065) brightness(1.01) !important;
 }
 
-/* Bỏ diamond cũ hoàn toàn: không còn ký tự/shape đè chữ */
 .service-copy .service-rule,
 .service-copy .service-rule::before,
 .service-copy .service-rule::after,
@@ -6978,7 +6744,6 @@ body{
   background:none !important;
 }
 
-/* Tạo phân tách mới bằng line mảnh dưới tiêu đề, không dùng hình thoi */
 .service-copy h3{
   position:relative !important;
   margin-bottom:clamp(20px, 1.1vw, 26px) !important;
@@ -7001,7 +6766,6 @@ body{
   z-index:2 !important;
 }
 
-/* Rút khoảng trống dưới và làm line-lotus gần nội dung hơn */
 .service-bottom-ornament{
   width:min(720px, 54vw) !important;
   margin-top:clamp(18px, 1.7vw, 30px) !important;
@@ -7073,9 +6837,6 @@ body{
   }
 }
 
-/* ==========================================================
-   SERVICE ORNAMENT FINAL — line-lotus lớn hơn + mobile có nền hoa sen
-========================================================== */
 .service-bottom-ornament{
   width:min(1040px, 74vw) !important;
   margin-top:clamp(24px, 2.2vw, 40px) !important;
@@ -7217,11 +6978,6 @@ body{
   }
 }
 
-/* ==========================================================
-   DTA LOCAL FONT ART DIRECTION — sang, thiền, đọc tốt tiếng Việt
-   Dùng DVN DAREK cho đại tự. Các dòng phụ chuyển về Philosopher
-   để rõ chữ Việt, vẫn giữ nhịp trang nghiêm bằng weight/spacing.
-========================================================== */
 body{
   font-family:var(--body) !important;
 }
@@ -7339,10 +7095,6 @@ body{
   }
 }
 
-/* ==========================================================
-   SERVICE MOBILE LOTUS VISIBILITY FIX — hoa sen rõ hơn trên mobile
-   Đặt cuối CSS để không bị các hotfix service phía trên ghi đè.
-========================================================== */
 @media (max-width:680px){
   .service-section{
     isolation:isolate;
@@ -7451,9 +7203,6 @@ body{
   }
 }
 
-/* ==========================================================
-   SERVICE MOBILE LOTUS CONTINUITY — kéo xuống vẫn có hoạ tiết nền
-========================================================== */
 @media (max-width:680px){
   .service-section::before{
     content:"" !important;
@@ -7519,10 +7268,6 @@ body{
 
 
 
-    /* =========================
-       PROCESS SECTION
-       Từ tâm nguyện đến không gian hoàn thiện
-    ========================== */
     .process-section{
       position:relative;
       width:100vw;
@@ -7938,11 +7683,6 @@ body{
 
 
 
-    /* ==========================================================
-       PROCESS BOTTOM EXTENSION FIX
-       Giữ thêm một khoảng nền gỗ sau đường cong vàng để section
-       không kết thúc đột ngột trước khi chuyển sang vùng Trust.
-    ========================================================== */
     .process-section{
       padding-bottom:clamp(126px, 8.4vw, 168px);
     }
@@ -7982,10 +7722,6 @@ body{
     }
 
 
-    /* =========================
-       TRUST SECTION
-       Vì sao gia chủ tin chọn Diệu Tướng Am?
-    ========================== */
     .trust-section{
       position:relative;
       width:100vw;
@@ -8377,10 +8113,6 @@ body{
     }
 
 
-    /* ==========================================================
-       PROJECT SECTION — Dự án tiêu biểu
-       Section nối dài sau phần "Vì sao gia chủ tin chọn"
-    ========================================================== */
     .project-section{
       position:relative;
       z-index:3;
@@ -8788,10 +8520,6 @@ body{
       .project-cta .project-cta-arrow{font-size:34px}
     }
 
-    /* ==========================================================
-       PROJECT SECTION HOTFIX — lotus icon lớn hơn + rút ngắn khoảng trống trên
-       Đặt cuối <style> để override phần project cũ.
-    ========================================================== */
     .project-section{
       padding-top:clamp(42px, 4.1vw, 72px) !important;
     }
@@ -8856,11 +8584,6 @@ body{
 
 
 
-    /* ==========================================================
-       PROJECT HEADING FINAL FIX — line/diamond căn theo riêng H2,
-       lotus decor vẫn giữ kích thước lớn theo SVG mới.
-       Đặt cuối <style> để override toàn bộ hotfix trước.
-    ========================================================== */
     .project-heading{
       align-items:flex-start !important;
       margin-bottom:clamp(28px, 2.7vw, 48px) !important;
@@ -8980,9 +8703,6 @@ body{
       }
     }
 
-    /* ==========================================================
-       SERVICE IMAGE LIGHTBOX — click ảnh dịch vụ để xem lớn
-    ========================================================== */
     .service-section .service-photo{
       cursor:zoom-in;
     }
@@ -9109,9 +8829,6 @@ body{
       }
     }
 
-    /* ==========================================================
-       CONSULT POPUP — mở form tư vấn từ CTA chính
-    ========================================================== */
     body.consult-modal-open{
       overflow:hidden;
     }
@@ -9262,9 +8979,6 @@ body{
       }
     }
 
-    /* ==========================================================
-       HERO SACRED HOVER — trang nghiêm, huyền bí, đẳng cấp
-    ========================================================== */
     .hero-media{
       isolation:isolate;
     }
@@ -9483,9 +9197,6 @@ body{
     }
 
 
-    /* ==========================================================
-       HERO INTRO — mở màn ánh vàng khi website vừa tải
-    ========================================================== */
     .hero-intro-veil{
       position:absolute;
       inset:0;
@@ -9695,10 +9406,6 @@ body{
     }
 
 
-    /* ==========================================================
-       MOTION SYSTEM — intro khi tải trang + reveal khi cuộn
-       JS chỉ thêm class kích hoạt; nếu tắt JS, trang vẫn hiện bình thường.
-    ========================================================== */
     .hero-intro-veil{
       opacity:0;
       visibility:hidden;
@@ -9955,11 +9662,6 @@ body{
 
 
 
-    /* =========================
-       CONTACT CTA + FOOTER — REBALANCED V2
-       Fix chính: không cho form đè cột trái, hoa sen né title,
-       benefit cards có vùng an toàn, footer cân lại theo 4 cột.
-    ========================== */
     .contact-footer-section{
       position:relative;
       width:100vw;
@@ -10481,9 +10183,6 @@ body{
 
 
 
-    /* ==========================================================
-       STICKY BACK TO TOP — nút nổi tinh tế, dùng chung nhịp cuộn lụa
-    ========================================================== */
     .back-to-top{
       position:fixed;
       right:clamp(18px, 2.1vw, 34px);
@@ -10599,12 +10298,6 @@ body{
 
 
 
-    /* ==========================================================
-       FOOTER MICRO FIX — lotus line + Zalo icon
-       Yêu cầu: hạ hoa sen line ở cột "Kết nối với chúng tôi" để
-       đường kẻ footer cắt ngang khoảng 1/3 hoa sen, đồng thời làm
-       chữ/icon Zalo lớn hơn và rõ hơn trong vòng tròn.
-    ========================================================== */
     .footer-connect-col,
     .footer-connect-col .social-list,
     .footer-connect-col .social-link{
@@ -10659,10 +10352,6 @@ body{
     }
 
     
-    /* ==========================================================
-       DTA SILK/TURTLE SCROLL BALANCED — disable native browser jump
-       JS below controls the slow, graceful menu/back-to-top movement.
-    ========================================================== */
     html,
     html:focus-within{
       scroll-behavior:auto !important;
@@ -10674,10 +10363,6 @@ body{
 
   
 
-    /* ==========================================================
-       DTA INTRO OVERRIDE — NHANH HƠN 4X / VẪN NGHỆ THUẬT
-       Áp dụng sau toàn bộ CSS cũ; tốc độ nhanh hơn bản cực chậm 4 lần.
-    ========================================================== */
     html.dta-motion-js body:not(.dta-intro-started){
       overflow:hidden;
     }
@@ -10841,13 +10526,6 @@ body{
 
   
 
-    /* ==========================================================
-       IPHONE INTRO FIX — ổn định vùng "Mỗi không gian..."
-       - Giữ Android gần như không đổi bằng cách chỉ target WebKit/iOS.
-       - Bỏ cơ chế margin âm của .intro-copy trên iPhone.
-       - Đặt title overlay bằng position:absolute trong .intro-inner.
-       - Đoạn mô tả và cards trở lại flow bình thường bên dưới ảnh.
-    ========================================================== */
     @supports (-webkit-touch-callout: none){
       @media (max-width:480px){
         .intro-section{
@@ -11061,11 +10739,6 @@ body{
 
   
 
-    /* ==========================================================
-       MOBILE TITLE BLUR LOCK — lớp blur bám đúng từng dòng chữ
-       Dùng span inline + box-decoration-break để khi chữ tự xuống dòng
-       trên iPhone/Android, nền sáng vẫn đi theo đúng hộp chữ.
-    ========================================================== */
     @media (max-width:680px){
       .intro-title{
         isolation:isolate !important;
@@ -11113,12 +10786,6 @@ body{
 
   
 
-    /* ==========================================================
-       MOBILE TITLE BLUR POLISH — vệt sáng mềm, bám theo cả khối chữ
-       Không dùng nền từng dòng để tránh cảm giác các mảng trắng bị cắt khúc.
-       Pseudo-element nằm ngay trong .intro-title nên dù đổi iPhone/Android,
-       đổi kích thước chữ hay đổi số dòng, lớp sáng vẫn đi theo hộp chữ thật.
-    ========================================================== */
     @media (max-width:680px){
       .intro-title{
         isolation:isolate !important;
@@ -11192,11 +10859,6 @@ body{
     }
 
 
-    /* ==========================================================
-       MOBILE FINAL HOTFIX — giữ CTA hero và footer slogan trên 1 hàng
-       - Nút "BẮT ĐẦU HÀNH TRÌNH KIẾN TẠO" không gãy dòng ở chữ TẠO
-       - Footer slogan luôn nằm 1 hàng trên mobile
-    ========================================================== */
     @media (max-width:680px){
       .hero-button{
         width:100% !important;
@@ -11271,10 +10933,6 @@ body{
 
 
 
-    /* ==========================================================
-       MOBILE PROJECT FIX — Dự án tiêu biểu hiện ngay, không reveal/loading
-       Chỉ áp dụng mobile/tablet nhỏ để desktop vẫn giữ hiệu ứng hiện tại.
-    ========================================================== */
     @media (max-width:940px){
       html.dta-motion-js .project-section .dta-reveal,
       html.dta-motion-js .project-section .dta-reveal:not(.is-visible),
@@ -11300,7 +10958,6 @@ body{
       }
     }
 
-    /* Cloudflare Turnstile captcha */
     .turnstile-field{
       grid-column:1 / -1;
       display:flex;
@@ -12883,16 +12540,6 @@ body{
 
 
 <script>
-  /* ==========================================================
-     DTA SILK SCROLL 54X — kế thừa cách "rùa bò" đã thành công
-     Version marker: DTA_TURTLE_SCROLL_54X_V9_2026_05_23
-
-     Cách làm:
-     1) Đổi menu hash link thành data-dta-turtle-scroll để browser không tự nhảy.
-     2) Bắt click ở WINDOW capture phase, chặn trước mọi listener cũ.
-     3) Không push hash khi click, tránh trình duyệt tự căn lại vị trí.
-     4) Cuộn bằng requestAnimationFrame với thời lượng mượt, nhanh hơn bản vừa rồi thêm đúng 2 lần nữa.
-  ========================================================== */
   (function(){
     var root = document.documentElement;
     var nativeScrollTo = window.scrollTo.bind(window);
@@ -12992,12 +12639,6 @@ body{
         return;
       }
 
-      /*
-        NHANH HƠN BẢN VỪA RỒI THÊM ĐÚNG 3 LẦN NỮA:
-        - Bản ngay trước: min ~1.56s, max ~6.67s, khoảng 1.78ms / 1px.
-        - Bản này: min ~0.26s, max ~1.11s, khoảng 0.30ms / 1px.
-        - Vẫn giữ easing mềm và vẫn chặn anchor để không bị nhảy mặc định.
-      */
       var minDuration = 260;
       var maxDuration = 1111;
       var duration = Math.min(maxDuration, Math.max(minDuration, absDistance * 0.296));
