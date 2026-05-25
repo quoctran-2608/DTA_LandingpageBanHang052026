@@ -8,7 +8,7 @@
   <script>
     document.documentElement.classList.add('dta-motion-js');
   </script>
-  <!-- Updated Google Analytics 4 -->
+  <!-- Google Analytics 4 -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-DZY5HPEL8K"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -18,8 +18,10 @@
     window.dtaTrackEvent = function(eventName, eventParams){
       if(!eventName || typeof gtag !== 'function') return;
       gtag('event', eventName, Object.assign({
+        send_to: 'G-DZY5HPEL8K',
         page_location: window.location.href,
-        page_title: document.title
+        page_title: document.title,
+        transport_type: 'beacon'
       }, eventParams || {}));
     };
   </script>
@@ -12667,12 +12669,21 @@ body{
         body:JSON.stringify(payload)
       })
       .then(function(response){
-        return response.json().catch(function(){
-          return {success:false, message:'Máy chủ phản hồi không hợp lệ.'};
-        }).then(function(data){
-          if(!response.ok || !data.success){
+        return response.text().then(function(rawText){
+          var data = {};
+          if(rawText){
+            try{
+              data = JSON.parse(rawText);
+            }catch(error){
+              data = {};
+            }
+          }
+
+          var isSuccess = response.ok && data.success !== false;
+          if(!isSuccess){
             throw new Error(data.message || 'Gửi thông tin chưa thành công. Vui lòng thử lại.');
           }
+
           return data;
         });
       })
@@ -12681,7 +12692,8 @@ body{
         if(window.dtaTrackEvent){
           window.dtaTrackEvent('submit_form_success', {
             form_name: form.getAttribute('data-ga-form-name') || 'consultation_form',
-            form_id: form.id || 'tu-van'
+            form_id: form.id || 'tu-van',
+            cta_name: 'consultation_form_success'
           });
         }
         form.reset();
@@ -13135,7 +13147,7 @@ body{
         element.addEventListener('click', function(){
           if(!window.dtaTrackEvent) return;
           window.dtaTrackEvent(element.getAttribute('data-ga-event'), getTrackingParams(element));
-        });
+        }, {capture:true});
       });
     }
 
