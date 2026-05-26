@@ -43,30 +43,55 @@ export async function onRequestPost(context) {
       return json({ success: false, message: "Xác minh bảo mật thất bại. Vui lòng thử lại." }, 403);
     }
 
+    const sourceOrigin = clean(request.headers.get("origin") || "Website");
+    const submittedAt = new Date().toISOString();
+    const leadId = `DTA-${Date.now().toString(36).toUpperCase()}`;
+
+    // Deliverability-friendly email:
+    // - Có bản text thuần để Gmail hiểu đây là thông báo giao dịch/nội bộ.
+    // - HTML cực đơn giản, không banner, không nút CTA, không màu mè như email marketing.
+    // - Subject cố định, không nhúng nội dung người dùng để tránh trigger spam.
+    const textEmail = [
+      "Form tư vấn mới - Diệu Tướng Am",
+      "",
+      `Mã hồ sơ: ${leadId}`,
+      `Thời gian gửi: ${submittedAt}`,
+      `Họ và tên: ${name}`,
+      `Số điện thoại: ${phone}`,
+      `Loại hình không gian: ${spaceType}`,
+      `Khu vực: ${province}`,
+      `Tỉnh/thành theo mapping mới: ${newProvince || province}`,
+      "",
+      "Nội dung:",
+      message,
+      "",
+      `Nguồn: ${sourceOrigin}`
+    ].join("\n");
+
     const html = `
-      <div style="font-family:Arial,sans-serif;line-height:1.6;color:#222">
-        <h2 style="margin:0 0 16px;color:#8a5a17">Khách hàng gửi tâm nguyện từ website Diệu Tướng Am</h2>
-        <p><strong>Họ và tên:</strong> ${escapeHtml(name)}</p>
-        <p><strong>Số điện thoại:</strong> ${escapeHtml(phone)}</p>
-        <p><strong>Loại hình không gian:</strong> ${escapeHtml(spaceType)}</p>
-        <p><strong>Khu vực:</strong> ${escapeHtml(province)}</p>
-        <p><strong>Tỉnh/thành theo mapping mới:</strong> ${escapeHtml(newProvince || province)}</p>
-        <p><strong>Nội dung tâm nguyện:</strong></p>
-        <div style="padding:12px 16px;background:#f7f1e6;border-left:4px solid #d9a741;border-radius:8px">
-          ${escapeHtml(message).replaceAll("\n", "<br>")}
-        </div>
-        <p style="margin-top:18px;color:#777;font-size:13px">
-          Nguồn: ${escapeHtml(request.headers.get("origin") || "Website")}
-        </p>
-      </div>
+      <p>Form tư vấn mới - Diệu Tướng Am</p>
+      <p><strong>Mã hồ sơ:</strong> ${escapeHtml(leadId)}</p>
+      <p><strong>Thời gian gửi:</strong> ${escapeHtml(submittedAt)}</p>
+      <p><strong>Họ và tên:</strong> ${escapeHtml(name)}</p>
+      <p><strong>Số điện thoại:</strong> ${escapeHtml(phone)}</p>
+      <p><strong>Loại hình không gian:</strong> ${escapeHtml(spaceType)}</p>
+      <p><strong>Khu vực:</strong> ${escapeHtml(province)}</p>
+      <p><strong>Tỉnh/thành theo mapping mới:</strong> ${escapeHtml(newProvince || province)}</p>
+      <p><strong>Nội dung:</strong></p>
+      <p>${escapeHtml(message).replaceAll("\n", "<br>")}</p>
+      <p><strong>Nguồn:</strong> ${escapeHtml(sourceOrigin)}</p>
     `;
 
     const emailPayload = {
       from: env.FROM_EMAIL,
       to: [env.TO_EMAIL],
-      subject: `Tâm nguyện mới từ website - ${name}`,
+      subject: "Form tư vấn mới - Diệu Tướng Am",
+      text: textEmail,
       html,
-      reply_to: env.REPLY_TO_EMAIL || undefined
+      reply_to: env.REPLY_TO_EMAIL || undefined,
+      headers: {
+        "X-Entity-Ref-ID": leadId
+      }
     };
 
     const resendResponse = await fetch("https://api.resend.com/emails", {
