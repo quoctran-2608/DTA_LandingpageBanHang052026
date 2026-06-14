@@ -11459,81 +11459,202 @@ body{
 
     .success-modal-panel{
       position:relative;
-      width:min(520px, 100%);
-      padding:clamp(28px, 4vw, 42px) clamp(22px, 4vw, 38px);
-      border:1px solid rgba(242,212,126,.68);
-      border-radius:clamp(20px, 2.4vw, 32px);
+      width:min(680px, 100%);
+      padding:clamp(26px, 3vw, 48px) clamp(20px, 3vw, 44px);
+      border:1px solid rgba(242,212,126,.62);
+      border-radius:clamp(18px, 2vw, 30px);
       text-align:center;
       background:
-        radial-gradient(ellipse at 50% 0%, rgba(255,247,217,.24) 0 20%, transparent 54%),
-        linear-gradient(180deg, rgba(48,23,6,.97), rgba(23,10,3,.98));
+        radial-gradient(ellipse at 50% 0%, rgba(255,247,217,.22) 0 18%, transparent 48%),
+        linear-gradient(180deg, rgba(47,22,6,.96), rgba(24,10,3,.97));
       box-shadow:0 34px 90px rgba(0,0,0,.58), 0 0 34px rgba(241,200,102,.18);
       transform:translateY(18px) scale(.985);
       transition:transform .4s cubic-bezier(.2,.82,.24,1);
+      overflow:hidden;
     }
 
     .success-modal.is-open .success-modal-panel{
       transform:none;
     }
 
+    .success-modal-content{
+      position:relative;
+      display:grid;
+      min-height:clamp(360px, 42vh, 480px);
+      place-items:center;
+      align-content:center;
+      padding:clamp(12px, 2vw, 20px) clamp(4px, 1vw, 10px);
+      isolation:isolate;
+    }
+
+    .success-modal-aura{
+      position:absolute;
+      inset:-38% -22% auto;
+      height:72%;
+      z-index:-1;
+      background:
+        radial-gradient(ellipse at 50% 38%, rgba(255,239,176,.34) 0 18%, rgba(217,167,65,.16) 34%, transparent 66%),
+        radial-gradient(circle at 50% 50%, rgba(255,255,255,.16), transparent 55%);
+      filter:blur(8px);
+      pointer-events:none;
+    }
+
     .success-modal-icon{
-      width:78px;
-      height:78px;
-      margin:0 auto 18px;
-      border-radius:50%;
+      width:clamp(86px, 8vw, 116px);
+      height:clamp(86px, 8vw, 116px);
+      margin:0 auto clamp(16px, 1.8vw, 24px);
       display:grid;
       place-items:center;
-      color:#2a1706;
-      font-size:38px;
-      line-height:1;
-      background:linear-gradient(135deg, #f7d27d 0%, #d79a34 50%, #f4c86f 100%);
-      box-shadow:0 16px 38px rgba(0,0,0,.28), 0 0 22px rgba(241,200,102,.34);
+      border-radius:50%;
+      background:
+        radial-gradient(circle at 50% 28%, rgba(255,245,207,.28), rgba(217,167,65,.10) 44%, rgba(47,22,6,.12) 70%),
+        linear-gradient(145deg, rgba(255,235,168,.12), rgba(98,55,13,.16));
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.42),
+        0 0 0 1px rgba(242,212,126,.48),
+        0 20px 46px rgba(0,0,0,.28),
+        0 0 34px rgba(241,200,102,.20);
+    }
+
+    .success-modal-icon svg{
+      width:76%;
+      height:76%;
+      overflow:visible;
+    }
+
+    .success-modal-ring,
+    .success-modal-lotus,
+    .success-modal-check{
+      fill:none;
+      stroke:#f7d889;
+      stroke-linecap:round;
+      stroke-linejoin:round;
+      filter:drop-shadow(0 0 8px rgba(241,200,102,.28));
+    }
+
+    .success-modal-ring{
+      stroke-width:1.5;
+      opacity:.72;
+    }
+
+    .success-modal-lotus{
+      fill:rgba(247,216,137,.10);
+      stroke-width:1.6;
+    }
+
+    .success-modal-check{
+      stroke-width:4.1;
+      stroke:#fff0b8;
+    }
+
+    .success-modal-kicker{
+      margin:0 0 10px;
+      color:#f2c66a;
+      font-family:var(--sans);
+      font-size:12px;
+      font-weight:800;
+      letter-spacing:.22em;
+      text-transform:uppercase;
     }
 
     .success-modal-title{
-      margin:0 0 10px;
-      color:#fff7e9;
+      max-width:560px;
+      margin:0 auto clamp(12px, 1.4vw, 18px);
+      color:#fff4cf;
       font-family:var(--serif);
       font-weight:400;
-      font-size:clamp(28px, 3.1vw, 42px);
-      line-height:1.16;
-      letter-spacing:.05em;
-      text-shadow:0 8px 28px rgba(0,0,0,.5), 0 0 18px rgba(217,167,65,.18);
+      font-size:clamp(30px, 3.2vw, 48px);
+      line-height:1.14;
+      letter-spacing:.045em;
+      text-transform:uppercase;
+      text-shadow:0 8px 30px rgba(0,0,0,.48), 0 0 20px rgba(217,167,65,.22);
     }
 
     .success-modal-message{
-      margin:0 auto clamp(20px, 2vw, 28px);
-      max-width:430px;
-      color:rgba(255,245,225,.88);
+      max-width:560px;
+      margin:0 auto clamp(22px, 2.2vw, 32px);
+      color:rgba(255,247,227,.88);
       font-family:var(--sans);
-      font-size:clamp(16px, 1.1vw, 18px);
-      line-height:1.7;
+      font-size:clamp(15.5px, 1.08vw, 18px);
+      line-height:1.72;
     }
 
-    .success-modal-close{
+    .success-modal-actions{
+      display:flex;
+      justify-content:center;
+      flex-wrap:wrap;
+      gap:12px;
+    }
+
+    .success-modal-primary,
+    .success-modal-secondary{
+      min-height:48px;
+      padding:0 24px;
+      border-radius:999px;
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      min-height:46px;
-      padding:0 24px;
-      border:1px solid rgba(255,217,133,.58);
-      border-radius:999px;
-      background:linear-gradient(135deg, #f7ce78 0%, #d79a36 48%, #f2c46c 100%);
-      color:#2a1706;
       font-family:var(--sans);
       font-weight:800;
       text-transform:uppercase;
-      letter-spacing:.04em;
+      letter-spacing:.055em;
       cursor:pointer;
-      box-shadow:0 16px 40px rgba(176,110,24,.28), inset 0 1px 0 rgba(255,255,255,.5);
-      transition:transform .25s ease, box-shadow .25s ease;
+      transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease, color .25s ease;
     }
 
-    .success-modal-close:hover,
-    .success-modal-close:focus-visible{
+    .success-modal-primary{
+      border:1px solid rgba(255,229,158,.72);
+      background:linear-gradient(135deg, #f7d27d 0%, #d79a34 50%, #f4c86f 100%);
+      color:#241205;
+      box-shadow:0 16px 34px rgba(0,0,0,.26), inset 0 1px 0 rgba(255,255,255,.55);
+    }
+
+    .success-modal-secondary{
+      border:1px solid rgba(242,212,126,.46);
+      background:rgba(39,19,6,.62);
+      color:#f8df91;
+    }
+
+    .success-modal-primary:hover,
+    .success-modal-primary:focus-visible,
+    .success-modal-secondary:hover,
+    .success-modal-secondary:focus-visible{
       transform:translateY(-2px);
-      box-shadow:0 20px 44px rgba(176,110,24,.38), 0 0 24px rgba(241,200,102,.28);
       outline:none;
+      color:#fff1bd;
+      box-shadow:0 18px 38px rgba(0,0,0,.34), 0 0 24px rgba(241,200,102,.22);
+    }
+
+    @media (max-width:720px){
+      .success-modal{
+        align-items:center !important;
+        padding:14px !important;
+      }
+
+      .success-modal-panel{
+        max-height:calc(100vh - 28px) !important;
+        border-radius:22px !important;
+      }
+
+      .success-modal-content{
+        min-height:min(68vh, 500px);
+        padding-top:18px;
+      }
+
+      .success-modal-title{
+        font-size:clamp(27px, 7.2vw, 36px);
+        letter-spacing:.03em;
+      }
+
+      .success-modal-actions{
+        flex-direction:column;
+        width:100%;
+      }
+
+      .success-modal-primary,
+      .success-modal-secondary{
+        width:100%;
+      }
     }
 
   </style>
@@ -12213,10 +12334,25 @@ body{
 
   <div class="success-modal" id="success-modal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="success-modal-title" hidden>
     <div class="success-modal-panel" role="document">
-      <div class="success-modal-icon" aria-hidden="true">✓</div>
-      <h2 class="success-modal-title" id="success-modal-title">Đã nhận tâm nguyện</h2>
-      <p class="success-modal-message" id="success-modal-message">Diệu Tướng Am đã nhận được thông tin và sẽ liên hệ lại sớm.</p>
-      <button class="success-modal-close" type="button" data-success-modal-close>Đã hiểu</button>
+      <div class="success-modal-content">
+        <div class="success-modal-aura" aria-hidden="true"></div>
+        <div class="success-modal-icon" aria-hidden="true">
+          <svg focusable="false" viewBox="0 0 72 72" role="img">
+            <circle class="success-modal-ring" cx="36" cy="36" r="31"></circle>
+            <path class="success-modal-lotus" d="M36 15.5C31.9 20.2 31.4 26.1 36 32.1C40.6 26.1 40.1 20.2 36 15.5Z"></path>
+            <path class="success-modal-lotus" d="M24.8 24.4C24.7 30.7 28 35 34.4 37C33.8 31.5 30.5 27.3 24.8 24.4Z"></path>
+            <path class="success-modal-lotus" d="M47.2 24.4C47.3 30.7 44 35 37.6 37C38.2 31.5 41.5 27.3 47.2 24.4Z"></path>
+            <path class="success-modal-check" d="M25.2 42.5L32.4 49.5L47.4 31.8"></path>
+          </svg>
+        </div>
+        <p class="success-modal-kicker">Gửi thông tin thành công</p>
+        <h2 class="success-modal-title" id="success-modal-title">Diệu Tướng Am đã tiếp nhận tâm nguyện</h2>
+        <p class="success-modal-message" id="success-modal-message">Diệu Tướng Am đã nhận được tâm nguyện và sẽ liên hệ lại sớm.</p>
+        <div class="success-modal-actions">
+          <button class="success-modal-primary" data-success-modal-close type="button">Hoàn tất</button>
+          <a class="success-modal-secondary" href="tel:0938959503">Gọi tư vấn ngay</a>
+        </div>
+      </div>
     </div>
   </div>
 
