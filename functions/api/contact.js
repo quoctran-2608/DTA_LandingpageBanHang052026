@@ -130,7 +130,7 @@ export async function onRequestPost(context) {
       <p><strong>Số điện thoại:</strong> ${escapeHtml(phone)}</p>
       <p><strong>Loại hình không gian:</strong> ${escapeHtml(spaceType)}</p>
       <p><strong>Khu vực:</strong> ${escapeHtml(province)}</p>
-      <p><strong>Tỉnh/thành theo mapping mới:</strong> ${escapeHtml(newProvince || province)}</p>
+      <p><strong>Tỉnh/Thành phố:</strong> ${escapeHtml(newProvince || province)}</p>
       <p><strong>Nội dung tâm nguyện:</strong></p>
       <p>${escapeHtml(message).replaceAll("\n", "<br>")}</p>
       <p><strong>Hostname:</strong> ${escapeHtml(pageUrl.hostname)}</p>
