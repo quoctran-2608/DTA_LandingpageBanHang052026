@@ -112,7 +112,7 @@ export async function onRequestPost(context) {
       `Số điện thoại: ${phone}`,
       `Loại hình không gian: ${spaceType}`,
       `Khu vực: ${province}`,
-      `Tỉnh/thành theo mapping mới: ${newProvince || province}`,
+      `Tỉnh/Thành phố: ${newProvince || province}`,
       "",
       "Nội dung tâm nguyện:",
       message,

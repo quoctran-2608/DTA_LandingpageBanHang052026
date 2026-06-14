@@ -12989,6 +12989,13 @@ body{
       .then(function(data){
         var successMessage = buildSuccessMessage(data);
         setFeedback(successMessage, 'success');
+
+        if(typeof window.dtaCloseConsultModal === 'function'){
+          window.dtaCloseConsultModal({
+            skipFocusRestore: true
+          });
+        }
+
         if(typeof window.dtaShowSuccessPopup === 'function'){
           window.dtaShowSuccessPopup(successMessage);
         }
@@ -13073,7 +13080,8 @@ body{
       });
     }
 
-    function closeModal(){
+    function closeModal(options){
+      options = options || {};
       if(modal.getAttribute('aria-hidden') === 'true') return;
 
       modal.classList.remove('is-open');
@@ -13087,10 +13095,18 @@ body{
         }
       }, 360);
 
-      if(lastFocused && typeof lastFocused.focus === 'function'){
+      if(options.skipFocusRestore && modal.contains(document.activeElement) && typeof document.activeElement.blur === 'function'){
+        document.activeElement.blur();
+      }
+
+      if(!options.skipFocusRestore && lastFocused && typeof lastFocused.focus === 'function'){
         lastFocused.focus({preventScroll:true});
       }
     }
+
+    window.dtaCloseConsultModal = function(options){
+      closeModal(options || {});
+    };
 
     triggers.forEach(function(trigger){
       trigger.setAttribute('aria-haspopup', 'dialog');
