@@ -1,10 +1,43 @@
+export async function onRequest(context) {
+  const { request } = context;
+
+  if (request.method === "OPTIONS") {
+    return new Response(null, {
+      status: 204,
+      headers: corsHeaders(request)
+    });
+  }
+
+  if (request.method !== "POST") {
+    return json({ success: false, message: "Method not allowed." }, 405, request);
+  }
+
+  return onRequestPost(context);
+}
+
 export async function onRequestPost(context) {
   const { request, env } = context;
 
   try {
+    const fromEmail = env.FROM_EMAIL || env.CONTACT_FROM_EMAIL;
+    const toEmail = env.TO_EMAIL || env.CONTACT_TO_EMAIL;
+
+    const missing = [];
+    if (!env.RESEND_API_KEY) missing.push("RESEND_API_KEY");
+    if (!env.TURNSTILE_SECRET_KEY) missing.push("TURNSTILE_SECRET_KEY");
+    if (!fromEmail) missing.push("FROM_EMAIL");
+    if (!toEmail) missing.push("TO_EMAIL");
+
+    if (missing.length) {
+      return json({
+        success: false,
+        message: "Server chưa cấu hình đủ biến môi trường: " + missing.join(", ")
+      }, 500, request);
+    }
+
     const contentType = request.headers.get("content-type") || "";
     if (!contentType.includes("application/json")) {
-      return json({ success: false, message: "Yêu cầu không hợp lệ." }, 400);
+      return json({ success: false, message: "Yêu cầu không hợp lệ." }, 400, request);
     }
 
     const body = await request.json();
@@ -18,19 +51,22 @@ export async function onRequestPost(context) {
     const token = clean(body["cf-turnstile-response"]);
 
     if (!name || name.length < 2) {
-      return json({ success: false, message: "Vui lòng nhập họ và tên hợp lệ." }, 400);
+      return json({ success: false, message: "Vui lòng nhập họ và tên hợp lệ." }, 400, request);
     }
 
     if (!phone || !isVietnamPhone(phone)) {
-      return json({ success: false, message: "Vui lòng nhập số điện thoại Việt Nam hợp lệ." }, 400);
+      return json({ success: false, message: "Vui lòng nhập số điện thoại Việt Nam hợp lệ." }, 400, request);
     }
 
     if (!spaceType || !province || !message || message.length < 10) {
-      return json({ success: false, message: "Vui lòng nhập đầy đủ loại hình, khu vực và nội dung tâm nguyện." }, 400);
+      return json({
+        success: false,
+        message: "Vui lòng nhập đầy đủ loại hình không gian, khu vực và nội dung tâm nguyện."
+      }, 400, request);
     }
 
     if (!token) {
-      return json({ success: false, message: "Vui lòng xác minh bảo mật trước khi gửi." }, 400);
+      return json({ success: false, message: "Vui lòng xác minh bảo mật trước khi gửi." }, 400, request);
     }
 
     const captchaOK = await verifyTurnstile({
@@ -40,19 +76,35 @@ export async function onRequestPost(context) {
     });
 
     if (!captchaOK) {
-      return json({ success: false, message: "Xác minh bảo mật thất bại. Vui lòng thử lại." }, 403);
+      return json({ success: false, message: "Xác minh bảo mật thất bại. Vui lòng thử lại." }, 403, request);
     }
 
     const sourceOrigin = clean(request.headers.get("origin") || "Website");
-    const submittedAt = new Date().toISOString();
-    const leadId = `DTA-${Date.now().toString(36).toUpperCase()}`;
+    const pageUrl = new URL(request.url);
+    const submittedAt = new Date().toLocaleString("vi-VN", {
+      timeZone: "Asia/Ho_Chi_Minh",
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit"
+    });
+    const leadId = `DTA-TKPT-${Date.now().toString(36).toUpperCase()}`;
 
     // Deliverability-friendly email:
     // - Có bản text thuần để Gmail hiểu đây là thông báo giao dịch/nội bộ.
     // - HTML cực đơn giản, không banner, không nút CTA, không màu mè như email marketing.
-    // - Subject cố định, không nhúng nội dung người dùng để tránh trigger spam.
+    // - Subject có tên khách hàng đã được lọc ký tự nguy hiểm để dễ nhận diện mà vẫn hạn chế trigger spam.
+    const subjectName = safeSubjectPart(name, "Khách hàng");
+    const emailSubject = `${subjectName} - Yêu cầu tư vấn thiết trí phòng thờ`;
+    const emailHeading = "Yêu cầu tư vấn thiết trí phòng thờ";
+    const emailIntro = `${subjectName} vừa gửi thông tin tư vấn từ landing page Thiết Kế Không Gian Phòng Thờ.`;
+
     const textEmail = [
-      "Form tư vấn mới - Diệu Tướng Am",
+      emailSubject,
+      "",
+      emailIntro,
       "",
       `Mã hồ sơ: ${leadId}`,
       `Thời gian gửi: ${submittedAt}`,
@@ -62,14 +114,16 @@ export async function onRequestPost(context) {
       `Khu vực: ${province}`,
       `Tỉnh/thành theo mapping mới: ${newProvince || province}`,
       "",
-      "Nội dung:",
+      "Nội dung tâm nguyện:",
       message,
       "",
+      `Hostname: ${pageUrl.hostname}`,
       `Nguồn: ${sourceOrigin}`
     ].join("\n");
 
     const html = `
-      <p>Form tư vấn mới - Diệu Tướng Am</p>
+      <p><strong>${escapeHtml(emailHeading)}</strong></p>
+      <p>${escapeHtml(emailIntro)}</p>
       <p><strong>Mã hồ sơ:</strong> ${escapeHtml(leadId)}</p>
       <p><strong>Thời gian gửi:</strong> ${escapeHtml(submittedAt)}</p>
       <p><strong>Họ và tên:</strong> ${escapeHtml(name)}</p>
@@ -77,21 +131,26 @@ export async function onRequestPost(context) {
       <p><strong>Loại hình không gian:</strong> ${escapeHtml(spaceType)}</p>
       <p><strong>Khu vực:</strong> ${escapeHtml(province)}</p>
       <p><strong>Tỉnh/thành theo mapping mới:</strong> ${escapeHtml(newProvince || province)}</p>
-      <p><strong>Nội dung:</strong></p>
+      <p><strong>Nội dung tâm nguyện:</strong></p>
       <p>${escapeHtml(message).replaceAll("\n", "<br>")}</p>
+      <p><strong>Hostname:</strong> ${escapeHtml(pageUrl.hostname)}</p>
       <p><strong>Nguồn:</strong> ${escapeHtml(sourceOrigin)}</p>
     `;
 
     const emailPayload = {
-      from: env.FROM_EMAIL,
-      to: [env.TO_EMAIL],
-      subject: "Form tư vấn mới - Diệu Tướng Am",
+      from: fromEmail,
+      to: parseEmailList(toEmail),
+      subject: emailSubject,
       text: textEmail,
       html,
       reply_to: env.REPLY_TO_EMAIL || undefined,
       headers: {
         "X-Entity-Ref-ID": leadId
-      }
+      },
+      tags: [
+        { name: "source", value: "thietkekhonggianphongtho" },
+        { name: "form", value: "consultation_form" }
+      ]
     };
 
     const resendResponse = await fetch("https://api.resend.com/emails", {
@@ -106,32 +165,26 @@ export async function onRequestPost(context) {
     if (!resendResponse.ok) {
       const detail = await resendResponse.text();
       console.error("Resend error:", detail);
-      return json({ success: false, message: "Hệ thống chưa gửi được email. Vui lòng thử lại sau." }, 502);
+      return json({
+        success: false,
+        message: "Hệ thống chưa gửi được email. Vui lòng thử lại sau."
+      }, 502, request);
     }
 
     return json({
       success: true,
-      message: "Cảm ơn bạn. Diệu Tướng Am đã nhận được tâm nguyện và sẽ liên hệ lại sớm."
-    });
+      message: "Diệu Tướng Am đã nhận được tâm nguyện và sẽ liên hệ lại sớm."
+    }, 200, request);
 
   } catch (error) {
     console.error(error);
-    return json({ success: false, message: "Có lỗi hệ thống. Vui lòng thử lại sau." }, 500);
+    return json({ success: false, message: "Có lỗi hệ thống. Vui lòng thử lại sau." }, 500, request);
   }
-}
-
-export async function onRequest(context) {
-  if (context.request.method === "OPTIONS") {
-    return new Response(null, {
-      status: 204,
-      headers: corsHeaders(context.request)
-    });
-  }
-
-  return json({ success: false, message: "Method not allowed." }, 405, context.request);
 }
 
 async function verifyTurnstile({ token, secret, ip }) {
+  if (!secret) return false;
+
   const formData = new FormData();
   formData.append("secret", secret);
   formData.append("response", token);
@@ -142,7 +195,7 @@ async function verifyTurnstile({ token, secret, ip }) {
     body: formData
   });
 
-  const result = await response.json();
+  const result = await response.json().catch(() => ({}));
   return Boolean(result.success);
 }
 
@@ -153,6 +206,23 @@ function isVietnamPhone(value) {
 
 function clean(value) {
   return String(value || "").replace(/\s+/g, " ").trim();
+}
+
+function parseEmailList(value) {
+  return String(value || "")
+    .split(",")
+    .map((email) => email.trim())
+    .filter(Boolean);
+}
+
+function safeSubjectPart(value, fallback = "Khách hàng") {
+  const cleaned = clean(value)
+    .replace(/[\r\n]+/g, " ")
+    .replace(/[^\p{L}\p{N}\s'.-]/gu, "")
+    .replace(/\s+/g, " ")
+    .trim();
+
+  return cleaned ? cleaned.slice(0, 60) : fallback;
 }
 
 function escapeHtml(value) {
@@ -169,6 +239,7 @@ function json(data, status = 200, request) {
     status,
     headers: {
       "Content-Type": "application/json; charset=utf-8",
+      "Cache-Control": "no-store",
       ...(request ? corsHeaders(request) : {})
     }
   });

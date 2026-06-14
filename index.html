@@ -3,6 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" href="https://dieutuongam.com/catalog/view/images/favicon.ico" type="image/x-icon" sizes="any" />
+  <link rel="shortcut icon" href="https://dieutuongam.com/catalog/view/images/favicon.ico" type="image/x-icon" />
   <title>Diệu Tướng Am | Kiến tạo không gian an trú tại gia</title>
   <meta name="description" content="Diệu Tướng Am thiết trí không gian thờ Phật, gia tiên, thiền trà trọn gói: tư vấn, thiết kế, chế tác, thi công chuẩn nghi thức tại Hà Nội & TP.HCM." />
   <script>
@@ -11427,6 +11429,113 @@ body{
       }
     }
 
+    body.success-modal-open{
+      overflow:hidden;
+    }
+
+    .success-modal{
+      position:fixed;
+      inset:0;
+      z-index:10050;
+      display:grid;
+      place-items:center;
+      padding:clamp(18px, 4vw, 48px);
+      background:
+        radial-gradient(ellipse at 50% 26%, rgba(241,200,102,.24) 0 16%, transparent 56%),
+        linear-gradient(180deg, rgba(7,3,1,.72), rgba(7,3,1,.92));
+      -webkit-backdrop-filter:blur(12px);
+      backdrop-filter:blur(12px);
+      opacity:0;
+      visibility:hidden;
+      pointer-events:none;
+      transition:opacity .34s ease, visibility .34s ease;
+    }
+
+    .success-modal.is-open{
+      opacity:1;
+      visibility:visible;
+      pointer-events:auto;
+    }
+
+    .success-modal-panel{
+      position:relative;
+      width:min(520px, 100%);
+      padding:clamp(28px, 4vw, 42px) clamp(22px, 4vw, 38px);
+      border:1px solid rgba(242,212,126,.68);
+      border-radius:clamp(20px, 2.4vw, 32px);
+      text-align:center;
+      background:
+        radial-gradient(ellipse at 50% 0%, rgba(255,247,217,.24) 0 20%, transparent 54%),
+        linear-gradient(180deg, rgba(48,23,6,.97), rgba(23,10,3,.98));
+      box-shadow:0 34px 90px rgba(0,0,0,.58), 0 0 34px rgba(241,200,102,.18);
+      transform:translateY(18px) scale(.985);
+      transition:transform .4s cubic-bezier(.2,.82,.24,1);
+    }
+
+    .success-modal.is-open .success-modal-panel{
+      transform:none;
+    }
+
+    .success-modal-icon{
+      width:78px;
+      height:78px;
+      margin:0 auto 18px;
+      border-radius:50%;
+      display:grid;
+      place-items:center;
+      color:#2a1706;
+      font-size:38px;
+      line-height:1;
+      background:linear-gradient(135deg, #f7d27d 0%, #d79a34 50%, #f4c86f 100%);
+      box-shadow:0 16px 38px rgba(0,0,0,.28), 0 0 22px rgba(241,200,102,.34);
+    }
+
+    .success-modal-title{
+      margin:0 0 10px;
+      color:#fff7e9;
+      font-family:var(--serif);
+      font-weight:400;
+      font-size:clamp(28px, 3.1vw, 42px);
+      line-height:1.16;
+      letter-spacing:.05em;
+      text-shadow:0 8px 28px rgba(0,0,0,.5), 0 0 18px rgba(217,167,65,.18);
+    }
+
+    .success-modal-message{
+      margin:0 auto clamp(20px, 2vw, 28px);
+      max-width:430px;
+      color:rgba(255,245,225,.88);
+      font-family:var(--sans);
+      font-size:clamp(16px, 1.1vw, 18px);
+      line-height:1.7;
+    }
+
+    .success-modal-close{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:46px;
+      padding:0 24px;
+      border:1px solid rgba(255,217,133,.58);
+      border-radius:999px;
+      background:linear-gradient(135deg, #f7ce78 0%, #d79a36 48%, #f2c46c 100%);
+      color:#2a1706;
+      font-family:var(--sans);
+      font-weight:800;
+      text-transform:uppercase;
+      letter-spacing:.04em;
+      cursor:pointer;
+      box-shadow:0 16px 40px rgba(176,110,24,.28), inset 0 1px 0 rgba(255,255,255,.5);
+      transition:transform .25s ease, box-shadow .25s ease;
+    }
+
+    .success-modal-close:hover,
+    .success-modal-close:focus-visible{
+      transform:translateY(-2px);
+      box-shadow:0 20px 44px rgba(176,110,24,.38), 0 0 24px rgba(241,200,102,.28);
+      outline:none;
+    }
+
   </style>
   <script>
     window.dtaTurnstileReady = function(){
@@ -12102,6 +12211,78 @@ body{
   </div>
 
 
+  <div class="success-modal" id="success-modal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="success-modal-title" hidden>
+    <div class="success-modal-panel" role="document">
+      <div class="success-modal-icon" aria-hidden="true">✓</div>
+      <h2 class="success-modal-title" id="success-modal-title">Đã nhận tâm nguyện</h2>
+      <p class="success-modal-message" id="success-modal-message">Diệu Tướng Am đã nhận được thông tin và sẽ liên hệ lại sớm.</p>
+      <button class="success-modal-close" type="button" data-success-modal-close>Đã hiểu</button>
+    </div>
+  </div>
+
+  <script>
+    (function(){
+      var modal = document.getElementById('success-modal');
+      if(!modal) return;
+
+      var messageNode = document.getElementById('success-modal-message');
+      var closeButton = modal.querySelector('[data-success-modal-close]');
+      var closeTimer = null;
+      var lastFocused = null;
+
+      function openSuccessPopup(message){
+        if(closeTimer) window.clearTimeout(closeTimer);
+        lastFocused = document.activeElement;
+
+        if(messageNode && message){
+          messageNode.textContent = message;
+        }
+
+        modal.hidden = false;
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('success-modal-open');
+
+        window.requestAnimationFrame(function(){
+          modal.classList.add('is-open');
+          if(closeButton) closeButton.focus({preventScroll:true});
+        });
+      }
+
+      function closeSuccessPopup(){
+        if(modal.getAttribute('aria-hidden') === 'true') return;
+
+        modal.classList.remove('is-open');
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('success-modal-open');
+
+        closeTimer = window.setTimeout(function(){
+          if(modal.getAttribute('aria-hidden') === 'true'){
+            modal.hidden = true;
+          }
+        }, 360);
+
+        if(lastFocused && typeof lastFocused.focus === 'function'){
+          lastFocused.focus({preventScroll:true});
+        }
+      }
+
+      window.dtaShowSuccessPopup = openSuccessPopup;
+
+      if(closeButton){
+        closeButton.addEventListener('click', closeSuccessPopup);
+      }
+
+      modal.addEventListener('click', function(event){
+        if(event.target === modal) closeSuccessPopup();
+      });
+
+      modal.addEventListener('keydown', function(event){
+        if(event.key === 'Escape') closeSuccessPopup();
+      });
+    })();
+  </script>
+
+
   <a id="dta-call-sticky" class="sticky-call" href="tel:0938959503" aria-label="Gọi tư vấn Diệu Tướng Am qua số 0938959503" data-ga-event="click_call_sticky" data-ga-cta-name="sticky_call" data-ga-phone="0938959503">
     <span class="sticky-call-wave" aria-hidden="true"></span>
     <span class="sticky-call-wave sticky-call-wave--delay" aria-hidden="true"></span>
@@ -12608,6 +12789,30 @@ body{
       feedback.classList.toggle('is-success', type === 'success');
     }
 
+    function getCustomerName(){
+      var nameField = form.querySelector('[name="ho-ten"]');
+      return nameField ? normalizeText(nameField.value) : '';
+    }
+
+    function buildSuccessMessage(data){
+      var customerName = getCustomerName();
+      var baseMessage = 'Diệu Tướng Am đã nhận được tâm nguyện và sẽ liên hệ lại sớm.';
+      if(customerName){
+        return 'Cảm ơn ' + customerName + '. ' + baseMessage;
+      }
+
+      if(data && data.message){
+        var serverMessage = normalizeText(data.message)
+          .replace(/^Cảm ơn\s+(bạn|quý vị)\.?\s*/i, '')
+          .trim();
+
+        return 'Cảm ơn bạn. ' + (serverMessage || baseMessage);
+      }
+
+      return 'Cảm ơn bạn. ' + baseMessage;
+    }
+
+
     function getErrorNode(field){
       var errorId = field.getAttribute('aria-describedby');
       return errorId ? document.getElementById(errorId) : null;
@@ -12782,7 +12987,11 @@ body{
         });
       })
       .then(function(data){
-        setFeedback(data.message || 'Cảm ơn bạn. Diệu Tướng Am đã nhận được tâm nguyện và sẽ liên hệ lại sớm.', 'success');
+        var successMessage = buildSuccessMessage(data);
+        setFeedback(successMessage, 'success');
+        if(typeof window.dtaShowSuccessPopup === 'function'){
+          window.dtaShowSuccessPopup(successMessage);
+        }
         if(window.dtaTrackEvent){
           window.dtaTrackEvent('submit_form_success', {
             form_name: form.getAttribute('data-ga-form-name') || 'consultation_form',
