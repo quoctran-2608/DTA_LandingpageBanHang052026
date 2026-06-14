@@ -12484,39 +12484,7 @@ body{
       prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     }catch(error){}
 
-    var revealPlan = [
-      {selector:'.intro-title', type:'up'},
-      {selector:'.title-mark, .intro-text', type:'up', delay:110, gap:120},
-      {selector:'.philosophy-card', type:'rise', delay:150, gap:130, max:430},
-      {selector:'.intro-visual', type:'soft', delay:80},
-
-      {selector:'.service-decor', type:'soft', gap:70, max:230},
-      {selector:'.service-heading', type:'up'},
-      {selector:'.service-side-left .service-copy', type:'left', delay:120, gap:130, max:360},
-      {selector:'.service-gallery .service-photo', type:'zoom', delay:160, gap:95, max:440},
-      {selector:'.service-side-right .service-copy', type:'right', delay:120, gap:130, max:360},
-      {selector:'.service-mobile-card', type:'rise', delay:120, gap:115, max:440},
-      {selector:'.service-bottom-ornament', type:'soft', delay:180},
-
-      {selector:'.process-decor', type:'soft', gap:80, max:180},
-      {selector:'.process-heading', type:'up'},
-      {selector:'.process-item', type:'rise', delay:150, gap:125, max:560},
-      {selector:'.process-arrow', type:'soft', delay:240, gap:80, max:430},
-
-      {selector:'.trust-heading', type:'up'},
-      {selector:'.trust-card', type:'zoom', delay:120, gap:85, max:430},
-
-      {selector:'.project-heading-core', type:'up'},
-      {selector:'.project-card', type:'rise', delay:120, gap:110, max:520},
-      {selector:'.project-actions', type:'up', delay:220},
-
-      {selector:'.contact-footer-section > img', type:'soft', gap:70, max:260},
-      {selector:'.contact-copy h2, .contact-copy > p', type:'left', gap:120},
-      {selector:'.contact-benefit-card', type:'rise', delay:140, gap:120, max:420},
-      {selector:'.consult-form', type:'right', delay:160},
-      {selector:'.footer-main .footer-col', type:'up', delay:100, gap:100, max:360},
-      {selector:'.footer-bottom', type:'soft', delay:180}
-    ];
+    var revealPlan = [];
 
     var items = [];
     var seen = [];
